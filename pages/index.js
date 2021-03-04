@@ -18,7 +18,7 @@ export default function Home() {
       <div className={styles.videoWrapper}>
         {/* <!-- The video --> */}
         <video autoPlay muted loop id="video" className={styles.video}>
-          <source src="/cab-video_Trim.mp4" type="video/mp4" />
+          <source src="/cab-video_Trim2.mp4" type="video/mp4" />
         </video>
         <div className={styles.controls}>
           <button type="button" onClick={handlePause}>
