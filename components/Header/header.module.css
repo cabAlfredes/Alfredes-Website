@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    background-color: sandybrown;
+}
+
+.logo {
+    margin: 5px 0;
+    border: 1px solid red;
+    width: 100%;
+    text-align: center;
+    max-height: 150px;
+}
+
+.logo>svg {
+    max-width: 300px;
+    width: 100%;
+}
+
+.header>nav {
+    display: none;
+}
