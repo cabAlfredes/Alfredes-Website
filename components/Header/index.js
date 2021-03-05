@@ -1,13 +1,48 @@
+/* eslint-disable import/no-unresolved */
 import Logo from '@/components/Logo';
-import style from './header.module.css';
+import Link from 'next/link';
+import styles from './header.module.css';
 
-function Header(params) {
+function Header() {
   return (
-    <header className={style.header}>
-      <div className={style.logo}>
+    <header className={styles.header}>
+      <div className={styles.logo}>
         <Logo />
       </div>
-      <nav>nav nav</nav>
+      <nav className={styles.nav}>
+        <ul>
+          <li>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about">
+              <a>La Cabana</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/services">
+              <a>Servicios</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/gallery">
+              <a>Fotos</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/map">
+              <a>Como Llegar</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact">
+              <a>Contacto</a>
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
