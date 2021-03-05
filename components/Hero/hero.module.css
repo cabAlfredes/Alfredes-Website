@@ -1,0 +1,53 @@
+.videoWrapper {
+	height: 700px;
+	position: relative;
+	width: 100%;
+}
+
+.video {
+	height: 100%;
+	margin-top: -40px;
+	object-fit: cover;
+	width: 100%;
+	z-index: -1;
+}
+
+.videoBottomFrame {
+	align-items: center;
+	bottom: -135px;
+	display: flex;
+	height: 200px;
+	justify-content: center;
+	position: absolute;
+	width: 110%;
+	background-color: var(--yellow);
+	transform: rotate( 1.55deg);
+	left: -5%;
+}
+
+.videoBottomFrame>.text {
+	font-family: Shadows Into Light;
+	font-size: 2.5rem;
+	letter-spacing: 5px;
+	position: absolute;
+	text-align: center;
+	width: 60%;
+}
+
+.controls {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.content {
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	min-width: 350px;
+}
+
+.logo {
+	max-width: 100%;
+}
