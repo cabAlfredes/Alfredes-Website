@@ -1,9 +1,20 @@
+import { useEffect, useState } from 'react';
+import { FaPlay, FaPause } from 'react-icons/fa';
 import styles from './hero.module.css';
 
 function Hero() {
+  const [isPlaying, setIsPlaying] = useState(true);
+
+  useEffect(() => {
+    const video = document.getElementById('video');
+    isPlaying ? video.play() : video.pause();
+    console.log(video.currentTime);
+  }, [isPlaying]);
+
   const handlePause = () => {
-    document.getElementById('video');
+    setIsPlaying((prev) => !prev);
   };
+
   return (
     <div className={styles.videoWrapper}>
       {/* <!-- The video --> */}
@@ -13,8 +24,12 @@ function Hero() {
         <source src="/cab-video_Trim2.mp4" type="video/mp4" />
       </video>
       <div className={styles.controls}>
-        <button type="button" onClick={handlePause}>
-          pause
+        <button
+          className={styles.pausePlayButton}
+          type="button"
+          onClick={handlePause}
+        >
+          {isPlaying ? <FaPause /> : <FaPlay />}
         </button>
       </div>
 
