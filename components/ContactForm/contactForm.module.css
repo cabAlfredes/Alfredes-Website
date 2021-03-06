@@ -1,0 +1,25 @@
+.formWrapper {
+  width: 50%;
+  margin: auto;
+  border: 1px solid var(--blueSapphire);
+  border-radius: var(--borderRadius);
+  padding: 1rem;
+  background-color: var(--cyberGrape);
+  color: var(--platinum);
+}
+
+.form {}
+
+.input, .textarea {
+  border: none;
+  width: 100%;
+  margin-top: 1rem;
+  height: 30px;
+  border-radius: var(--borderRadius);
+  background-color: var(--platinum);
+  padding: 0 0 0 10px;
+}
+
+.textarea {
+  height: 90px;
+}

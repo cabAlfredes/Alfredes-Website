@@ -7,6 +7,7 @@ function Hero() {
 
   useEffect(() => {
     const video = document.getElementById('video');
+    // eslint-disable-next-line no-unused-expressions
     isPlaying ? video.play() : video.pause();
     console.log(video.currentTime);
   }, [isPlaying]);

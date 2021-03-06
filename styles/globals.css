@@ -21,8 +21,22 @@ a {
 }
 
 :root {
-  --blueDark: #10395c;
+  --fontShadow: 'Shadows Into Light';
+  --spacing: 4px;
   --niceGray: #373737;
   --darkText: #212121;
-  --yellow: #E8DE00;
+  --blueSapphire: #05668d;
+  --yellow: #f7e733;
+  --platinum: #eaebed;
+  --darkPurple: #242038;
+  --cyberGrape:#433c68;
+  --magnolia: #ece5f0;
+  --redCrayola:  #ff1053;
+  --borderRadius: 8px;
+}
+
+
+h1,h2{
+  font-family: var(--fontShadow);
+  letter-spacing: var(--spacing);
 }
