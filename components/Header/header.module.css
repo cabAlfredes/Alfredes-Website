@@ -6,6 +6,7 @@
     height: 120px;
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
     z-index: 5;
+    margin-bottom: 20px;
 }
 
 .logo>svg {
@@ -14,7 +15,6 @@
     max-height: 70px;
     fill: #228512;
 }
-
 
 .nav>ul {
     list-style: none;

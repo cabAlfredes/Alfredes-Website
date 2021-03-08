@@ -1,42 +1,6 @@
-.contact {
-  width: 50%;
-  min-width: 400px;
-  max-width: 600px;
-  margin: auto;
-  margin-top: 50px;
-  position: relative;
-  z-index: 1;
+.content {
+  max-width: 400px;
 }
-
-.formWrapper {
-  background-color: var(--cyberGrape);
-  border-radius: var(--borderRadius);
-  color: var(--platinum);
-  box-shadow:  0 0 11px 0 gray;
-  padding: 2rem;
-}
-
-.contact::after {
-  background-color: var(--yellow);
-  border-radius: var(--borderRadius);
-  content: '';
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  transform: rotate(357deg);
-  width: 100%;
-  z-index: -1;
-  transition: transform 0.3s ease-in-out;
-  box-shadow:  0 0 11px 0 gray;
-
-}
-
-.contact:hover::after {
-  transform: rotate(362deg);
-}
-
-.form {}
 
 .input, .textarea {
   background-color: var(--platinum);

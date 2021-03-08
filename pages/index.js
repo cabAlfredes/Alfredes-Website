@@ -14,7 +14,6 @@ export default function Home() {
       <div>
         <Hero />
         <Divider />
-        <div style={{ height: '250px' }} />
       </div>
     </>
   );
