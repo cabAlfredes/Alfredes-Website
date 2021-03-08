@@ -6,9 +6,13 @@ import styles from './header.module.css';
 function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
-        <Logo />
-      </div>
+      <Link href="/">
+        <a>
+          <div className={styles.logo}>
+            <Logo />
+          </div>
+        </a>
+      </Link>
       <nav className={styles.nav}>
         <ul>
           <li>
