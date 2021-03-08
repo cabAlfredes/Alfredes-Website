@@ -1,25 +1,20 @@
 import PropTypes from 'prop-types';
 import Header from '../Header';
-import style from './layout.module.css';
+import styles from './layout.module.css';
 
 const Footer = () => (
-  <footer className={style.footer}>
-    <a
-      href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Powered by
-      <img src="/vercel.svg" alt="Vercel Logo" className={style.logo} />
+  <footer className={styles.footer}>
+    <a href="https://bmunz.dev" target="_blank" rel="noopener noreferrer">
+      Powered by bmunz.dev
     </a>
   </footer>
 );
 
 function Layout({ children }) {
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       <Header />
-      <main className={style.mainWrapper}>{children}</main>
+      <main className={styles.mainWrapper}>{children}</main>
       <Footer />
     </div>
   );

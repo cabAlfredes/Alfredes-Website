@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import CardWithRotation from '@/components/CardWithRotation';
 import styles from './contactForm.module.css';
 
 const formReducer = (state, event) => {
@@ -18,10 +19,9 @@ function ContactForm(props) {
     );
   };
 
-  console.log(formData);
   return (
-    <div className={styles.contact}>
-      <div className={styles.formWrapper}>
+    <CardWithRotation>
+      <div className={styles.content}>
         <h1>Consultas</h1>
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
           <input
@@ -77,7 +77,7 @@ function ContactForm(props) {
         </form>
         <div className={styles.message}>Message</div>
       </div>
-    </div>
+    </CardWithRotation>
   );
 }
 
