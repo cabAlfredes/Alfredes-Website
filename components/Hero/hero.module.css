@@ -15,9 +15,9 @@
 
 .videoBottomFrame {
 	align-items: center;
-	bottom: -135px;
+	bottom: -85px;
 	display: flex;
-	height: 200px;
+	height: 150px;
 	justify-content: center;
 	position: absolute;
 	width: 110%;
@@ -29,7 +29,7 @@
 
 .videoBottomFrame>.text {
 	font-family: var(--fontShadow);
-	font-size: 2.5rem;
+	font-size: 2rem;
 	letter-spacing: var(--spacing);
 	position: absolute;
 	text-align: center;
