@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import Divider from '@/components/Divider';
 import styles from './hero.module.css';
 
 function Hero() {

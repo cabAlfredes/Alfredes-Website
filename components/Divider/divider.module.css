@@ -4,11 +4,11 @@
 }
 
 .divider {
-  width: 100%;
-  margin-top: -42px;
-  height: 62px;
+  width: 110%;
+  margin-top: -72px;
+  height: 25px;
   background-color: var(--cyberGrape);
-  transform: skewY(1deg);
+  transform: skewY(1deg) translateX(-5%);
 }
 
 @media (max-width: 780px) {
@@ -24,22 +24,3 @@
     height: 32px;
   }
 }
-
-/* 
-.r1 {
-  transform-origin: left center;
-  background-color: red;
-  transform: rotate(1deg);
-}
-
-.r2 {
-  transform-origin: left center;
-  background-color: rgb(4, 0, 255);
-  transform: rotate(1.1deg);
-}
-
-.r3 {
-  transform-origin: left center;
-  background-color: rgb(29, 218, 12);
-  transform: rotate(1.2deg);
-} */

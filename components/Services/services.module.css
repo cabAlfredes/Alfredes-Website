@@ -1,0 +1,8 @@
+.wrapper{
+  scroll-behavior: smooth; 
+}
+.content{
+  width: 75%;
+  margin: auto;
+  letter-spacing: 1px;
+}
