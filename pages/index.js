@@ -10,47 +10,64 @@ import { getPosition } from '@/utils/getPosition';
 
 export default function Home() {
   const Router = useRouter();
-  const [offset, setOffset] = useState(0);
+  const [isStopped, setIsStopped] = useState(false);
 
-  const [scroll, setScroll, stop] = useSpring((props) => ({
+  const [, setScroll, stop] = useSpring(() => ({
     immediate: false,
-    config: config.slow,
+    config: config.molasses,
     y: 0,
     onFrame: (props) => {
-      window.scroll(0, props.y);
+      if (!isStopped) {
+        console.log(props);
+        window.scroll(0, props.y);
+      }
     },
     onRest: (props) => {
       console.log('scroll ended');
-      console.log(scroll);
-      props.y = 0;
+      setIsStopped(false);
+      // window.removeEventListener('wheel', onWheel);
     },
   }));
 
+  // check this issues https://github.com/pmndrs/react-spring/issues/544
+
+  const onWheel = () => {
+    console.log('wheel spining');
+    stop();
+    setIsStopped(true);
+    window.removeEventListener('wheel', onWheel);
+  };
+
   useEffect(() => {
-    console.log(Router);
     const headerHeight = document.querySelector('.header').clientHeight; // header hight
+    window.addEventListener('wheel', onWheel);
 
     if (Router.asPath === '/') {
-      setScroll({ y: 0 });
+      setScroll({ y: 0, reset: true, from: { y: window.scrollY } });
     } else {
       const id = Router.asPath.split('').slice(2).join('');
       const el = document.getElementById(id);
       const pos = getPosition(el); // TODO: improve this function to get the real position including paddings and margins
-      setScroll({ y: pos.y - headerHeight - 30 }); // 30 px of margin-top from the header
+
+      setScroll({
+        reset: false,
+        from: { y: window.scrollY },
+        y: pos.y - headerHeight - 30, // 30 px of margin-top from the header
+      });
     }
-  }, [Router, setScroll]);
 
-  useEffect(() => {
-    window.onscroll = () => {
-      setOffset(window.pageYOffset);
+    return () => {
+      window.removeEventListener('wheel', onWheel);
     };
-  }, []);
+  }, [Router]);
 
-  console.log(offset);
+  // useEffect(() => {
+  //   window.onscroll = () => {
+  //     setOffset(window.pageYOffset);
+  //   };
+  // }, []);
 
-  const handleScroll = () => {
-    console.log('scrolling page');
-  };
+  // console.log(offset);
 
   return (
     <>
@@ -58,7 +75,7 @@ export default function Home() {
         <title>Cabaña Alfredes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div onScroll={handleScroll}>
+      <div>
         <Hero />
         {/* <Divider /> */}
         <About />
