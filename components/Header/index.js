@@ -21,12 +21,12 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link href="#about">
+            <Link href="/#about">
               <a>La Cabana</a>
             </Link>
           </li>
           <li>
-            <Link href="#services">
+            <Link href="/#services">
               <a>Servicios</a>
             </Link>
           </li>

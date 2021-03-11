@@ -21,6 +21,7 @@ a {
 
 :root {
   --fontShadow: 'Shadows Into Light';
+  --fontMontserrat: 'Montserrat';
   --spacing: 4px;
   --niceGray: #373737;
   --darkText: #212121;
