@@ -1,42 +1,56 @@
 /* eslint-disable import/no-unresolved */
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useSpring, config } from 'react-spring';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
-import Divider from '@/components/Divider';
 import { getPosition } from '@/utils/getPosition';
-import { useEffect } from 'react';
-// import styles from '@/styles/Home.module.css';
 
 export default function Home() {
-  const [scroll, setScroll] = useSpring(() => ({
+  const Router = useRouter();
+  const [offset, setOffset] = useState(0);
+
+  const [scroll, setScroll, stop] = useSpring((props) => ({
     immediate: false,
     config: config.slow,
     y: 0,
     onFrame: (props) => {
       window.scroll(0, props.y);
     },
+    onRest: (props) => {
+      console.log('scroll ended');
+      console.log(scroll);
+      props.y = 0;
+    },
   }));
 
-  const router = useRouter();
-
   useEffect(() => {
-    // getDistanceToElementId()
-    if (router.asPath === '/') {
+    console.log(Router);
+    const headerHeight = document.querySelector('.header').clientHeight; // header hight
+
+    if (Router.asPath === '/') {
       setScroll({ y: 0 });
     } else {
-      const id = router.asPath.split('').slice(2).join('');
-      console.log('scrolling to id:', id);
+      const id = Router.asPath.split('').slice(2).join('');
       const el = document.getElementById(id);
-      const pos = getPosition(el);
-      console.log(pos);
-
-      setScroll({ y: pos.y });
+      const pos = getPosition(el); // TODO: improve this function to get the real position including paddings and margins
+      setScroll({ y: pos.y - headerHeight - 30 }); // 30 px of margin-top from the header
     }
-    console.log(scroll);
-  }, [router]);
+  }, [Router, setScroll]);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      setOffset(window.pageYOffset);
+    };
+  }, []);
+
+  console.log(offset);
+
+  const handleScroll = () => {
+    console.log('scrolling page');
+  };
 
   return (
     <>
@@ -44,7 +58,7 @@ export default function Home() {
         <title>Cabaña Alfredes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
+      <div onScroll={handleScroll}>
         <Hero />
         {/* <Divider /> */}
         <About />

@@ -6,8 +6,9 @@ import styles from './layout.module.css';
 
 const Footer = () => (
   <footer className={styles.footer}>
+    Powered by
     <a href="https://bmunz.dev" target="_blank" rel="noopener noreferrer">
-      Powered by bmunz.dev
+      bmunz.dev
     </a>
   </footer>
 );
@@ -37,3 +38,7 @@ function Layout({ children }) {
 }
 
 export default Layout;
+
+Layout.propTypes = {
+  children: PropTypes.node,
+};

@@ -1,16 +1,33 @@
+/* eslint-disable no-unused-expressions */
 import { useEffect, useState } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
-import Divider from '@/components/Divider';
 import styles from './hero.module.css';
 
 function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
-
+  const [isVideoReady, setIsVideoReady] = useState(false);
   useEffect(() => {
     const video = document.getElementById('video');
     // eslint-disable-next-line no-unused-expressions
-    isPlaying ? video.play() : video.pause();
-    console.log(video.currentTime);
+
+    const playPromise = video.play();
+    // this is to prevent the uncaught error on chrome dev tools that is fired because the video element is not loaded yet
+    // Uncaught (in promise) DOMException: The play() request was interrupted by a call to pause().
+    // https://developers.google.com/web/updates/2017/06/play-request-was-interrupted
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then((_) => {
+          // Automatic playback started!
+          // Show playing UI.
+          isPlaying ? video.play() : video.pause();
+          setIsVideoReady(true);
+        })
+        .catch((error) => {
+          // Auto-play was prevented
+          setIsVideoReady(false);
+        });
+    }
   }, [isPlaying]);
 
   const handlePause = () => {
@@ -31,7 +48,7 @@ function Hero() {
           type="button"
           onClick={handlePause}
         >
-          {isPlaying ? <FaPause /> : <FaPlay />}
+          {(isPlaying && isVideoReady) || isPlaying ? <FaPause /> : <FaPlay />}
         </button>
       </div>
 
