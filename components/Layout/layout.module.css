@@ -4,13 +4,13 @@
     margin: auto;
     display: flex;
     flex-direction: column;
-    background-color: aliceblue;
+    background-color: var(--magnolia);
     overflow: hidden;
 }
 
 .mainWrapper {
     flex: 2;
-    padding: 0 2rem;
+    /* padding: 0 2rem; */
 }
 
 .logo {
