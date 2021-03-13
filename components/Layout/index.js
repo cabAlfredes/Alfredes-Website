@@ -15,30 +15,38 @@ const Footer = () => (
 
 function Layout({ children }) {
   const Router = useRouter();
-  const transitions = useTransition(Router, (router) => router.pathname, {
-    unique: false,
-    reset: false,
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 1 },
+  const transitions = useTransition(Router, {
+    unique: true,
+    reset: true,
+    from: {
+      opacity: 0,
+      transform: Router.pathname !== '/' && 'translate3d(0,-20px,0)',
+    },
+    enter: {
+      opacity: 1,
+      transform: Router.pathname !== '/' && 'translate3d(0, 0px,0)',
+    },
+    leave: {
+      opacity: 0,
+      transform: Router.pathname !== '/' && 'translate3d(0,-40px,0)',
+    },
   });
 
   return (
     <div className={styles.container}>
       <Header />
-      {transitions.map(({ props: style, key }) => (
-        <animated.main key={key} style={style} className={styles.mainWrapper}>
+      {transitions((style, item) => (
+        <animated.main
+          key={item?.key}
+          style={style}
+          className={styles.mainWrapper}
+        >
           {children}
         </animated.main>
       ))}
-
       <Footer />
     </div>
   );
 }
 
 export default Layout;
-
-Layout.propTypes = {
-  children: PropTypes.node,
-};

@@ -11,65 +11,56 @@ import { getPosition } from '@/utils/getPosition';
 export default function Home() {
   const Router = useRouter();
   const [isStopped, setIsStopped] = useState(false);
-  const [offset, setOffset] = useState(false);
-  let stopScroll = false;
 
-  const onWheel = () => {
-    console.log('wheel spinning');
-    setIsStopped(true);
-    stopScroll = true;
-    window.removeEventListener('wheel', onWheel);
-  };
-
-  const [, setScroll, stop] = useSpring(() => ({
-    immediate: false,
-    config: config.gentle,
+  const scrollConfig = {
+    immediate: true,
+    cancel: isStopped,
+    config: config.molasses,
     y: 0,
-    onFrame: (props) => {
-      console.log(props.y);
-      if (!stopScroll) {
-        window.scroll(0, props.y);
+    onChange: (props) => {
+      if (!isStopped) {
+        window.scroll(0, props);
       }
     },
     onRest: (props) => {
-      console.log('scroll ended');
-      console.log(props);
       setIsStopped(false);
-      stopScroll = false;
-      // window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('wheel', onWheel);
     },
-    // loop: { reverse: true },
-  }));
+  };
+  const [, setScroll, stop] = useSpring(() => scrollConfig);
+
+  const onWheel = () => {
+    setIsStopped(true);
+    stop();
+    window.removeEventListener('wheel', onWheel);
+  };
 
   // check this issues https://github.com/pmndrs/react-spring/issues/544
 
   useEffect(() => {
     const headerHeight = document.querySelector('.header').clientHeight; // header hight
     window.addEventListener('wheel', onWheel);
+
     if (Router.asPath === '/') {
-      setScroll({ y: 0, reset: true, from: { y: offset } });
+      setIsStopped(false);
+      setScroll({ y: 0, reset: false, from: { y: window.pageYOffset } });
     } else {
       const id = Router.asPath.split('').slice(2).join('');
       const el = document.getElementById(id);
-      const pos = getPosition(el); // TODO: improve this function to get the real position including paddings and margins
+      // TODO: improve getPosition function to get the real position including paddings and margins.
+      const pos = getPosition(el);
+      setIsStopped(false);
 
-      stopScroll = false;
       setScroll({
-        reset: true,
-        from: { y: offset }, // offset is the position of the screen scrollY, this is to reset the scroll starting position.
+        reset: false,
+        from: { y: window.pageYOffset }, // offset is the position of the screen scrollY, this is to reset the scroll starting position.
         y: pos.y - headerHeight - 30, // 30 px of gap from the header
       });
     }
-    // return () => {
-    //   window.removeEventListener('wheel', onWheel);
-    // };
-  }, [Router]);
-
-  useEffect(() => {
-    window.onscroll = () => {
-      setOffset(window.pageYOffset);
+    return () => {
+      window.removeEventListener('wheel', onWheel);
     };
-  }, []);
+  }, [Router]);
 
   return (
     <>
@@ -77,11 +68,11 @@ export default function Home() {
         <title>Cabaña Alfredes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <animated.div>
+      <div>
         <Hero />
         <About />
         <Services />
-      </animated.div>
+      </div>
     </>
   );
 }
