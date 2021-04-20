@@ -1,10 +1,17 @@
 .wrapper {
   scroll-behavior: smooth;
-  min-height: 1000px;
+  margin-bottom: 150px;
+  /* margin-top: 150px; */
 }
 
 .content {
+  display: flex;
+  flex-direction: row; 
   width: 75%;
   margin: auto;
   letter-spacing: 1px;
+}
+
+.text{
+  margin: 1rem;
 }

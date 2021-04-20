@@ -6,7 +6,7 @@ import styles from './layout.module.css';
 
 const Footer = () => (
   <footer className={styles.footer}>
-    Powered by
+    Powered by{' '}
     <a href="https://bmunz.dev" target="_blank" rel="noopener noreferrer">
       bmunz.dev
     </a>
