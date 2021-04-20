@@ -38,6 +38,7 @@ export default function Home() {
   // check this issues https://github.com/pmndrs/react-spring/issues/544
 
   useEffect(() => {
+    console.log(window.onhashchange );
     const headerHeight = document.querySelector('.header').clientHeight; // header hight
     window.addEventListener('wheel', onWheel);
 

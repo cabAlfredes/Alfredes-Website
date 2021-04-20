@@ -17,7 +17,7 @@ function Hero() {
 
     if (playPromise !== undefined) {
       playPromise
-        .then((_) => {
+        .then(() => {
           // Automatic playback started!
           // Show playing UI.
           isPlaying ? video.play() : video.pause();
@@ -30,6 +30,10 @@ function Hero() {
     }
   }, [isPlaying]);
 
+  useEffect(() => {
+    console.log('Hero mounted');
+  }, []);
+  
   const handlePause = () => {
     setIsPlaying((prev) => !prev);
   };
