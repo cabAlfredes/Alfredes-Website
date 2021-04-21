@@ -22,10 +22,26 @@ function Header() {
               </Link>
             </li>
             <li>
-              <a href="/#about">La Cabana</a>
+              <a
+                href="/#about"
+                onClick={(e) => {
+                  e.preventDefault(); // prevent the page to move to top if click more than once the link
+                  window.location.hash = 'about';
+                }}
+              >
+                La Cabana
+              </a>
             </li>
             <li>
-              <a href="/#services">Servicios</a>
+              <a
+                href="/#services"
+                onClick={(e) => {
+                  e.preventDefault(); // prevent the page to move to top if click more than once the link
+                  window.location.hash = 'services';
+                }}
+              >
+                Servicios
+              </a>
             </li>
             <li>
               <Link href="/gallery">
