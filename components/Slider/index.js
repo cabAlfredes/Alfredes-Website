@@ -39,7 +39,7 @@ const Slider = () => {
             {imagesSuffixGenerator.map((ele, index) => (
               <li className="glide__slide" key={index}>
                 <Image
-                  src={`/assets/images/slider/foto_${index + 1}-min.jpg`}
+                  src={`/assets/images/slider/foto_${index + 1}.jpg`}
                   alt=""
                   width="3968"
                   height="2976"
