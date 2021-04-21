@@ -22,3 +22,9 @@
     border-top: 2px solid gray;
     min-height: 50px;
 }
+
+@media only screen and (max-width: 600px) {
+    .mainWrapper{
+        padding-top: 69px;
+    }
+}
