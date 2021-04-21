@@ -1,15 +1,17 @@
-import ContactForm from '@/components/ContactForm';
+// import ContactForm from '@/components/ContactForm';
+import Head from 'next/head';
+// import 'assets/glide.core.css';
+import Slider from '@/components/Slider';
 
 function gallery(props) {
   return (
-    <div style={{ background: 'red' }}>
-      <h1>Gallery</h1>
-      <h1>Gallery</h1>
-      <h1>Gallery</h1>
-      <h1>Gallery</h1>
-      <h1>Gallery</h1>
-      <h1>Gallery</h1>
-    </div>
+    <>
+      <Head>
+        <link rel="stylesheet" href="assets/glide.core.css" />
+        <link rel="stylesheet" href="assets/glide.theme.css" />
+      </Head>
+      <Slider />
+    </>
   );
 }
 
