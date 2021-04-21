@@ -14,11 +14,11 @@
   visibility: hidden;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .nav {
-    position: absolute;
-    top: 69px;
-    padding-top: 24px;
+    position: relative;
+    top: -20px;
+    padding: 24px;
     left: 0px;
     width: 100%;
     z-index: 999;
