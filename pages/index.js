@@ -85,11 +85,11 @@ export default function Home() {
         <title>Cabaña Alfredes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
+      <>
         <Hero />
         <About />
         <Services />
-      </div>
+      </>
     </>
   );
 }

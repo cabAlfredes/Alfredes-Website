@@ -26,7 +26,7 @@ function Header() {
                 href="/#about"
                 onClick={(e) => {
                   e.preventDefault(); // prevent the page to move to top if click more than once the link
-                  window.location.hash = 'about';
+                  window.location = '/#about';
                 }}
               >
                 La Cabana
@@ -37,7 +37,7 @@ function Header() {
                 href="/#services"
                 onClick={(e) => {
                   e.preventDefault(); // prevent the page to move to top if click more than once the link
-                  window.location.hash = 'services';
+                  window.location = '/#services';
                 }}
               >
                 Servicios

@@ -11,6 +11,9 @@ function gallery(props) {
         <link rel="stylesheet" href="assets/glide.theme.css" />
       </Head>
       <Slider />
+      <div>
+        <h1>Fotos de la Cabaña</h1>
+      </div>
     </>
   );
 }
