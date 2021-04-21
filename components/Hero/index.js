@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
-import styles from './hero.module.css';
+import styles from './hero.module.scss';
 
 function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -33,7 +33,7 @@ function Hero() {
   useEffect(() => {
     console.log('Hero mounted');
   }, []);
-  
+
   const handlePause = () => {
     setIsPlaying((prev) => !prev);
   };
@@ -60,10 +60,6 @@ function Hero() {
         <div className={styles.text}>
           donde el silencio solo es interrumpido por el cantar de los pájaros
         </div>
-      </div>
-
-      <div className={styles.content}>
-        {/* // <Logo className={styles.logo} color="red" /> */}
       </div>
     </div>
   );

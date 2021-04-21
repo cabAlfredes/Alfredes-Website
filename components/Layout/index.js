@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useTransition, animated } from 'react-spring';
 import { useRouter } from 'next/router';
 import Header from '../Header';
-import styles from './layout.module.css';
+import styles from './layout.module.scss';
 
 const Footer = () => (
   <footer className={styles.footer}>
