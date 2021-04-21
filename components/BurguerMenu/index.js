@@ -4,9 +4,7 @@ import { useStateContext, useStateDispatch } from '@/store/store';
 import style from './BurgerMenu.module.scss';
 
 export default function Burger() {
-  const state = useStateContext();
-  const showMenu = false;
-  console.log(state);
+  const { showMenu } = useStateContext();
   const dispatch = useStateDispatch();
 
   const line1 = useSpring({
@@ -21,7 +19,7 @@ export default function Burger() {
 
   const handleSideMenu = () => {
     dispatch({
-      type: 'TOGGLE_SIDE_MENU',
+      type: 'TOGGLE_MENU',
       payload: !showMenu,
     });
   };

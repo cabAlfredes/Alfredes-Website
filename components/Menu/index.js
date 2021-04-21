@@ -1,13 +1,17 @@
 import Link from 'next/link';
 import { useStateContext, useStateDispatch } from '@/store/store';
+import { useEffect } from 'react';
 import styles from './Menu.module.scss';
 
 const Menu = () => {
-  const state = useStateContext();
-  const showList = true ? styles.visible : styles.hidden;
+  const { showMenu } = useStateContext();
+  const showList = showMenu ? styles.visible : styles.hidden;
+  useEffect(() => {}, [showMenu]);
+
+  console.log(showList);
 
   return (
-    <nav className={`${styles.nav} ${showList}`}>
+    <nav className={`${styles.nav} ${showList} `}>
       <ul>
         <li>
           <Link href="/">
