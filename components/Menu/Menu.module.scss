@@ -1,0 +1,33 @@
+.nav > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 25px;
+}
+
+.visible {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav {
+    position: absolute;
+    top: 69px;
+    padding-top: 24px;
+    left: 0px;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--yellow);
+    // clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+    clip-path: polygon(0% 8%, 105% 0%, 100% 101%, 0 100%);
+    visibility: hidden;
+  }
+
+  .nav > ul {
+    flex-direction: column;
+  }
+}
