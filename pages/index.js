@@ -10,6 +10,7 @@ import { getPosition } from '@/utils/getPosition';
 
 export default function Home() {
   const Router = useRouter();
+  const [navigation, setNavigation] = useState('/');
   const [isStopped, setIsStopped] = useState(false);
 
   const scrollConfig = {
@@ -38,16 +39,14 @@ export default function Home() {
   // check this issues https://github.com/pmndrs/react-spring/issues/544
 
   useEffect(() => {
-    console.log(window.onhashchange );
     const headerHeight = document.querySelector('.header').clientHeight; // header hight
     window.addEventListener('wheel', onWheel);
 
-    if (Router.asPath === '/') {
+    if (navigation === '/') {
       setIsStopped(false);
       setScroll({ y: 0, reset: false, from: { y: window.pageYOffset } });
     } else {
-      const id = Router.asPath.split('').slice(2).join('');
-      const el = document.getElementById(id);
+      const el = document.getElementById(navigation);
       // TODO: improve getPosition function to get the real position including paddings and margins.
       const pos = getPosition(el);
       setIsStopped(false);
@@ -61,6 +60,23 @@ export default function Home() {
     return () => {
       window.removeEventListener('wheel', onWheel);
     };
+  }, [navigation]);
+
+  useEffect(() => {
+    function hashHandler() {
+      console.log('The hash has changed!');
+      const id = window.location.hash.split('').slice(1).join('');
+      console.log(id);
+      setNavigation(id);
+    }
+
+    window.addEventListener('hashchange', hashHandler, false);
+    return () => window.removeEventListener('hashchange', hashHandler, false);
+  });
+
+  useEffect(() => {
+    const id = Router.asPath.split('').slice(2).join('');
+    setNavigation(id);
   }, [Router]);
 
   return (

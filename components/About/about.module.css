@@ -6,12 +6,16 @@
 
 .content {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   width: 75%;
   margin: auto;
   letter-spacing: 1px;
 }
 
-.text{
+.text {
   margin: 1rem;
+}
+
+.image>img {
+  border-radius: 50px;
 }

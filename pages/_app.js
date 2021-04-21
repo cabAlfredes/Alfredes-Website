@@ -1,6 +1,10 @@
 import Layout from '@/components/Layout';
 import '../styles/globals.css';
 
+// export function reportWebVitals(metric) {
+//   console.log(metric);
+// }
+
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
