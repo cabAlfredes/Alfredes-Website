@@ -13,27 +13,27 @@ export default function Home() {
   const [navigation, setNavigation] = useState('/');
   const [isStopped, setIsStopped] = useState(false);
   
-  console.log(isStopped);
-
   const scrollConfig = {
     immediate: true,
     cancel: isStopped,
     config: config.molasses,
     y: 0,
     onChange: (props) => {
+      console.log(props);
       if (!isStopped) {
-        window.scroll(0, props);
+        window.scroll(0, props.value.y);
       }
     },
     onRest: (props) => {
       setIsStopped(false);
       window.removeEventListener('wheel', onWheel);
     },
+    
   };
   const [setScroll, api] = useSpring(() => scrollConfig);
 
   const onWheel = () => {
-    // setIsStopped(true);
+    setIsStopped(true);
     api.stop();
     window.removeEventListener('wheel', onWheel);
   };
@@ -45,8 +45,9 @@ export default function Home() {
     const headerHeight = document.querySelector('.header').clientHeight; // header hight
     window.addEventListener('wheel', onWheel);
 
-    if (navigation === '/') {
-      api.start({ y: 0, reset: false, from: { y: window.pageYOffset } });
+    if (navigation === '/' || navigation === "") {
+      api.start({ y: 0, reset: true, from: { y: window.pageYOffset } });
+      console.log('it is falling here');
     } else {
       const el = document.getElementById(navigation);
       // TODO: improve getPosition function to get the real position including paddings and margins.
@@ -78,7 +79,7 @@ export default function Home() {
     const id = Router.asPath.split('').slice(2).join('');
     setNavigation(id);
   }, [Router]);
-  console.log(navigation);
+
 
   return (
     <>
