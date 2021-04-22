@@ -30,11 +30,7 @@ function Hero() {
     }
   }, [isPlaying]);
 
-  useEffect(() => {
-    console.log('Hero mounted');
-  }, []);
-
-  const handlePause = () => {
+    const handlePause = () => {
     setIsPlaying((prev) => !prev);
   };
 

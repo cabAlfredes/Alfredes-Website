@@ -4,5 +4,13 @@
     ],
     "rules": {
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "tsx","ts"] }]
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["components", "./components"],
+          ["lib", "./lib"]
+        ]
+      }
     }
   }

@@ -1,17 +1,25 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { useStateContext, useStateDispatch } from '@/store/store';
-import { useEffect } from 'react';
+import { useMatchMedia } from '@/utils/useMatchMedia';
 import styles from './Menu.module.scss';
 
 const Menu = () => {
-  const { showMenu } = useStateContext();
-  const showList = showMenu ? styles.visible : styles.hidden;
-  useEffect(() => {}, [showMenu]);
+  const { showMenu } = useStateContext(); 
+ const [isVisible, setIsVisible] = useState(false);
+ 
+  const isMobile = useMatchMedia('(max-width: 860px)');
+  const isFullMenu = useMatchMedia('(min-width: 860px)');  
+  
+  useEffect(() => {
+    showMenu ? setIsVisible(true): setIsVisible(false)
+    isFullMenu && setIsVisible(true);
+  },[showMenu,isFullMenu])
 
-  console.log(showList);
+  const menuVisibilityStyle = isVisible ? styles.visible : styles.hidden;
 
   return (
-    <nav className={`${styles.nav} ${showList} `}>
+    <nav className={`${styles.nav} ${menuVisibilityStyle} `}>
       <ul>
         <li>
           <Link href="/">

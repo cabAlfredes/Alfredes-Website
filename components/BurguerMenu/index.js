@@ -1,11 +1,25 @@
 // Burger.js
-import { useSpring, animated } from 'react-spring';
+import { useSpring, useChain, animated, } from 'react-spring';
 import { useStateContext, useStateDispatch } from '@/store/store';
 import style from './BurgerMenu.module.scss';
 
 export default function Burger() {
   const { showMenu } = useStateContext();
   const dispatch = useStateDispatch();
+
+
+  // // Build a spring and catch its ref
+  // const springRef = useSpringRef()
+  // const props = useSpring({ ...values, ref: springRef })
+  // // Build a transition and catch its ref
+  // const transitionRef = useSpringRef()
+  // const transitions = useTransition({ ...values, ref: transitionRef })
+  // // First run the spring, when it concludes run the transition
+  // useChain([springRef, transitionRef])
+
+  // const line1 = useTrail(1, {
+  //   transform: 'rotate(45deg)',
+  // });
 
   const line1 = useSpring({
     transform: showMenu ? 'rotate(45deg)' : 'rotate(0deg)',
