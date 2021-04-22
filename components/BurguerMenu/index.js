@@ -1,5 +1,5 @@
 // Burger.js
-import { useSpring, useChain, animated, } from 'react-spring';
+import { useSpring, useChain, animated } from 'react-spring';
 import { useStateContext, useStateDispatch } from '@/store/store';
 import style from './BurgerMenu.module.scss';
 

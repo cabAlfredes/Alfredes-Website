@@ -1,7 +1,8 @@
-.nav{
+.nav {
   position: absolute;
   top: 10px;
   right: 20px;
+  transition: all 0.5s ease-in;
 }
 
 .nav > ul {
@@ -10,7 +11,6 @@
   flex-direction: row;
   justify-content: flex-start;
   gap: 25px;
-  transition: all 0.5s ease-in;
 }
 
 .visible {
@@ -26,16 +26,41 @@
   .nav {
     position: relative;
     top: -20px;
-    padding: 24px;
+    padding-top: 20px;
     left: 0px;
     width: 100%;
-    z-index: 999;
     background-color: var(--yellow);
     // clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-    clip-path: polygon(0% 7%, 105% 0%, 100% 101%, 0 100%); 
+    clip-path: polygon(0% 8%, 105% 0%, 100% 101%, 0 100%);
   }
 
   .nav > ul {
-    flex-direction: column;
+    width: 100%;
+    min-height: 250px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    gap: 5;
+  }
+  .nav > ul > li {
+    align-items: center;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    box-shadow: 0 0 11px -4px grey;
+    display: inline-flex;
+    flex: 1 1;
+    height: 80px;
+    justify-content: space-around;
+    max-height: 80px;
+    max-width: 80px;
+    min-width: 80px;
+    text-align: center;
+    width: 80px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .nav > ul > li:hover {
+    box-shadow: 0 0 11px -4px var(--yellow);
   }
 }
