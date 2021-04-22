@@ -19,7 +19,6 @@ export default function Home() {
     config: config.molasses,
     y: 0,
     onChange: (props) => {
-      console.log(props);
       if (!isStopped) {
         window.scroll(0, props.value.y);
       }
@@ -47,7 +46,6 @@ export default function Home() {
 
     if (navigation === '/' || navigation === "") {
       api.start({ y: 0, reset: true, from: { y: window.pageYOffset } });
-      console.log('it is falling here');
     } else {
       const el = document.getElementById(navigation);
       // TODO: improve getPosition function to get the real position including paddings and margins.
@@ -66,7 +64,6 @@ export default function Home() {
 
   useEffect(() => {
     function hashHandler() {
-      console.log('The hash has changed!');
       const id = window.location.hash.split('').slice(1).join('');
       setNavigation(id);
     }
