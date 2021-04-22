@@ -12,6 +12,8 @@ export default function Home() {
   const Router = useRouter();
   const [navigation, setNavigation] = useState('/');
   const [isStopped, setIsStopped] = useState(false);
+  
+  console.log(isStopped);
 
   const scrollConfig = {
     immediate: true,
@@ -28,30 +30,29 @@ export default function Home() {
       window.removeEventListener('wheel', onWheel);
     },
   };
-  const [, setScroll, stop] = useSpring(() => scrollConfig);
+  const [setScroll, api] = useSpring(() => scrollConfig);
 
   const onWheel = () => {
-    setIsStopped(true);
-    stop();
+    // setIsStopped(true);
+    api.stop();
     window.removeEventListener('wheel', onWheel);
   };
 
   // check this issues https://github.com/pmndrs/react-spring/issues/544
 
   useEffect(() => {
+    setIsStopped(false);
     const headerHeight = document.querySelector('.header').clientHeight; // header hight
     window.addEventListener('wheel', onWheel);
 
     if (navigation === '/') {
-      setIsStopped(false);
-      setScroll({ y: 0, reset: false, from: { y: window.pageYOffset } });
+      api.start({ y: 0, reset: false, from: { y: window.pageYOffset } });
     } else {
       const el = document.getElementById(navigation);
       // TODO: improve getPosition function to get the real position including paddings and margins.
       const pos = getPosition(el);
-      setIsStopped(false);
 
-      setScroll({
+      api.start({
         reset: false,
         from: { y: window.pageYOffset }, // offset is the position of the screen scrollY, this is to reset the scroll starting position.
         y: pos.y - headerHeight - 30, // 30 px of gap from the header
@@ -66,7 +67,6 @@ export default function Home() {
     function hashHandler() {
       console.log('The hash has changed!');
       const id = window.location.hash.split('').slice(1).join('');
-      console.log(id);
       setNavigation(id);
     }
 
@@ -78,6 +78,7 @@ export default function Home() {
     const id = Router.asPath.split('').slice(2).join('');
     setNavigation(id);
   }, [Router]);
+  console.log(navigation);
 
   return (
     <>
