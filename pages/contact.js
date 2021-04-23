@@ -1,7 +1,7 @@
+
 import ContactForm from '@/components/ContactForm';
 import ContactDetail from '@/components/ContactDetails';
 import HeroDivider from '@/components/HeroDivider';
-import Image from 'next/image';
 import styles from '@/styles/Contact.module.scss';
 
 function contact(props) {

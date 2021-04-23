@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useSpring, animated } from 'react-spring';
+
 import CardWithRotation from '@/components/CardWithRotation';
 import styles from './contactForm.module.scss';
 
@@ -21,6 +23,18 @@ const WithLabel = ({ children, label, forValue }) => {
 function ContactForm(props) {
   const [formData, setFormData] = useState({});
 
+  const spring = useSpring((
+    {
+      opacity: 1,
+      transform: "translateX(0px)",
+      from: {
+        opacity: 0,
+        transform: "translateX(300px)",
+      },
+      delay: 500
+    }
+  ))
+
   const handleChange = (e) => {
     setFormData((prev) =>
       formReducer(prev, { name: e.target.name, value: e.target.value })
@@ -28,7 +42,7 @@ function ContactForm(props) {
   };
 
   return (
-    <div className={styles.content}>
+    <animated.div className={styles.content} style={spring}>
       <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
         <WithLabel label='Nombre' forValue="name">
           <input
@@ -92,7 +106,7 @@ function ContactForm(props) {
         <input type="submit" />
         <input type="reset" />
       </form>
-    </div>
+    </animated.div>
   );
 }
 
