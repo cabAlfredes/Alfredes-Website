@@ -1,17 +1,34 @@
-import CardWithRotation from '@/components/CardWithRotation';
-import styles from './contactDetails.module.css';
+import {  FaInstagram, FaFacebook, FaWhatsapp, FaGoogle } from 'react-icons/fa'
+import styles from './contactDetails.module.scss';
 
 function ContactDetails(props) {
   return (
-    <div className={styles.wrapper}>
-      <CardWithRotation>
-        <div className={styles.content}>
-          <div className={`${styles.item}`}>cab.alfredes@gmail.com</div>
-          <div className={`${styles.item}`}>15-1562-1562</div>
-          <div className={`${styles.item}`}>instagram</div>
-          <div className={`${styles.item}`}>facebook</div>
-        </div>
-      </CardWithRotation>
+    <div className={styles.content}>
+      <div className={`${styles.item} ${styles.icon}`}>
+        <a href="mailto:cab.alfredes@gmail.com" title="Envianos un Email">
+          <FaGoogle /> cab.alfredes@gmail.com
+          </a>
+      </div>
+      {/* <div className={`${styles.item} ${styles.icon}`}>
+          <a href="tel:15-1562-1562" title="Teléfono Fijo">
+            <FaPhone/>15-1562-1562
+          </a>
+        </div> */}
+      <div className={`${styles.item} ${styles.icon}`}>
+        <a href="https://wa.me/+5491162785125" title="Contactar por WhatsApp">
+          <FaWhatsapp /> 15-1562-1562
+          </a>
+      </div>
+      <div className={`${styles.item} ${styles.icon}`}>
+        <a href="https://www.facebook.com/isla.alfredes/" alt="Facebook isla.alfredes" title=" Facebook isla.alfredes">
+          <FaFacebook /> isla.alfredes
+          </a>
+      </div>
+      <div className={`${styles.item} ${styles.icon}`}>
+        <a href="https://www.instagram.com/cab.alfredes/" alt="Instagram cab.alfredes" title="Instagram cab.alfredes">
+          <FaInstagram /> cab.alfredes
+          </a>
+      </div>
     </div>
   );
 }

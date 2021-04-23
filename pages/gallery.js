@@ -13,6 +13,8 @@ function gallery(props) {
       <Slider />
       <div>
         <h1>Fotos de la Cabaña</h1>
+        <h3>Interior</h3>
+        <h3>Exterior</h3>
       </div>
     </>
   );

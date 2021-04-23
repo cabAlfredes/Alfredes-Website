@@ -1,0 +1,27 @@
+.heroImageWrapper {
+  max-height: 60vh;
+  height: 80vh;
+  overflow: hidden;
+  background-image: url('/assets/images/hero_1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: -220px;
+  z-index: 99;
+  margin: auto;
+  width: 80%;
+  justify-content: space-around;
+}
+
+@media only screen and (max-width: 860px) {
+  .contentWrapper {
+    flex-direction: column;
+    width: 100%;
+  }
+}
