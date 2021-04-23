@@ -1,9 +1,22 @@
-import {  FaInstagram, FaFacebook, FaWhatsapp, FaGoogle } from 'react-icons/fa'
+import { useSpring, animated } from 'react-spring';
+import { FaInstagram, FaFacebook, FaWhatsapp, FaGoogle } from 'react-icons/fa'
 import styles from './contactDetails.module.scss';
 
 function ContactDetails(props) {
+  const spring = useSpring((
+    {
+      opacity: 1,
+      transform: "translateX(0px)",
+      from: {
+        opacity: 0,
+        transform: "translateX(-300px)",
+      },
+      delay: 500,
+    }
+  ))
+
   return (
-    <div className={styles.content}>
+    <animated.div className={styles.content} style={spring}>
       <div className={`${styles.item} ${styles.icon}`}>
         <a href="mailto:cab.alfredes@gmail.com" title="Envianos un Email">
           <FaGoogle /> cab.alfredes@gmail.com
@@ -29,7 +42,7 @@ function ContactDetails(props) {
           <FaInstagram /> cab.alfredes
           </a>
       </div>
-    </div>
+    </animated.div>
   );
 }
 
