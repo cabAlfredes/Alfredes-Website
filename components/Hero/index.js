@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import HeroDivider from '@/components/HeroDivider'
 import styles from './hero.module.scss';
 
 function Hero() {
@@ -30,7 +31,7 @@ function Hero() {
     }
   }, [isPlaying]);
 
-    const handlePause = () => {
+  const handlePause = () => {
     setIsPlaying((prev) => !prev);
   };
 
@@ -52,11 +53,12 @@ function Hero() {
         </button>
       </div>
 
-      <div className={styles.videoBottomFrame}>
-        <div className={styles.text}>
-          donde el silencio solo es interrumpido por el cantar de los pájaros
+      <HeroDivider>
+        <div className={styles.textDividerCentered}>
+
+        donde el silencio solo es interrumpido por el cantar de los pájaros
         </div>
-      </div>
+        </HeroDivider>
     </div>
   );
 }

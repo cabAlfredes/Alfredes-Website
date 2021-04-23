@@ -1,15 +1,16 @@
 import ContactForm from '@/components/ContactForm';
 import ContactDetail from '@/components/ContactDetails';
-import styles from '@/styles/Contact.module.css';
+import HeroDivider from '@/components/HeroDivider';
+import Image from 'next/image';
+import styles from '@/styles/Contact.module.scss';
 
 function contact(props) {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.details}>
+      <div className={styles.heroImageWrapper} />
+      <HeroDivider />
+      <div className={styles.contentWrapper}>
         <ContactDetail />
-        <ContactDetail />
-      </div>
-      <div className={styles.form}>
         <ContactForm />
       </div>
     </div>

@@ -1,45 +1,22 @@
 .videoWrapper {
-	height: 700px;
-	position: relative;
-	width: 100%;
-	margin-bottom: 150px;
+  height: 700px;
+  position: relative;
+  width: 100%;
+  margin-bottom: 150px;
 }
 
 .video {
-	height: 100%;
-	/* margin-top: -40px; */
-	object-fit: cover;
-	width: 100%;
-	z-index: -1;
-}
-
-.videoBottomFrame {
-	align-items: center;
-	background-color: var(--yellow);
-	bottom: -85px;
-	display: flex;
-	height: 150px;
-	justify-content: center;
-	left: -5%;
-	position: absolute;
-	transform: rotate( -1.55deg);
-	width: 110%;
-	z-index: 5;
-}
-
-.videoBottomFrame>.text {
-	font-family: var(--fontShadow);
-	font-size: 2rem;
-	letter-spacing: var(--spacing);
-	position: absolute;
-	text-align: center;
-	width: 60%;
+  height: 100%;
+  /* margin-top: -40px; */
+  object-fit: cover;
+  width: 100%;
+  z-index: -1;
 }
 
 .controls {
-	position: absolute;
-	right: 10px;
-	top: 20px;
+  position: absolute;
+  right: 10px;
+  top: 20px;
 }
 
 .pausePlayButton {
@@ -55,27 +32,38 @@
   text-align: center;
 }
 
-
-
 @media (max-width: 780px) {
-	.videoBottomFrame>.text {
-		font-size: 2rem;
-		width: 80%;
-	}
+  .videoBottomFrame > .text {
+    font-size: 2rem;
+    width: 80%;
+  }
 }
 
 @media (max-width: 640px) {
-	.videoWrapper {
-		height: 400px;
-		margin-bottom: 150px;
-	}
-	.videoBottomFrame>.text {
-		font-size: 1.5rem;
-		width: 90%;
-	}
-	.videoBottomFrame {
-		bottom: -80px;
-		display: flex;
-		height: 130px;
-	}
+  .videoWrapper {
+    height: 400px;
+    margin-bottom: 150px;
+  }
+  .videoBottomFrame > .text {
+    font-size: 1.5rem;
+    width: 90%;
+  }
+  .videoBottomFrame {
+    bottom: -80px;
+    display: flex;
+    height: 130px;
+  }
+}
+
+.textDividerCentered {
+  font-family: var(--fontShadow);
+  font-size: 2rem;
+  letter-spacing: var(--spacing);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  width: 100%;
+  height: 100%;
 }

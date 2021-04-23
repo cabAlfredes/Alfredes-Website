@@ -1,0 +1,36 @@
+.content {
+  padding: 2rem;
+  background-color: #fff;
+  flex-grow: 4;
+  max-width: 670px;
+  font-size: 1.2rem;
+}
+
+.input, .textarea {
+  background-color: #fff;
+  border-radius: var(--borderRadius);
+  border: 1px solid rgb(184, 182, 182);
+  height: 30px;
+  margin: 1rem 0 1.2rem 0.3rem;
+  padding: 0 0 0 10px;
+  width: 100%;
+}
+
+.label{
+  font-weight: bold;
+}
+
+.textarea {
+  height: 90px;
+}
+
+
+.datePickersWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+// @media only screen and (max-width: 860px) {
+  
+// }

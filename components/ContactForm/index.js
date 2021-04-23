@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import CardWithRotation from '@/components/CardWithRotation';
-import styles from './contactForm.module.css';
+import styles from './contactForm.module.scss';
 
 const formReducer = (state, event) => {
   console.log(state);
@@ -9,6 +9,14 @@ const formReducer = (state, event) => {
     [event?.name]: event?.value,
   };
 };
+
+const WithLabel = ({ children, label, forValue }) => {
+
+  return (<>
+    <label className={styles.label} for={forValue} >{label}</label>
+    { children}
+  </>)
+}
 
 function ContactForm(props) {
   const [formData, setFormData] = useState({});
@@ -20,49 +28,58 @@ function ContactForm(props) {
   };
 
   return (
-    <CardWithRotation>
-      <div className={styles.content}>
-        <h1>Consultas</h1>
-        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+    <div className={styles.content}>
+      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+        <WithLabel label='Nombre' forValue="name">
           <input
             onChange={handleChange}
             type="text"
             name="name"
             className={styles.input}
-            placeholder="nombre"
             required
           />
+        </WithLabel>
+        <WithLabel label='Email' forValue="email">
           <input
             onChange={handleChange}
             type="email"
             name="email"
             className={styles.input}
-            placeholder="email@tuemail.com"
             required
           />
+        </WithLabel>
+        <WithLabel label='Teléfono' forValue="phone">
           <input
             onChange={handleChange}
-            type="text"
+            type="phone"
             name="phone"
             className={styles.input}
-            placeholder="teléfono"
             required
           />
-          <input
-            onChange={handleChange}
-            type="text"
-            name="dateFrom"
-            className={styles.input}
-            placeholder="desde"
-          />
-          <input
-            onChange={handleChange}
-            type="text"
-            name="dateTo"
-            className={styles.input}
-            placeholder="hasta"
-          />
-
+        </WithLabel>
+        <div className={styles.datePickersWrapper}>
+          <div>
+            <WithLabel label='Desde' forValue="dateFrom">
+              <input
+                onChange={handleChange}
+                type="date"
+                name="dateFrom"
+                className={styles.input}
+              />
+            </WithLabel>
+          </div>
+          <div>
+            <WithLabel label='Hasta' forValue="dateTo">
+              <input
+                onChange={handleChange}
+                type="date"
+                name="dateTo"
+                className={styles.input}
+              />
+            </WithLabel>
+          </div>
+        </div>
+        <WithLabel label='Mensaje' forValue="message">
           <textarea
             onChange={handleChange}
             className={styles.textarea}
@@ -70,14 +87,12 @@ function ContactForm(props) {
             id="message"
             cols="80"
             rows="10"
-            placeholder="mensaje"
           />
-          <input type="submit" />
-          <input type="reset" />
-        </form>
-        <div className={styles.message}>Message</div>
-      </div>
-    </CardWithRotation>
+        </WithLabel>
+        <input type="submit" />
+        <input type="reset" />
+      </form>
+    </div>
   );
 }
 
