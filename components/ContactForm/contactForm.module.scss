@@ -2,7 +2,9 @@
   padding: 2rem;
   background-color: #fff;
   flex-grow: 4;
-  max-width: 670px;
+  flex-basis: 400px;
+  flex-shrink: 2;
+  // max-width: 670px;
   font-size: 1.2rem;
 }
 

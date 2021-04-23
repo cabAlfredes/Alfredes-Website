@@ -1,6 +1,6 @@
 .heroImageWrapper {
   max-height: 60vh;
-  height: 80vh;
+  height: 60vh;
   overflow: hidden;
   background-image: url('/assets/images/hero_1.jpg');
   background-position: center;
@@ -11,6 +11,7 @@
 .contentWrapper {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   position: relative;
   top: -220px;
   z-index: 99;
@@ -21,7 +22,7 @@
 
 @media only screen and (max-width: 860px) {
   .contentWrapper {
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
   }
 }
