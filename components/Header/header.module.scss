@@ -5,7 +5,9 @@
   width: 100%;
   z-index: 1;
   filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+  border: 1px solid red;
 }
+
 .header {
   display: flex;
   flex-direction: row;
@@ -23,9 +25,9 @@
 }
 
 @media only screen and (max-width: 860px) {
-.headerWrapper {
-position: absolute;
-}
+// .headerWrapper {
+// position: absolute;
+// }
   .header {
     height: 90px;
   }
