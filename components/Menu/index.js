@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { useTrail, useSpring, animated } from 'react-spring';
+import { useTrail, useTransition, animated, config } from 'react-spring';
 import { useStateContext, useStateDispatch } from '@/store/store';
 import { useRouter } from 'next/router';
 import { useMatchMedia } from '@/utils/useMatchMedia';
 import styles from './Menu.module.scss';
 
 const MenuItemAnimated = ({ children, style, onClick }) => {
-  return <animated.li  style={style} onClick={onClick} >{children}</animated.li>
+  return <animated.li style={style} onClick={onClick} >{children}</animated.li>
 }
 
 const items = [
@@ -49,6 +49,7 @@ const Menu = () => {
   const dispatch = useStateDispatch();
   const [isVisible, setIsVisible] = useState(false);
   const Router = useRouter()
+
   const menuItems = items.map((item) => {
     return item
   })
@@ -59,41 +60,50 @@ const Menu = () => {
     delay: 5000,
   }))
 
-  const [fadeIn, springApi] = useSpring(() => ({ opacity: 1 }))
-
+  const transitions = useTransition(isVisible, {
+    from: { x: 0, y: -100, opacity: 0 },
+    enter: { x: 0, y: 1, opacity: 1 },
+    leave: { x: 0, y: -100, opacity: 0 },
+    reverse: isVisible,
+    // delay: 200,
+    config: config.stiff,
+    onRest: () => set(!toggle),
+  })
 
   const isMobile = useMatchMedia('(max-width: 860px)');
   const isBigScreen = useMatchMedia('(min-width: 860px)');
-
 
   useEffect(() => {
     apiTrail.start(showMenu ?
       { opacity: 1, transform: 'translateY(0px)', delay: 50, } :
       { opacity: 0, transform: 'translateY(10px)', delay: 0, });
     apiTrail.start(isBigScreen && { opacity: 1, transform: 'translateY(0px)', delay: 0, })
-
-    springApi.start(isBigScreen && { opacity: 1, transform: 'translateY(0px)', delay: 0, })
-    springApi.start(
-      showMenu ? { opacity: 1, transform: 'translateY(0px)' } : { opacity: 0, transform: 'translateY(-500px)' }
-    )
-    springApi.start(
-      isBigScreen && { opacity: 1, transform: 'translateY(0px)' }
-    );
-
   }, [showMenu, isBigScreen])
 
-  const handleHideMenu = () => {
+  useEffect(() => {
+    if (isBigScreen) {
+      setIsVisible(true)
+    }
+    if (isMobile && !showMenu) {
+      setIsVisible(false)
+    }
 
+    if (isMobile && showMenu) {
+      setIsVisible(true)
+    }
+
+  }, [isBigScreen, isMobile, showMenu])
+
+  const handleHideMenu = () => {
     dispatch({
       type: 'TOGGLE_MENU',
       payload: false,
     });
-
   }
 
 
-  return (
-    <animated.nav style={fadeIn} className={`${styles.nav}  `}>
+  return transitions((style, item) => item &&
+    <animated.nav style={style} className={`${styles.nav}`}>
       <ul>
         {
           trail.map((styles, index) => {
@@ -102,7 +112,8 @@ const Menu = () => {
         }
       </ul>
     </animated.nav>
-  );
+  )
 };
+
 
 export default Menu;
