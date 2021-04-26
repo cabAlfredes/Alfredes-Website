@@ -55,10 +55,9 @@ function Hero() {
 
       <HeroDivider>
         <div className={styles.textDividerCentered}>
-
-        donde el silencio solo es interrumpido por el cantar de los pájaros
+          donde el silencio solo es interrumpido por el cantar de los pájaros
         </div>
-        </HeroDivider>
+      </HeroDivider>
     </div>
   );
 }
