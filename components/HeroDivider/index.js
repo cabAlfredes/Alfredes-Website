@@ -2,12 +2,12 @@ import styles from './heroDivider.module.scss';
 
 import React from 'react';
 
-const index = ({ children }) => {
+const HeroDivider = ({ children }) => {
   return (
-    <div className={styles.videoBottomFrame}>
+    <div className={styles.heroDivider}>
         {children}
     </div>
   );
 };
 
-export default index;
+export default HeroDivider;

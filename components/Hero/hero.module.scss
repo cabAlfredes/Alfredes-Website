@@ -32,10 +32,19 @@
   text-align: center;
 }
 
+.textDividerCentered {
+  // margin: 0 2rem;
+  // width: 100%;
+  text-align: center;
+  padding: 0 4rem;
+}
+
 @media (max-width: 780px) {
-  .videoBottomFrame > .text {
-    font-size: 2rem;
-    width: 80%;
+  .videoBottomFrame {
+    .text {
+      font-size: 2rem;
+      width: 80%;
+    }
   }
 }
 
@@ -44,10 +53,13 @@
     height: 400px;
     margin-bottom: 150px;
   }
-  .videoBottomFrame > .text {
-    font-size: 1.5rem;
-    width: 90%;
+  .videoBottomFrame {
+    .text {
+      font-size: 1.5rem;
+      width: 90%;
+    }
   }
+
   .videoBottomFrame {
     bottom: -80px;
     display: flex;
