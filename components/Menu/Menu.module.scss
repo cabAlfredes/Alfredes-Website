@@ -20,28 +20,32 @@
     left: 0px;
     width: 100%;
     background-color: var(--yellow);
-    clip-path: polygon(0% 8%, 105% 0%, 100% 101%, 0 100%);
+    clip-path: polygon(0% 5%, 105% 0%, 100% 101%, 0 100%);
     opacity: 0;
   }
 
   .nav {
     ul {
+      display: block;
       width: 100%;
-      flex-direction: column;
       padding: 10px;
-    }
-  }
-
-  .nav {
-    ul {
-      li {
-        background-color: #e6e6e6;
-        box-shadow: 0 0 11px -4px grey;
-        padding: 0.8rem;
+      gap: 5;
+      li{
+        margin: 10px 0;
       }
     }
   }
-  .nav > ul > li:hover {
-    box-shadow: 0 0 11px -4px var(--yellow);
+
+  .anchor {
+    background-color: #eddb11;
+    box-shadow: 0 0 11px -4px grey;
+    padding: 0.8rem;
+    width: 100%;
+    display: block;
+    border-radius: var(--borderRadius);
+
+    &:hover {
+      box-shadow: 0 0 11px -4px var(--yellow);
+    }
   }
 }

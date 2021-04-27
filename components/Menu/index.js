@@ -11,10 +11,11 @@ const MenuItemAnimated = ({ children, style, onClick }) => {
 
 const items = [
   <Link href="/">
-    <a>Home</a>
+    <a className={styles.anchor}>Home</a>
   </Link>,
   <a
     href="/#about"
+    className={styles.anchor}
     onClick={(e) => {
       e.preventDefault(); // prevent the page to move to top if click more than once the link
       window.location = '/#about';
@@ -24,21 +25,22 @@ const items = [
 </a>,
   <a
     href="/#services"
+    className={styles.anchor}
     onClick={(e) => {
       e.preventDefault(); // prevent the page to move to top if click more than once the link
       window.location = '/#services';
     }}
   >
     Servicios
-   </a>,
+  </a>,
   <Link href="/gallery">
-    <a>Fotos</a>
+    <a className={styles.anchor}>Fotos</a>
   </Link>,
   <Link href="/map">
-    <a>Como Llegar</a>
+    <a className={styles.anchor}>Como Llegar</a>
   </Link>,
   <Link href="/contact">
-    <a>Contacto</a>
+    <a className={styles.anchor}>Contacto</a>
   </Link>
 
 ]
@@ -69,9 +71,9 @@ const Menu = () => {
   const isBigScreen = useMatchMedia('(min-width: 860px)');
 
   useEffect(() => {
-    
+
     apiTrail.start(showMenu ?
-      { opacity: 1, transform: 'translateY(0px)', delay: 80, } :
+      { opacity: 1, transform: 'translateY(0px)', delay: 50, } :
       { opacity: 0, transform: 'translateY(-100px)', delay: 0, });
     apiTrail.start(isBigScreen && { opacity: 1, transform: 'translateY(0px)', delay: 0, })
   }, [showMenu, isBigScreen])
