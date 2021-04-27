@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useTrail, useTransition, animated, config } from 'react-spring';
 import { useStateContext, useStateDispatch } from '@/store/store';
-import { useRouter } from 'next/router';
 import { useMatchMedia } from '@/utils/useMatchMedia';
 import styles from './Menu.module.scss';
 
@@ -48,35 +47,32 @@ const Menu = () => {
   const { showMenu } = useStateContext();
   const dispatch = useStateDispatch();
   const [isVisible, setIsVisible] = useState(false);
-  const Router = useRouter()
 
   const menuItems = items.map((item) => {
     return item
   })
 
   const [trail, apiTrail] = useTrail(menuItems.length, (item) => ({
-    opacity: 0,
-    transform: 'translateY(10px)',
-    delay: 5000,
+    opacity: 1, transform: 'translateY(0px)',
   }))
 
   const transitions = useTransition(isVisible, {
-    from: { x: 0, y: -100, opacity: 0 },
-    enter: { x: 0, y: 1, opacity: 1 },
+    from: { x: 0, y: -100, opacity: 0, visibility: 'hidden' },
+    enter: { x: 0, y: 1, opacity: 1, visibility: 'visible' },
     leave: { x: 0, y: -100, opacity: 0 },
     reverse: isVisible,
     // delay: 200,
     config: config.stiff,
-    onRest: () => set(!toggle),
   })
 
   const isMobile = useMatchMedia('(max-width: 860px)');
   const isBigScreen = useMatchMedia('(min-width: 860px)');
 
   useEffect(() => {
+    
     apiTrail.start(showMenu ?
-      { opacity: 1, transform: 'translateY(0px)', delay: 50, } :
-      { opacity: 0, transform: 'translateY(10px)', delay: 0, });
+      { opacity: 1, transform: 'translateY(0px)', delay: 80, } :
+      { opacity: 0, transform: 'translateY(-100px)', delay: 0, });
     apiTrail.start(isBigScreen && { opacity: 1, transform: 'translateY(0px)', delay: 0, })
   }, [showMenu, isBigScreen])
 
