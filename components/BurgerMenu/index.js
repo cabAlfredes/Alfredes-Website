@@ -2,6 +2,7 @@
 import { useSpring, useChain, animated } from 'react-spring';
 import { useStateContext, useStateDispatch } from '@/store/store';
 import style from './BurgerMenu.module.scss';
+import { useEffect } from 'react';
 
 export default function Burger() {
   const { showMenu } = useStateContext();
@@ -21,15 +22,59 @@ export default function Burger() {
   //   transform: 'rotate(45deg)',
   // });
 
-  const line1 = useSpring({
-    transform: showMenu ? 'rotate(45deg)' : 'rotate(0deg)',
-  });
+  const [line1, api1] = useSpring(() => ({
+    from: { transform: 'rotate(0deg)' },
+    to: async (next, cancel) => {
+      await next({ transform: 'rotate(0deg)' })
+      await next({ y: 0 })
+    }
+  })
+  )
+
   const line2 = useSpring({
-    opacity: showMenu ? 0 : 1,
+    from: { opacity: 0 },
+    to: showMenu ? { opacity: 0 } : { opacity: 1 },
   });
-  const line3 = useSpring({
-    transform: showMenu ? 'rotate(-45deg)' : 'rotate(0deg)',
-  });
+
+  const [line3, api3] = useSpring(() => ({
+    from: { transform: 'rotate(0deg)' },
+    to: async (next, cancel) => {
+      await next({ transform: 'rotate(0deg)' })
+      await next({ y: 0 })
+    }
+  })
+  )
+
+  useEffect(() => {
+    showMenu ?
+      api1.start({
+        to: async (next, cancel) => {
+          await next({ y: 10 })
+          await next({ transform: 'rotate(45deg)' })
+        }
+      })
+      : api1.start({
+        to: async (next, cancel) => {
+          await next({ transform: 'rotate(0deg)' })
+          await next({ y: 0 })
+        }
+      })
+
+    showMenu ?
+      api3.start({
+        to: async (next, cancel) => {
+          await next({ y: -10 })
+          await next({ transform: 'rotate(-45deg)' })
+        }
+      })
+      : api3.start({
+        to: async (next, cancel) => {
+          await next({ transform: 'rotate(0deg)' })
+          await next({ y: 0 })
+        }
+      })
+
+  }, [showMenu])
 
   const handleSideMenu = () => {
     dispatch({

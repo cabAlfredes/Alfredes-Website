@@ -3,7 +3,7 @@ import { useReducer, createContext, useContext } from 'react';
 export const StateContext = createContext();
 const StateDispatcher = createContext();
 const initialState = {
-  showMenu: false,
+  showMenu: true,
 };
 
 const reducer = (state, action) => {
