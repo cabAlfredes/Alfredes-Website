@@ -1,12 +1,35 @@
 .wrapper {
   scroll-behavior: smooth;
   margin-bottom: 150px;
-  /* margin-top: 150px; */
+  margin-top: 300px;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #c4c4c4;
+  border-radius: var(--borderRadius);
+}
+
+.SectionHeader {
+  border-radius: inherit;
+  min-height: 150px;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: var(--fontShadow);
+  font-size: 2rem;
+  width: 100%;
+  background: url('/assets/HeaderCardHome.svg');
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-position: center;
+  background-size: cover;
+  color: var(--lightText);
+  letter-spacing: 3px;
 }
 
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 75%;
   margin: auto;
   letter-spacing: 1px;
