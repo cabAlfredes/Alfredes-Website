@@ -10,7 +10,8 @@ function about(props) {
 
   return (
     <section id="about" className={styles.wrapper}>
-      <SectionTitle>Historia de la cabaña</SectionTitle>
+      {/* <SectionTitle>Historia de la cabaña</SectionTitle> */}
+        <div className={styles.SectionHeader}>Historia de la cabaña</div>
       <div className={styles.content}>
         <div className={styles.text}>
           <p>
@@ -35,9 +36,9 @@ function about(props) {
             sobre todo descansar
           </p>
         </div>
-        <div className={styles.image}>
+        {/* <div className={styles.image}>
           <Image src="/bg1.jpg" alt="" width="3968" height="2976" />
-        </div>
+        </div> */}
       </div>
     </section>
   );
