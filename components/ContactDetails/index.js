@@ -1,7 +1,7 @@
 import { useSpring, animated } from 'react-spring';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaGoogle } from 'react-icons/fa'
 import styles from './contactDetails.module.scss';
-import { Paper } from '@mui/material';
+import { Link, Paper, Stack } from '@mui/material';
 
 function ContactDetails(props) {
   const spring = useSpring((
@@ -18,36 +18,28 @@ function ContactDetails(props) {
 
   return (
     <animated.div className={styles.content} style={spring}>
-      <Paper elevation={5}
+      <Paper 
+      elevation={5}
         sx={{
           padding: 5
         }}
       >
-        <div className={`${styles.item} ${styles.icon}`}>
-          <a href="mailto:cab.alfredes@gmail.com" title="Envianos un Email">
+        <Stack 
+          spacing={2}
+        >
+          <Link underline="none" color='default.light' href="mailto:cab.alfredes@gmail.com" title="Envianos un Email">
             <FaGoogle /> cab.alfredes@gmail.com
-          </a>
-        </div>
-        {/* <div className={`${styles.item} ${styles.icon}`}>
-          <a href="tel:15-1562-1562" title="Teléfono Fijo">
-          <FaPhone/>15-1562-1562
-          </a>
-        </div> */}
-        <div className={`${styles.item} ${styles.icon}`}>
-          <a href="https://wa.me/+5491162785125" title="Contactar por WhatsApp">
+          </Link>
+          <Link underline="none" color='default.light' href="https://wa.me/+5491162785125" title="Contactar por WhatsApp">
             <FaWhatsapp /> 15-1562-1562
-          </a>
-        </div>
-        <div className={`${styles.item} ${styles.icon}`}>
-          <a href="https://www.facebook.com/isla.alfredes/" alt="Facebook isla.alfredes" title=" Facebook isla.alfredes">
+          </Link>
+          <Link underline="none" color='default.light' href="https://www.facebook.com/isla.alfredes/" alt="Facebook isla.alfredes" title=" Facebook isla.alfredes">
             <FaFacebook /> isla.alfredes
-          </a>
-        </div>
-        <div className={`${styles.item} ${styles.icon}`}>
-          <a href="https://www.instagram.com/cab.alfredes/" alt="Instagram cab.alfredes" title="Instagram cab.alfredes">
+          </Link>
+          <Link underline="none" color='default.light' href="https://www.instagram.com/cab.alfredes/" alt="Instagram cab.alfredes" title="Instagram cab.alfredes">
             <FaInstagram /> cab.alfredes
-          </a>
-        </div>
+          </Link>        
+        </Stack>
       </Paper>
     </animated.div>
   );
