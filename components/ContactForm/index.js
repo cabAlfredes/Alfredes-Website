@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
+import Button from '@mui/material/Button'
+
 
 import CardWithRotation from '@/components/CardWithRotation';
 import styles from './contactForm.module.scss';
@@ -16,7 +18,7 @@ const WithLabel = ({ children, label, forValue }) => {
 
   return (<>
     <label className={styles.label} for={forValue} >{label}</label>
-    { children}
+    {children}
   </>)
 }
 
@@ -103,8 +105,8 @@ function ContactForm(props) {
             rows="10"
           />
         </WithLabel>
-        <input type="submit" />
-        <input type="reset" />
+        <Button type="submit" variant='contained' >Enviar</Button>
+        <Button type="reset" variant='outlined' >Borrar</Button>
       </form>
     </animated.div>
   );
