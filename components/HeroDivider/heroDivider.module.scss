@@ -1,13 +1,11 @@
 .heroDivider {
-  // align-items: center;
-  background-color: var(--yellow);
-  top: -25px;
+  background-color: var(--yellow);  
   height: 250px;
-  left: -5%;
+  // left: 5%;
   position: relative;
   transform: rotate(-1.55deg);
-  width: 110%;
-  z-index: 5;
+  width: 250vw;
+  // z-index: 5;
 }
 
 

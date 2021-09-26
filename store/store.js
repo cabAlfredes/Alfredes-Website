@@ -2,6 +2,10 @@ import { useReducer, createContext, useContext } from 'react';
 
 export const StateContext = createContext();
 const StateDispatcher = createContext();
+
+export const ColorModeContext = createContext({ toggleColorMode: () => { } });
+
+
 const initialState = {
   showMenu: false,
 };
