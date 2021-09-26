@@ -2,6 +2,7 @@ import Logo from '@/components/Logo';
 import Menu from '@/components/Menu';
 import BurgerMenu from '@/components/BurgerMenu';
 import Link from 'next/link';
+import ColorModeToggle from '../ColorModeToggle';
 import styles from './header.module.scss';
 
 function Header() {
@@ -15,6 +16,7 @@ function Header() {
             </div>
           </a>
         </Link>
+        <ColorModeToggle/>
         <BurgerMenu />
       </header>
       <Menu />

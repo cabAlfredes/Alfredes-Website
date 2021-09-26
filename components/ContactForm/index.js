@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Button from '@mui/material/Button'
-
-
-import CardWithRotation from '@/components/CardWithRotation';
 import styles from './contactForm.module.scss';
+import { Box } from '@mui/system';
+import { TextField, TextareaAutosize, Stack, Paper } from '@mui/material';
+import DatePicker from '@mui/lab/DatePicker';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+
 
 const formReducer = (state, event) => {
   console.log(state);
@@ -22,8 +25,9 @@ const WithLabel = ({ children, label, forValue }) => {
   </>)
 }
 
-function ContactForm(props) {
+const ContactForm = (props) => {
   const [formData, setFormData] = useState({});
+  const [value, setValue] = useState([null, null]);
 
   const spring = useSpring((
     {
@@ -44,70 +48,89 @@ function ContactForm(props) {
   };
 
   return (
-    <animated.div className={styles.content} style={spring}>
-      <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-        <WithLabel label='Nombre' forValue="name">
-          <input
-            onChange={handleChange}
-            type="text"
-            name="name"
-            className={styles.input}
-            required
-          />
-        </WithLabel>
-        <WithLabel label='Email' forValue="email">
-          <input
-            onChange={handleChange}
-            type="email"
-            name="email"
-            className={styles.input}
-            required
-          />
-        </WithLabel>
-        <WithLabel label='Teléfono' forValue="phone">
-          <input
-            onChange={handleChange}
-            type="phone"
-            name="phone"
-            className={styles.input}
-            required
-          />
-        </WithLabel>
-        <div className={styles.datePickersWrapper}>
-          <div>
-            <WithLabel label='Desde' forValue="dateFrom">
-              <input
+    <animated.div style={spring}>
+      <Paper
+        elevation={5}
+        sx={{
+          padding: 5
+        }}
+      >
+        <form onSubmit={(e) => e.preventDefault()}>
+          <Stack spacing={2}>
+            <TextField
+              variant='outlined'
+              name='name'
+              label='Nombre'
+              defaultValue=''
+              onChange={handleChange}
+              type='text'
+              required
+            />
+            <TextField
+              variant='outlined'
+              name='email'
+              label='Email'
+              defaultValue=''
+              onChange={handleChange}
+              type='email'
+              required
+            />
+            <TextField
+              variant='outlined'
+              name='phone'
+              label='Telefono'
+              defaultValue=''
+              onChange={handleChange}
+              type='phone'
+              required
+            />
+
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <TextField
+                variant='outlined'
+                name='dateFrom'
+                // label='Desde'
+                defaultValue=''
                 onChange={handleChange}
-                type="date"
-                name="dateFrom"
-                className={styles.input}
+                type='date'
+                required
               />
-            </WithLabel>
-          </div>
-          <div>
-            <WithLabel label='Hasta' forValue="dateTo">
-              <input
+              <TextField
+                variant='outlined'
+                name='dateTo'
+                // label='Hasta'
+                defaultValue=''
                 onChange={handleChange}
-                type="date"
-                name="dateTo"
-                className={styles.input}
+                type='date'
+                required
               />
-            </WithLabel>
-          </div>
-        </div>
-        <WithLabel label='Mensaje' forValue="message">
-          <textarea
-            onChange={handleChange}
-            className={styles.textarea}
-            name="message"
-            id="message"
-            cols="80"
-            rows="10"
-          />
-        </WithLabel>
-        <Button type="submit" variant='contained' >Enviar</Button>
-        <Button type="reset" variant='outlined' >Borrar</Button>
-      </form>
+            </Box>
+
+
+            <TextField
+              multiline
+              aria-label="empty textarea"
+              placeholder="Consulta"
+              style={{ width: '100%' }}
+            />
+
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+              }}
+            >
+              <Button type='reset' variant='outlined' color='secondary'>Borrar</Button>
+              <Button variant='contained' color='primary'>Enviar</Button>
+            </Box>
+          </Stack>
+        </form>
+      </Paper>
     </animated.div>
   );
 }
