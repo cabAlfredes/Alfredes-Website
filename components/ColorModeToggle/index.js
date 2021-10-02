@@ -10,19 +10,16 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 function ColorModeToggle() {
   const theme = useTheme();
-  console.log('theme >>;)>>',theme);
   const colorMode = useContext(ColorModeContext);
 
   return (
     <Box
       sx={{
-        bgcolor: 'background.default',
         color: 'text.primary',
         borderRadius: 1,
         p: 1,
       }}
     >
-      {theme.palette.mode} mode
       <IconButton sx={{ ml: 1 }} 
       onClick={colorMode.toggleColorMode} 
       color="inherit">

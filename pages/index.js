@@ -98,13 +98,12 @@ const Home = () => {
 
 Home.getLayout = function getLayout(page) {
   return (
-    <Layout>
-      <CenterPanel 
-        title='title test'
-      >
-        {page}
-      </CenterPanel>
-    </Layout>
+    <CenterPanel
+      title='title test'
+    >
+      {page}
+    </CenterPanel>
+
   )
 }
 
