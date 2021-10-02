@@ -1,14 +1,18 @@
 import Logo from '@/components/Logo';
 import Menu from '@/components/Menu';
 import BurgerMenu from '@/components/BurgerMenu';
+import { Box } from '@mui/system';
 import Link from 'next/link';
 import ColorModeToggle from '../ColorModeToggle';
 import styles from './header.module.scss';
 
 function Header() {
   return (
-    <div className={styles.headerWrapper}>
-      <header className={`header ${styles.header}`}>
+    <Box
+      component='header'
+      className={styles.headerWrapper}
+    >
+      <div className={`header ${styles.header}`}>
         <Link href="/">
           <a>
             <div className={styles.logo}>
@@ -16,11 +20,11 @@ function Header() {
             </div>
           </a>
         </Link>
-        <ColorModeToggle/>
+        <ColorModeToggle />
         <BurgerMenu />
-      </header>
+      </div>
       <Menu />
-    </div>
+    </Box>
   );
 }
 

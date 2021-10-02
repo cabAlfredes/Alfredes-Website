@@ -2,7 +2,8 @@ import { useState, useMemo, createContext } from 'react';
 import Layout from '@/components/Layout';
 import { StateProvider, ColorModeContext } from '@/store/store';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
-import { themeOptions, themeOptions2, getDesignTokens } from '@/theme/theme'
+import CssBaseline from '@mui/material/CssBaseline';
+import { getDesignTokens } from '@/theme/theme'
 
 import '../styles/globals.css';
 
@@ -32,9 +33,10 @@ function MyApp({ Component, pageProps }) {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <StateProvider>
-          <Layout>
+          {/* <Layout> */}
+            <CssBaseline />
             <Component {...pageProps} />
-          </Layout>
+          {/* </Layout> */}
         </StateProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>

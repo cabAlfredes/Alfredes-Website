@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
 import HeroDivider from '@/components/HeroDivider'
 import styles from './hero.module.scss';
+import { Box } from '@mui/system';
 
 function Hero() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -36,10 +37,10 @@ function Hero() {
   };
 
   return (
-    <div className={styles.videoWrapper}>
-      {/* <!-- The video --> */}
-      {/* <div className={styles.videoTopFrame} /> */}
-
+    <Box
+      component='section'
+      className={styles.videoWrapper}
+    >
       <video autoPlay muted loop id="video" className={styles.video}>
         <source src="/cab-video_Trim2.mp4" type="video/mp4" />
       </video>
@@ -53,12 +54,12 @@ function Hero() {
         </button>
       </div>
 
-      <HeroDivider>
+      {/* <HeroDivider>
         <div className={styles.textDividerCentered}>
           donde el silencio solo es interrumpido por el cantar de los pájaros
         </div>
-      </HeroDivider>
-    </div>
+      </HeroDivider> */}
+    </Box>
   );
 }
 
