@@ -4,8 +4,10 @@ import ContactDetail from '@/components/ContactDetails';
 import HeroDivider from '@/components/HeroDivider';
 import styles from '@/styles/Contact.module.scss';
 import { Grid } from '@mui/material';
+import { CenterPanel } from '@/components/Layout/templates';
 
-function contact(props) {
+
+const Contact = (props) => {
   return (
     <Grid container>
       <HeroDivider />
@@ -21,4 +23,15 @@ function contact(props) {
   );
 }
 
-export default contact;
+export default Contact;
+
+Contact.getLayout = function getLayout(page) {
+  return (
+    <CenterPanel
+      title='contactare con nosotros'
+    >
+      {page}
+    </CenterPanel>
+
+  )
+}

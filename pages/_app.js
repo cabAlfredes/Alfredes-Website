@@ -14,6 +14,8 @@ import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const [mode, setMode] = useState('light');
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => { page })
 
   const colorMode = useMemo(
     () => ({
@@ -33,10 +35,10 @@ function MyApp({ Component, pageProps }) {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <StateProvider>
-          {/* <Layout> */}
-            <CssBaseline />
-            <Component {...pageProps} />
-          {/* </Layout> */}
+          <CssBaseline />
+          <Layout>
+            {getLayout(<Component {...pageProps} />)}
+          </Layout>
         </StateProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>

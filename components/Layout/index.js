@@ -7,12 +7,12 @@ import { Container, Paper } from '@mui/material';
 import { Box } from '@mui/system';
 
 const Footer = () => (
-  <footer className={styles.footer}>
+  <div className={styles.footer}>
     Powered by{' '}
     <a href="https://bmunz.dev" target="_blank" rel="noopener noreferrer">
       bmunz.dev
     </a>
-  </footer>
+  </div>
 );
 
 function Layout({ children }) {
@@ -43,31 +43,7 @@ function Layout({ children }) {
       }}
     >
       <Header />
-      {/* <Container
-        component='main'
-        maxWidth="lg"
-        disableGutters={true}
-        sx={{
-          mx: 'auto',
-          mb: 2,
-          pb: 8,
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[100]
-              : theme.palette.grey[800],
-
-        }}
-      >
-        {transitions((style, item) => (
-          <animated.div
-            key={item?.key}
-            style={style}
-            className={styles.mainWrapper}
-          > */}
-            {children}
-          {/* </animated.div>
-        ))}
-      </Container> */}
+      {children}
       <Box
         component="footer"
         sx={{
@@ -80,9 +56,9 @@ function Layout({ children }) {
               : theme.palette.grey[800],
         }}
       >
-        <Container maxWidth='lg'>
+        {/* <Container maxWidth='lg'> */}
           <Footer />
-        </Container>
+        {/* </Container> */}
       </Box>
     </Box>
   );
