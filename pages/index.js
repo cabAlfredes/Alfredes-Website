@@ -7,12 +7,13 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import { getPosition } from '@/utils/getPosition';
+import { MainPanel } from '@/components/Layout/templates';
 
 export default function Home() {
   const Router = useRouter();
   const [navigation, setNavigation] = useState('/');
   const [isStopped, setIsStopped] = useState(false);
-  
+
   const scrollConfig = {
     immediate: true,
     cancel: isStopped,
@@ -27,7 +28,7 @@ export default function Home() {
       setIsStopped(false);
       window.removeEventListener('wheel', onWheel);
     },
-    
+
   };
   const [setScroll, api] = useSpring(() => scrollConfig);
 
@@ -79,16 +80,21 @@ export default function Home() {
 
 
   return (
-    <>
+    <div>
       <Head>
         <title>Cabaña Alfredes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <>
-        <Hero />
-        <About />
-        <Services />
-      </>
-    </>
+      <MainPanel
+        component={() => (
+          <>
+            <Hero />
+            <About />
+            <Services />
+          </>
+        )
+        }
+      />
+    </div>
   );
 }

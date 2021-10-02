@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import Header from '../Header';
 import styles from './layout.module.scss';
 import { Container, Paper } from '@mui/material';
-import CssBaseline from '@mui/material/CssBaseline';
 import { Box } from '@mui/system';
 
 const Footer = () => (
@@ -43,12 +42,13 @@ function Layout({ children }) {
         minHeight: '100vh'
       }}
     >
-      <CssBaseline />
       <Header />
-      <Container component='main'
+      {/* <Container
+        component='main'
         maxWidth="lg"
+        disableGutters={true}
         sx={{
-          mt: 8,
+          mx: 'auto',
           mb: 2,
           pb: 8,
           backgroundColor: (theme) =>
@@ -59,15 +59,15 @@ function Layout({ children }) {
         }}
       >
         {transitions((style, item) => (
-          <animated.main
+          <animated.div
             key={item?.key}
             style={style}
             className={styles.mainWrapper}
-          >
+          > */}
             {children}
-          </animated.main>
+          {/* </animated.div>
         ))}
-      </Container>
+      </Container> */}
       <Box
         component="footer"
         sx={{
