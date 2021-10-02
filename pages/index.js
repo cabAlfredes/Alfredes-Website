@@ -7,9 +7,10 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import { getPosition } from '@/utils/getPosition';
-import { MainPanel } from '@/components/Layout/templates';
+import Layout from '@/components/Layout';
+import { CenterPanel } from '@/components/Layout/templates';
 
-export default function Home() {
+const Home = () => {
   const Router = useRouter();
   const [navigation, setNavigation] = useState('/');
   const [isStopped, setIsStopped] = useState(false);
@@ -40,28 +41,28 @@ export default function Home() {
 
   // check this issues https://github.com/pmndrs/react-spring/issues/544
 
-  useEffect(() => {
-    setIsStopped(false);
-    const headerHeight = document.querySelector('.header').clientHeight; // header hight
-    window.addEventListener('wheel', onWheel);
+  // useEffect(() => {
+  //   setIsStopped(false);
+  //   const headerHeight = document.querySelector('.header').clientHeight; // header hight
+  //   window.addEventListener('wheel', onWheel);
 
-    if (navigation === '/' || navigation === "") {
-      api.start({ y: 0, reset: true, from: { y: window.pageYOffset } });
-    } else {
-      const el = document.getElementById(navigation);
-      // TODO: improve getPosition function to get the real position including paddings and margins.
-      const pos = getPosition(el);
+  //   if (navigation === '/' || navigation === "") {
+  //     api.start({ y: 0, reset: true, from: { y: window.pageYOffset } });
+  //   } else {
+  //     const el = document.getElementById(navigation);
+  //     // TODO: improve getPosition function to get the real position including paddings and margins.
+  //     const pos = getPosition(el);
 
-      api.start({
-        reset: false,
-        from: { y: window.pageYOffset }, // offset is the position of the screen scrollY, this is to reset the scroll starting position.
-        y: pos.y - headerHeight - 30, // 30 px of gap from the header
-      });
-    }
-    return () => {
-      window.removeEventListener('wheel', onWheel);
-    };
-  }, [navigation]);
+  //     api.start({
+  //       reset: false,
+  //       from: { y: window.pageYOffset }, // offset is the position of the screen scrollY, this is to reset the scroll starting position.
+  //       y: pos.y - headerHeight - 30, // 30 px of gap from the header
+  //     });
+  //   }
+  //   return () => {
+  //     window.removeEventListener('wheel', onWheel);
+  //   };
+  // }, [navigation]);
 
   useEffect(() => {
     function hashHandler() {
@@ -85,16 +86,26 @@ export default function Home() {
         <title>Cabaña Alfredes</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainPanel
-        component={() => (
-          <>
-            <Hero />
-            <About />
-            <Services />
-          </>
-        )
-        }
-      />
+      <>
+        <Hero />
+        <About />
+        <Services />
+      </>
     </div>
   );
 }
+
+
+Home.getLayout = function getLayout(page) {
+  return (
+    <Layout>
+      <CenterPanel 
+        title='title test'
+      >
+        {page}
+      </CenterPanel>
+    </Layout>
+  )
+}
+
+export default Home

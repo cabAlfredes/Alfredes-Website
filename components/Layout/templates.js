@@ -1,4 +1,5 @@
-import { Container } from "@mui/material"
+import { Container, Paper } from "@mui/material"
+import styles from './templates.module.scss'
 
 // export const CentrePanel = ({component: Component, title, wrapperClassName, fluid, narrow, options={}, matchProps, ...rest}) => {
 //   const { bgTheme } = rest
@@ -22,19 +23,25 @@ import { Container } from "@mui/material"
 //   )
 // }
 
-export const MainPanel = ({ component: Component, title, titleColorTheme, wrapperClassName, narrow, options = {}, matchProps, ...rest }) => {
-  // const { bgTheme } = rest
-  // const bgThemeClassName = bgClassNameSelector(bgTheme)
-
+export const CenterPanel = ({ children, title, titleColorTheme }) => {
   return (
-    // <div className={`wrapper-main-panel ${wrapperClassName} ${bgThemeClassName}`}>
-    //   <div className={`wrapper-title-bar ${options.titleColorTheme}`}>
-    //     <h1>{title}</h1>
-    //   </div>
-    <Container>
-      <Component/>
-    </Container>
-    // </div>
+    <div className={`${styles.mainWrapper}`}>
+      <Container maxWidth='lg'>
+        <Paper>
+          {children}
+        </Paper>
+      </Container>
+    </div>
+  )
+}
+
+export const FullWidthPanel = ({ children, title, titleColorTheme }) => {
+  return (
+    <div className={`${styles.mainWrapper}`}>
+      <Paper>
+        {children}
+      </Paper>
+    </div>
   )
 }
 

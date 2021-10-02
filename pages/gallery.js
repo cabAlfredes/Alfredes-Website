@@ -2,8 +2,9 @@
 import Head from 'next/head';
 // import 'assets/glide.core.css';
 import Slider from '@/components/Slider';
+import { FullWidthPanel } from '@/components/Layout/templates';
 
-function gallery(props) {
+function Gallery(props) {
   return (
     <>
       <Head>
@@ -20,4 +21,14 @@ function gallery(props) {
   );
 }
 
-export default gallery;
+export default Gallery;
+
+Gallery.getLayout = function getLayout(page){
+  return(
+    <FullWidthPanel
+      title='Fotos'
+    >
+      {page}
+    </FullWidthPanel>
+  )
+}
