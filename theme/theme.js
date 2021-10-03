@@ -1,3 +1,5 @@
+/** @format */
+
 // import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
 export const lightTheme = {
   palette: {
@@ -28,9 +30,9 @@ export const lightTheme = {
         padding: '0 30px',
       },
     },
-    MuiLink:{
-      textDecoration: 'none'
-    }
+    MuiLink: {
+      textDecoration: 'none',
+    },
   },
   props: {
     MuiList: {
@@ -88,9 +90,12 @@ export const darkTheme = {
   },
 };
 
-export const getDesignTokens = (mode) => ({
-  palette: {
-    mode,
-    ...(mode === 'light'  ? {...lightTheme} : {...darkTheme})
-  },
-});
+export const getDesignTokens = mode => {
+  console.log('mode from theme', mode);
+  return {
+    palette: {
+      mode,
+      ...(mode === 'light' ? { ...lightTheme } : { ...darkTheme }),
+    },
+  };
+};

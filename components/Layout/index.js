@@ -1,3 +1,4 @@
+/** @format */
 import PropTypes from 'prop-types';
 import { useTransition, animated } from 'react-spring';
 import { useRouter } from 'next/router';
