@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useTransition, animated } from 'react-spring';
 import { useRouter } from 'next/router';
-import Header from '../Header';
+import Header from '../Header/Header';
 import styles from './layout.module.scss';
 import { Container, Paper } from '@mui/material';
 import { Box } from '@mui/system';
@@ -56,9 +56,8 @@ function Layout({ children }) {
               : theme.palette.grey[800],
         }}
       >
-        {/* <Container maxWidth='lg'> */}
-          <Footer />
-        {/* </Container> */}
+        <Footer />
+
       </Box>
     </Box>
   );
