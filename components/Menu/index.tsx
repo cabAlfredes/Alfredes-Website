@@ -37,11 +37,10 @@ const items = [
   }
 ]
 
-const Menu = () => {
+const Menu = (props) => {
   const { showMenu } = useStateContext();
   const dispatch = useStateDispatch();
-  const theme = useTheme()
-
+	const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleHideMenu = () => {
@@ -53,36 +52,39 @@ const Menu = () => {
 
 
   const Menu = () => {
-    if (isMobile) { return null }
-    return (
-      <Box
-        display='flex'
-        gap={3}
-      >
+		if (isMobile) {
+			return (<Box component='nav'>
+				<IconButton
+					size='large'
+					edge='start'
+					color='inherit'
+					aria-label='menu'
+				>
+					<MenuIcon />
+				</IconButton>
+			</Box>
+			)
+		} else {
+			return (
+				<Box
+					component='nav'
+					display='flex'
+					gap={3}
+					mt={2}
+				>
         {items.map((link: MenuItem) => (
-          <NextLink href={link.urlPath} passHref>
-            <Link underline="none" color='secondary' >{link.text}</Link>
+					<NextLink href={link.urlPath} passHref>
+						<Link underline="none" color='secondary' variant='body1' >{link.text}</Link>
           </NextLink>
         )
         )}
       </Box>)
+		}
   }
 
 
-  return (<Box component='nav'>
-    <Menu />
-    {isMobile &&
-      <IconButton
-        size='large'
-        edge='start'
-        color='inherit'
-        aria-label='menu'
-        sx={{ mr: 2 }}
-      >
-        <MenuIcon />
-      </IconButton>
-    }
-  </Box>
+	return (
+		<Menu />
   )
 };
 
