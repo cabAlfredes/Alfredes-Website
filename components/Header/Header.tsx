@@ -48,10 +48,7 @@ function Header() {
           </Box>
           <Menu />
         </StyledToolbar>
-      </StyledAppBar>
-      {/* <div className={`header ${styles.header}`}>
-        <BurgerMenu />
-      </div> */}
+      </StyledAppBar>   
     </Box >
   );
 }
