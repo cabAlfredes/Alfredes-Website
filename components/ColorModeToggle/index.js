@@ -13,17 +13,11 @@ function ColorModeToggle() {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box
-      sx={{
-        color: 'text.primary',
-        borderRadius: 1,
-        p: 1,
-      }}
-    >
-      <IconButton sx={{ ml: 1 }} 
-      onClick={colorMode.toggleColorMode} 
-      color="inherit">
-        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+    <Box >
+      <IconButton sx={{ ml: 1 }}
+        onClick={colorMode.toggleColorMode}
+        color="inherit">
+        {theme.palette.type === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
     </Box>
   );

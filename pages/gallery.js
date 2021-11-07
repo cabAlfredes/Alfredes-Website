@@ -23,8 +23,8 @@ function Gallery(props) {
 
 export default Gallery;
 
-Gallery.getLayout = function getLayout(page){
-  return(
+Gallery.getLayout = function getLayout(page) {
+  return (
     <FullWidthPanel
       title='Fotos'
     >
