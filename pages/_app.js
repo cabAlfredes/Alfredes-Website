@@ -1,10 +1,10 @@
 /** @format */
 import { useState, useMemo, createContext } from 'react';
-import Layout from '@/components/Layout';
-import { getDesignTokens } from '@/theme/theme';
-import { StateProvider, ColorModeContext } from '@/store/store';
+import Layout from '../components/Layout/Layout';
+import { StateProvider, ColorModeContext } from '../store/store';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { getDesignTokens } from '../theme/theme';
 
 import '../styles/globals.css';
 
@@ -30,19 +30,18 @@ function MyApp({ Component, pageProps }) {
     }),
     []
   );
-
-  // Update the theme only if the mode changes
-  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
-  console.log('theme >>;)>>', theme);
+  // Update the theme only if the mode changes  
+  const theme = useMemo(() => getDesignTokens(mode));
+  console.log('theme >>;)>>', getLayout);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <StateProvider>
+      <StateProvider>
+        <ThemeProvider theme={theme}>
           <CssBaseline />
           <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
-        </StateProvider>
-      </ThemeProvider>
+        </ThemeProvider>
+      </StateProvider>
     </ColorModeContext.Provider>
   );
 }

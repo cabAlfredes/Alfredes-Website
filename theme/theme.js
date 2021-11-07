@@ -1,23 +1,31 @@
 /** @format */
 
 // import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
-export const lightTheme = {
+import { createTheme } from '@mui/material/styles'
+
+export const lightTheme = createTheme({
   palette: {
     type: 'light',
+    mode: 'light',
     primary: {
       main: '#ffd600',
     },
     secondary: {
-      main: '#f50057',
-    },
-  },
-  typography: {
-    h1: {
-      fontSize: '5rem',
-      fontWeight: 300,
+      main: '#577590',
     },
   },
   spacing: 8,
+  typography: {
+    fontSize: 14,
+  },
+  shape: {
+    borderRadius: 4,
+  },
+  props: {
+    MuiAppBar: {
+      color: 'secondary',
+    },
+  },
   overrides: {
     MuiButton: {
       root: {
@@ -30,38 +38,22 @@ export const lightTheme = {
         padding: '0 30px',
       },
     },
-    MuiLink: {
-      textDecoration: 'none',
-    },
   },
-  props: {
-    MuiList: {
-      dense: true,
-    },
-    MuiMenuItem: {
-      dense: true,
-    },
-    MuiTable: {
-      size: 'small',
-    },
-  },
-};
+});
 
-export const darkTheme = {
+export const darkTheme = createTheme({
   palette: {
     type: 'dark',
+    mode: 'dark',
     primary: {
       main: '#ffd600',
     },
     secondary: {
-      main: '#f50057',
+      main: '#000',
     },
   },
   typography: {
-    h1: {
-      fontSize: '5rem',
-      fontWeight: 300,
-    },
+    fontSize: 14,
   },
   spacing: 8,
   overrides: {
@@ -76,26 +68,9 @@ export const darkTheme = {
         padding: '0 30px',
       },
     },
-  },
-  props: {
-    MuiList: {
-      dense: true,
-    },
-    MuiMenuItem: {
-      dense: true,
-    },
-    MuiTable: {
-      size: 'small',
-    },
-  },
-};
+  }
+});
 
-export const getDesignTokens = mode => {
-  console.log('mode from theme', mode);
-  return {
-    palette: {
-      mode,
-      ...(mode === 'light' ? { ...lightTheme } : { ...darkTheme }),
-    },
-  };
+export const getDesignTokens = (mode) => {
+  return (mode === 'light') ? lightTheme : darkTheme
 };
