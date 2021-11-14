@@ -2,7 +2,9 @@
 import Link from 'next/link';
 import styles from './MenuItems.module.scss';
 
-const items = [
+
+
+export const items = [
   <Link href='/'>
     <a className={styles.anchor}>Home</a>
   </Link>,
