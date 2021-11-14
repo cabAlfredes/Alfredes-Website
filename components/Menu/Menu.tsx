@@ -40,51 +40,54 @@ const items = [
 const Menu = (props) => {
   const { showMenu } = useStateContext();
   const dispatch = useStateDispatch();
-	const theme = useTheme()
+  const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const handleHideMenu = () => {
+  const handleMobileMenu = () => {
+    console.log('handleMobileMenu', showMenu
+    );
+
     dispatch({
-      type: 'TOGGLE_MENU',
-      payload: false,
+      type: 'TOGGLE_MENU'
     });
   }
 
 
   const Menu = () => {
-		if (isMobile) {
-			return (<Box component='nav'>
-				<IconButton
-					size='large'
-					edge='start'
-					color='inherit'
-					aria-label='menu'
-				>
-					<MenuIcon />
-				</IconButton>
-			</Box>
-			)
-		} else {
-			return (
-				<Box
-					component='nav'
-					display='flex'
-					gap={3}
-					mt={2}
-				>
-        {items.map((link: MenuItem) => (
-					<NextLink href={link.urlPath} passHref>
-						<Link underline="none" color='secondary' variant='body1' >{link.text}</Link>
-          </NextLink>
-        )
-        )}
-      </Box>)
-		}
+    if (isMobile) {
+      return (<Box component='nav'>
+        <IconButton
+          size='large'
+          edge='start'
+          color='inherit'
+          aria-label='menu'
+          onClick={handleMobileMenu}
+        >
+          <MenuIcon />
+        </IconButton>
+      </Box>
+      )
+    } else {
+      return (
+        <Box
+          component='nav'
+          display='flex'
+          gap={3}
+          mt={2}
+        >
+          {items.map((link: MenuItem) => (
+            <NextLink href={link.urlPath} passHref>
+              <Link underline="none" color='secondary' variant='body1' >{link.text}</Link>
+            </NextLink>
+          )
+          )}
+        </Box>)
+    }
   }
 
 
-	return (
-		<Menu />
+  return (
+    <Menu />
   )
 };
 

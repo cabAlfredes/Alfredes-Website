@@ -5,7 +5,8 @@ import ColorModeToggle from '../ColorModeToggle';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Menu from '@/components/Menu/index';
+import Menu from '@/components/Menu/Menu';
+import MobileMenu from '@/components/MobileMenu/MobileMenu'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'flex-start',
@@ -47,8 +48,9 @@ function Header() {
             <ColorModeToggle />
           </Box>
           <Menu />
+          <MobileMenu />
         </StyledToolbar>
-      </StyledAppBar>   
+      </StyledAppBar>
     </Box >
   );
 }
