@@ -20,7 +20,7 @@ const items = [
     urlPath: '/about',
     text: 'La Cabana'
   }, {
-    urlPath: '/services',
+    urlPath: '/servicios',
     text: 'Servicios'
   },
   {
