@@ -1,15 +1,18 @@
 import { Container, Paper } from "@mui/material"
 import styles from './templates.module.scss'
+import Box from '@mui/material/Box'
 
 export const CenterPanel = ({ children, title, titleColorTheme }) => {
   return (
-    <div className={`${styles.mainWrapper}`}>
+    <Box sx={{
+      marginTop: 25,
+    }}>
       <Container maxWidth='lg'>
-        <Paper>
+        <Paper elevation={0}>
           {children}
         </Paper>
       </Container>
-    </div>
+    </Box >
   )
 }
 
