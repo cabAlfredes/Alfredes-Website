@@ -28,7 +28,7 @@ export default Contact;
 Contact.getLayout = function getLayout(page) {
   return (
     <CenterPanel
-      title='contactare con nosotros'
+      title='contactate con nosotros'
     >
       {page}
     </CenterPanel>

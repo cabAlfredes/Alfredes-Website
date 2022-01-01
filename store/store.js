@@ -13,7 +13,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_MENU':
-      return { ...state, showMenu: action.payload };
+      return { ...state, showMenu: !state.showMenu };
 
     default:
       throw new Error(`Unknown action: ${action.type}`);

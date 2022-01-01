@@ -41,7 +41,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "components/MenuItems/index.js"  ],
   "exclude": [
     "node_modules"
   ]

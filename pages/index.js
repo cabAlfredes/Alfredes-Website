@@ -11,12 +11,12 @@ import { CenterPanel, FullWidthPanel } from '@/components/Layout/templates';
 import { useTheme } from '@mui/material/styles';
 
 const Home = () => {
-  const Router = useRouter();
-  const [navigation, setNavigation] = useState('/');
-  const [isStopped, setIsStopped] = useState(false);
-  const theme = useTheme()
+  // const Router = useRouter();
+  // const [navigation, setNavigation] = useState('/');
+  // const [isStopped, setIsStopped] = useState(false);
+  // const theme = useTheme()
 
-  console.log(useTheme);
+  // console.log(useTheme);
 
   return (
     <div>
@@ -25,9 +25,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Hero />
-        <About />
-        <Services />
+        <Hero />        
       </>
     </div>
   );
