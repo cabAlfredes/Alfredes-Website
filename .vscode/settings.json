@@ -1,7 +1,5 @@
 {
-    "cSpell.words": [
-        "Alfredes",
-        "Cabaña"
-    ],
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+  "cSpell.words": ["Alfredes", "biosfera", "Cabaña", "FREDES", "Servicios"],
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "cSpell.language": "en,es,es-ES"
 }
