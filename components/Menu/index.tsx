@@ -24,7 +24,7 @@ const items = [
     text: 'Servicios'
   },
   {
-    urlPath: '/Fotos',
+    urlPath: '/fotos',
     text: 'Fotos'
   },
   {
