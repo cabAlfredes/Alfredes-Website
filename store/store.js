@@ -1,4 +1,5 @@
 import { useReducer, createContext, useContext } from 'react';
+import { images } from '../config/assets';
 
 export const StateContext = createContext();
 const StateDispatcher = createContext();
@@ -6,8 +7,11 @@ const StateDispatcher = createContext();
 export const ColorModeContext = createContext({ toggleColorMode: () => { } });
 
 
+
+
 const initialState = {
   showMenu: false,
+  images: { ...images }
 };
 
 const reducer = (state, action) => {
