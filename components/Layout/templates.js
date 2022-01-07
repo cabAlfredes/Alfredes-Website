@@ -1,28 +1,29 @@
 import { Container, Paper } from "@mui/material"
-import styles from './templates.module.scss'
 import Box from '@mui/material/Box'
+import PageBanner from '@/components/PageBanner';
 
-export const CenterPanel = ({ children, title, titleColorTheme }) => {
+export const CenterPanel = (props) => {
+  const { children, bannerTitle } = props;
+  console.log('CenterPanel', props)
   return (
-    <Box sx={{
-      marginTop: 25,
+    <Box component='main' sx={{
+      marginTop: '90px'
     }}>
+      <PageBanner title={bannerTitle} />
       <Container maxWidth='lg'>
-        <Paper elevation={0}>
-          {children}
-        </Paper>
+        {children}
       </Container>
     </Box >
   )
 }
 
-export const FullWidthPanel = ({ children, title, titleColorTheme }) => {
+export const FullWidthPanel = ({ children }) => {
   return (
-    <div className={`${styles.mainWrapper}`}>
-      <Paper>
-        {children}
-      </Paper>
-    </div>
+    <Box component='main' sx={{
+      marginTop: '90px'
+    }}>
+      {children}
+    </Box>
   )
 }
 
