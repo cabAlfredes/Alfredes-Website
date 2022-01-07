@@ -25,7 +25,6 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 
 function Header() {
   return (
-    <Box>
       <StyledAppBar position="fixed" enableColorOnDark>
         <StyledToolbar>
           <Box display="flex" height="100%" maxWidth="100pxs">
@@ -47,7 +46,6 @@ function Header() {
           <MobileMenu />
         </StyledToolbar>
       </StyledAppBar>
-    </Box>
   );
 }
 
