@@ -5,7 +5,8 @@ import { StateProvider, ColorModeContext } from '../store/store';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { getDesignTokens } from '../theme/theme';
-
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider"; 
 import '../styles/globals.css';
 
 // export function reportWebVitals(metric) {
@@ -32,17 +33,18 @@ function MyApp({ Component, pageProps }) {
   );
   // Update the theme only if the mode changes  
   const theme = useMemo(() => getDesignTokens(mode));
-  console.log('theme >>;)>>', getLayout);
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <StateProvider>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
-        </ThemeProvider>
-      </StateProvider>
-    </ColorModeContext.Provider>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <ColorModeContext.Provider value={colorMode}>
+        <StateProvider>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Layout>{getLayout(<Component {...pageProps} />)}</Layout>
+          </ThemeProvider>
+        </StateProvider>
+      </ColorModeContext.Provider>
+    </LocalizationProvider>
   );
 }
 
