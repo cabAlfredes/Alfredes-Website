@@ -26,7 +26,7 @@ function SectionTitle({ children }) {
       onMouseLeave={handleMouseLeave}
     >
       <animated.div style={rotate} className={styles.content}>
-        <div className={styles.children}>{children}</div>
+        <h1 className={styles.children}>{children}</h1>
       </animated.div>
       <animated.div style={effect} className={styles.rotator} />
     </div>

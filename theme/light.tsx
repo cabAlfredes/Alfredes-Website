@@ -1,24 +1,25 @@
 import { ThemeOptions } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
+import colors from "@/theme/colors";
 
 export const lightPalette: ThemeOptions = createTheme({
   palette: {
     mode: "light",
-    background: { default: "#e5e5e8", paper: "#f7f7f9" },
+    background: {
+      default: colors.white,
+      paper: colors.darkBlue,
+    },
     primary: {
-      main: "#ffd60a",
-      light: "#ffd60a",
-      dark: "#ffc300",
+      main: colors.sunGlow,
+      contrastText: colors.darkGray,
     },
     secondary: {
-      main: "#2c2c54",
-      light: "#2c2c54",
-      dark: "#2c2c54",
+      main: colors.blue,
       contrastText: "#fff",
     },
     text: {
-      primary: "#a58a00",
-      secondary: "#6d6d6d",
+      primary: colors.darkGray,
+      secondary: colors.lightGray,
     },
   },
 });
