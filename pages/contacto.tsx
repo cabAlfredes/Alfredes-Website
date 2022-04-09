@@ -1,7 +1,7 @@
 import ContactForm from "@/components/ContactForm";
 import ContactDetails from "@/components/ContactDetails";
 import { Grid } from "@mui/material";
-import { CenterPanel } from "@/components/Layout/templates";
+import { CenterPanelWithBanner } from "@/components/Layout/templates";
 
 const Contact = () => {
   return (
@@ -23,5 +23,7 @@ const Contact = () => {
 export default Contact;
 
 Contact.getLayout = function getLayout(page) {
-  return <CenterPanel bannerTitle="Contacto">{page}</CenterPanel>;
+  return (
+    <CenterPanelWithBanner bannerTitle="Contacto">{page}</CenterPanelWithBanner>
+  );
 };

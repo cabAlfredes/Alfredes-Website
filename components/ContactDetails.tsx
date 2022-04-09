@@ -13,7 +13,7 @@ function ContactDetails(props) {
         <Stack spacing={2}>
           <Link
             underline="none"
-            color="textPrimary"
+            color="textSecondary"
             href="mailto:cab.alfredes@gmail.com"
             title="Envianos un Email"
           >
@@ -21,7 +21,7 @@ function ContactDetails(props) {
           </Link>
           <Link
             underline="none"
-            color="textPrimary"
+            color="textSecondary"
             href="https://wa.me/+5491162785125"
             title="Contactar por WhatsApp"
           >
@@ -30,7 +30,7 @@ function ContactDetails(props) {
           <Link
             component="a"
             underline="none"
-            color="textPrimary"
+            color="textSecondary"
             href="https://www.facebook.com/isla.alfredes/"
             title="Facebook isla.alfredes"
           >
@@ -39,7 +39,7 @@ function ContactDetails(props) {
           <Link
             component="a"
             underline="none"
-            color="textPrimary"
+            color="textSecondary"
             href="https://www.instagram.com/cab.alfredes/"
             title="Instagram cab.alfredes"
           >
