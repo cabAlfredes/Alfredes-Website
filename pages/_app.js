@@ -1,8 +1,8 @@
 /** @format */
-import { useState, useMemo, createContext } from "react";
+import { useState, useMemo } from "react";
 import Layout from "../components/Layout/Layout";
 import { StateProvider, ColorModeContext } from "../store/store";
-import { ThemeProvider } from "@mui/material/styles";
+import { SiteThemeProvider } from "../theme/theme-provider";
 import CssBaseline from "@mui/material/CssBaseline";
 import { getDesignTokens } from "../theme/theme";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
@@ -38,10 +38,11 @@ function MyApp({ Component, pageProps }) {
 		<LocalizationProvider dateAdapter={AdapterDateFns}>
 			<ColorModeContext.Provider value={colorMode}>
 				<StateProvider>
-					<ThemeProvider theme={theme}>
-						<CssBaseline />
+					/
+					<SiteThemeProvider theme={theme}>
+						{/* <CssBaseline /> */}
 						<Layout>{getLayout(<Component {...pageProps} />)}</Layout>
-					</ThemeProvider>
+					</SiteThemeProvider>
 				</StateProvider>
 			</ColorModeContext.Provider>
 		</LocalizationProvider>
