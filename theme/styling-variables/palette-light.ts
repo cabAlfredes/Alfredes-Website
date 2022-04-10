@@ -63,7 +63,7 @@ export const paletteLight: CustomThemePalette = {
 	info: { main: lightBlue[600] },
 	success: { main: green[800] },
 	background: {
-		default: white,
+		default: grey[100],
 		paper: grey[800],
 	},
 	action: {

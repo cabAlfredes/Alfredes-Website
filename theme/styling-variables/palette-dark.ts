@@ -63,7 +63,7 @@ export const paletteDark: CustomThemePalette = {
 	info: { main: lightBlue[600] },
 	success: { main: green[800] },
 	background: {
-		default: black,
+		default: grey[800],
 		paper: grey[100],
 	},
 	action: {
