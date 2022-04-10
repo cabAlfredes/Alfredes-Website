@@ -1,10 +1,10 @@
-import { CustomThemePalette, createTheme } from "./theme";
+import { createTheme } from "./theme";
 import React from "react";
+import { useStateContext } from "@/store/store";
 // import styling variables
 import { ThemeProvider as MUIThemeProvider } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import {
-	Gilroy,
 	headings,
 	labelModifications,
 	labels,
@@ -13,23 +13,22 @@ import {
 	layoutSmall,
 	layoutXLarge,
 	links,
-	palette,
+	paletteDark,
+	paletteLight,
 	paragraphs,
 	spacingDesktop,
 	white,
 } from "./styling-variables";
 
-export const themeBuilder = () =>
-	createTheme({
-		palette,
+export const themeBuilder = (darkMode) => {
+	return createTheme({
+		darkMode,
+		palette: darkMode ? paletteDark : paletteLight,
 		background: {
 			content: white,
 		},
 		typography: {
-			fontFamily: Gilroy,
-			gilroy: {
-				fontFamily: Gilroy,
-			},
+			fontFamily: "Roboto",
 			headings,
 			paragraphs,
 			links,
@@ -46,13 +45,16 @@ export const themeBuilder = () =>
 		},
 		spacing: spacingDesktop,
 	});
+};
 
 export const SiteThemeProvider: React.FC = ({
 	children,
 }: {
 	children: React.ReactNode;
 }) => {
-	const theme = themeBuilder();
+	const state = useStateContext();
+	const theme = themeBuilder(state.darkMode);
+
 	return (
 		<MUIThemeProvider theme={theme}>
 			<ThemeProvider theme={theme as any}>{children}</ThemeProvider>

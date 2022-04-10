@@ -17,7 +17,10 @@ const Home = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Hero />
-			<Typography variant="labelMediumBold">
+			<Typography variant="body1" component="div">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			</Typography>
+			<Typography variant="labelLargeDefault" component="div">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			</Typography>
 		</div>
