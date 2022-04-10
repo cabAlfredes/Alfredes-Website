@@ -3,9 +3,9 @@ import {
 	createTheme as createMUITheme,
 } from "@mui/material/styles";
 
-import { lightPalette } from "./light";
-import { darkPalette } from "./dark";
-import { Color } from "@mui/material";
+// import { lightPalette } from "./light";
+// import { darkPalette } from "./dark";
+import { Color, PaletteMode } from "@mui/material";
 
 import {
 	SimplePaletteColorOptions,
@@ -63,6 +63,7 @@ declare module "@mui/material/styles" {
 }
 
 export interface CustomThemePalette {
+	mode: PaletteMode;
 	primary: SimplePaletteColorOptions;
 	secondary: SimplePaletteColorOptions;
 	light: SimplePaletteColorOptions;
@@ -94,6 +95,7 @@ export interface CustomThemePalette {
 	text: TypeText;
 }
 export interface CustomThemeProps {
+	darkMode: boolean;
 	palette: CustomThemePalette;
 	background: {
 		content: string;
@@ -112,11 +114,8 @@ export interface CustomThemeProps {
 	components?: Components;
 }
 
-export const getDesignTokens = (mode) => {
-	return mode === "light" ? lightPalette : darkPalette;
-};
-
 export const createTheme = ({
+	darkMode,
 	palette,
 	typography,
 	breakpoints,
@@ -125,7 +124,10 @@ export const createTheme = ({
 	background,
 }: CustomThemeProps) => {
 	const props = {
-		palette,
+		palette: {
+			...palette,
+			mode: (darkMode ? "dark" : "light") as PaletteMode,
+		},
 		typography: updateTypography(typography, palette),
 		breakpoints,
 		spacing,
@@ -135,6 +137,5 @@ export const createTheme = ({
 			...components,
 		},
 	};
-	console.log(props);
 	return createMUITheme({ ...props });
 };

@@ -2,25 +2,20 @@
 
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: Montserrat, sans-serif;
+	padding: 0;
+	margin: 0;
 }
 
 :root {
-  --fontShadow: "Shadows Into Light";
-  --fontMontserrat: "Montserrat";
-  --spacing: 4px;
-  --niceGray: #373737;
-  --darkText: #212121;
-  --lightText: #ece5f0;
-  --blueSapphire: #05668d;
-  --yellow: #f7e733;
-  --platinum: #eaebed;
-  --darkPurple: #242038;
-  --cyberGrape: #433c68;
-  --magnolia: #ece5f0;
-  --redCrayola: #ff1053;
-  --borderRadius: 5px;
+	--fontShadow: "Shadows Into Light";
+	--niceGray: #373737;
+	--darkText: #212121;
+	--lightText: #ece5f0;
+	--blueSapphire: #05668d;
+	--yellow: #f7e733;
+	--platinum: #eaebed;
+	--darkPurple: #242038;
+	--cyberGrape: #433c68;
+	--magnolia: #ece5f0;
+	--redCrayola: #ff1053;
 }
-
