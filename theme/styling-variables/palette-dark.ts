@@ -65,6 +65,7 @@ export const paletteDark: CustomThemePalette = {
 	background: {
 		default: grey[800],
 		paper: grey[100],
+		header: yellow[500],
 	},
 	action: {
 		disabled: grey[100],
