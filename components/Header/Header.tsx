@@ -9,44 +9,45 @@ import Menu from "@/components/Menu/Menu";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
-  alignItems: "flex-start",
-  justifyContent: "space-between",
-  paddingTop: theme.spacing(1),
-  position: "relative",
-  // Override media queries injected by theme.mixins.toolbar
-  "@media all": {
-    height: 120,
-  },
+	alignItems: "flex-start",
+	justifyContent: "space-between",
+	paddingTop: theme.spacing(1),
+	position: "relative",
+	backgroundColor: theme.palette.background.header,
+	// Override media queries injected by theme.mixins.toolbar
+	"@media all": {
+		height: 120,
+	},
 }));
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  clipPath: " polygon(0 0, 100% 0, 100% 75%, 0 100%)",
+	clipPath: " polygon(0 0, 100% 0, 100% 75%, 0 100%)",
 }));
 
 function Header() {
-  return (
-      <StyledAppBar position="fixed" enableColorOnDark>
-        <StyledToolbar>
-          <Box display="flex" height="100%" maxWidth="100pxs">
-            <Link href="/">
-              <a>
-                <Box
-                  component="img"
-                  sx={{
-                    width: "250px",
-                    fill: "green",
-                  }}
-                  src="/logo.svg"
-                />
-              </a>
-            </Link>
-            <ColorModeToggle />
-          </Box>
-          <Menu />
-          <MobileMenu />
-        </StyledToolbar>
-      </StyledAppBar>
-  );
+	return (
+		<StyledAppBar position="fixed" enableColorOnDark>
+			<StyledToolbar>
+				<Box display="flex" height="100%" maxWidth="100pxs">
+					<Link href="/">
+						<a>
+							<Box
+								component="img"
+								sx={{
+									width: "250px",
+									fill: "green",
+								}}
+								src="/logo.svg"
+							/>
+						</a>
+					</Link>
+					<ColorModeToggle />
+				</Box>
+				<Menu />
+				<MobileMenu />
+			</StyledToolbar>
+		</StyledAppBar>
+	);
 }
 
 export default Header;

@@ -86,6 +86,7 @@ export interface CustomThemePalette {
 	background: {
 		default: string;
 		paper: string;
+		header: string;
 	};
 	action: {
 		disabled: string;
