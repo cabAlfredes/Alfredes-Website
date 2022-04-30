@@ -28,7 +28,7 @@ export const paletteDark: CustomThemePalette = {
 		light: teal.A400,
 		main: teal[400],
 		dark: teal[700],
-		contrastText: darkBlue[800],
+		contrastText: lightBlue[400],
 	},
 	light: {
 		light: white,
@@ -74,7 +74,7 @@ export const paletteDark: CustomThemePalette = {
 	grey,
 	text: {
 		disabled: grey[600],
-		primary: grey[800],
+		primary: grey[100],
 		secondary: purple[700],
 	},
 };

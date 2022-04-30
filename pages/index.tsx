@@ -10,6 +10,8 @@ import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 
 const Home = () => {
+	const theme = useTheme();
+	console.log(theme);
 	return (
 		<div>
 			<Head>
@@ -17,10 +19,18 @@ const Home = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Hero />
-			<Typography variant="body1" component="div">
+			<Typography
+				variant="labelMediumDefault"
+				component="div"
+				color="secondary"
+			>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			</Typography>
-			<Typography variant="labelLargeDefault" component="div">
+			<Typography
+				variant="labelLargeDefault"
+				component="div"
+				color="secondary.contrastText"
+			>
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 			</Typography>
 		</div>
@@ -28,7 +38,7 @@ const Home = () => {
 };
 
 Home.getLayout = function getLayout(page) {
-	return <FullWidthPanel title="title test">{page}</FullWidthPanel>;
+	return <FullWidthPanel>{page}</FullWidthPanel>;
 };
 
 export default Home;

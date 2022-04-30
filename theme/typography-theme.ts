@@ -168,7 +168,7 @@ export const updateTypography = (
 	const labelText = "label";
 
 	Object.entries(labels).forEach((label: [string, FontSize]) => {
-		typos[`${labelText}${capitalizeString(label[0])}Default`] = {
+		typos[`${labelText}${capitalizeString(label[0])}`] = {
 			color: palette.text.primary,
 			fontWeight: label[1].fontWeight,
 			lineHeight: `${label[1].lineHeight}px`,
