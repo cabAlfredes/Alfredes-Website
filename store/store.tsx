@@ -1,5 +1,5 @@
 import React, { useReducer, createContext, useContext } from "react";
-import { images } from "../config/assets";
+import { images } from "@/config/assets";
 
 const initialState = {
 	showMenu: false,

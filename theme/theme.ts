@@ -2,16 +2,11 @@ import {
 	Components,
 	createTheme as createMUITheme,
 } from "@mui/material/styles";
-
-// import { lightPalette } from "./light";
-// import { darkPalette } from "./dark";
 import { Color, PaletteMode } from "@mui/material";
-
 import {
 	SimplePaletteColorOptions,
 	TypeText,
 } from "@mui/material/styles/createPalette";
-
 import { updateTypography, CustomThemeTypography } from "./typography-theme";
 import { defaultComponentOverrides } from "./component-overrides";
 
@@ -19,17 +14,25 @@ declare module "@mui/material/styles/createTheme" {
 	export interface Theme {
 		background: {
 			content: string;
+			// header: string;
 		};
 	}
 
 	export interface ThemeOptions {
 		background: {
 			content: string;
+			// header: string;
 		};
 	}
 }
 
 declare module "@mui/material/styles" {
+	export interface TypeBackground {
+		header: string;
+		paper: string;
+		default: string;
+	}
+
 	export interface Palette {
 		light: Palette["primary"];
 		dark: Palette["primary"];
@@ -44,7 +47,9 @@ declare module "@mui/material/styles" {
 		accent3Dark: React.CSSProperties["color"];
 		accent4Dark: React.CSSProperties["color"];
 		accent5Dark: React.CSSProperties["color"];
+		background: TypeBackground;
 	}
+
 	export interface PaletteOptions {
 		light?: PaletteOptions["primary"];
 		dark?: PaletteOptions["primary"];
@@ -85,9 +90,10 @@ export interface CustomThemePalette {
 	success: SimplePaletteColorOptions;
 	background: {
 		default: string;
-		paper: string;
 		header: string;
+		paper: string;
 	};
+
 	action: {
 		disabled: string;
 		disabledOpacity: number;
@@ -95,6 +101,7 @@ export interface CustomThemePalette {
 	grey: Color;
 	text: TypeText;
 }
+
 export interface CustomThemeProps {
 	darkMode: boolean;
 	palette: CustomThemePalette;

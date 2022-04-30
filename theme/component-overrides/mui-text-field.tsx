@@ -16,7 +16,7 @@ export const muiTextFieldOverrides = (
 			"& .MuiInputLabel-root": {
 				position: "relative",
 				transform: "none",
-				color: palette.text.primary,
+				color: palette.primary.main,
 				fontSize: typography.labels.small,
 				lineHeight: `${typography.labels.small.lineHeight}px`,
 				fontWeight: "500",
