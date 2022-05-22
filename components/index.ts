@@ -1,3 +1,3 @@
-import ImageListWrapper from "./ImageListWrapper";
-import PageBanner from "./PageBanner";
-export { ImageListWrapper, PageBanner };
+export * from "./ImageListWrapper";
+export * from "./PageBanner";
+export * from "./HowToArribe";

@@ -11,7 +11,7 @@ import { Typography } from "@mui/material";
 
 const Home = () => {
 	const theme = useTheme();
-	console.log(theme);
+	console.log(theme.typography);
 	return (
 		<div>
 			<Head>

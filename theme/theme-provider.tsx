@@ -1,9 +1,3 @@
-import { createTheme } from "./theme";
-import React from "react";
-import { useStateContext } from "@/store/store";
-// import styling variables
-import { ThemeProvider as MUIThemeProvider } from "@mui/material";
-import { ThemeProvider } from "@emotion/react";
 import {
 	headings,
 	labelModifications,
@@ -20,6 +14,13 @@ import {
 	white,
 } from "./styling-variables";
 
+// import styling variables
+import { ThemeProvider as MUIThemeProvider } from "@mui/material";
+import React from "react";
+import { ThemeProvider } from "@emotion/react";
+import { createTheme } from "./theme";
+import { useStateContext } from "@/store/store";
+
 export const themeBuilder = (darkMode) => {
 	return createTheme({
 		darkMode,
@@ -28,7 +29,7 @@ export const themeBuilder = (darkMode) => {
 			content: white,
 		},
 		typography: {
-			fontFamily: "Roboto",
+			fontFamily: "Ubuntu",
 			headings,
 			paragraphs,
 			links,

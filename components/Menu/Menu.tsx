@@ -1,89 +1,108 @@
+import { keyframes, styled, useTheme } from "@mui/material/styles";
 import { useStateContext, useStateDispatch } from "@/store/store";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import Box from "@mui/material/Box";
-import NextLink from "next/link";
+import IconButton from "@mui/material/IconButton";
 import { Link } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import NextLink from "next/link";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 interface MenuItem {
-  urlPath: string;
-  text: string;
+	urlPath: string;
+	text: string;
 }
 
 const items = [
-  {
-    urlPath: "/",
-    text: "Home",
-  },
-  {
-    urlPath: "/about",
-    text: "La Cabana",
-  },
-  {
-    urlPath: "/servicios",
-    text: "Servicios",
-  },
-  {
-    urlPath: "/fotos",
-    text: "Fotos",
-  },
-  {
-    urlPath: "/como_llegar",
-    text: "Como Llegar",
-  },
-  {
-    urlPath: "/contacto",
-    text: "Contacto",
-  },
+	{
+		urlPath: "/",
+		text: "Home",
+	},
+	{
+		urlPath: "/about",
+		text: "La Cabana",
+	},
+	{
+		urlPath: "/servicios",
+		text: "Servicios",
+	},
+	{
+		urlPath: "/fotos",
+		text: "Fotos",
+	},
+	{
+		urlPath: "/como_llegar",
+		text: "Como Llegar",
+	},
+	{
+		urlPath: "/contacto",
+		text: "Contacto",
+	},
 ];
 
-const Menu = (props) => {
-  const { showMenu } = useStateContext();
-  const dispatch = useStateDispatch();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+const LinkStyled = styled(Link)(({ theme }) => ({
+	borderRadius: theme.spacing(4),
+	padding: theme.spacing(1),
+	paddingLeft: theme.spacing(3),
+	paddingRight: theme.spacing(3),
+	backgroundColor: theme.palette.light.main,
+	opacity: 0.8,
+	transition: "all 0.25s ease-in-out",
+	":hover": {
+		backgroundColor: theme.palette.background.default,
+		color: theme.palette.light.main,
+	},
+}));
 
-  const handleMobileMenu = () => {
-    console.log("handleMobileMenu", showMenu);
+const Menu = () => {
+	const { showMenu } = useStateContext();
+	const dispatch = useStateDispatch();
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-    dispatch({
-      type: "TOGGLE_MENU",
-    });
-  };
+	const handleMobileMenu = () => {
+		console.log("handleMobileMenu", showMenu);
 
-  const Menu = () => {
-    if (isMobile) {
-      return (
-        <Box component="nav">
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleMobileMenu}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Box>
-      );
-    } else {
-      return (
-        <Box component="nav" display="flex" gap={3} mt={2}>
-          {items.map((link: MenuItem, index: number) => (
-            <NextLink key={index} href={link.urlPath} passHref>
-              <Link underline="none" color="secondary" variant="body1">
-                {link.text}
-              </Link>
-            </NextLink>
-          ))}
-        </Box>
-      );
-    }
-  };
+		dispatch({
+			type: "TOGGLE_MENU",
+		});
+	};
 
-  return <Menu />;
+	const Menu = () => {
+		if (isMobile) {
+			return (
+				<Box component="nav">
+					<IconButton
+						size="large"
+						edge="start"
+						color="inherit"
+						aria-label="menu"
+						onClick={handleMobileMenu}
+					>
+						<MenuIcon />
+					</IconButton>
+				</Box>
+			);
+		} else {
+			return (
+				<Box component="nav" display="flex" gap={2} mt={2}>
+					{items.map((link: MenuItem, index: number) => (
+						<NextLink key={index} href={link.urlPath} passHref>
+							<LinkStyled
+								underline="none"
+								color="darkBlue"
+								variant="labelLargeStrike"
+							>
+								{link.text}
+							</LinkStyled>
+						</NextLink>
+					))}
+				</Box>
+			);
+		}
+	};
+
+	return <Menu />;
 };
 
 export default Menu;
