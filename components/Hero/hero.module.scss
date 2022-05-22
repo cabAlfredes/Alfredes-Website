@@ -1,81 +1,80 @@
 .videoWrapper {
-  height: 700px;
-  position: relative;
-  width: 100%;
-  margin-bottom: 150px;
+	height: 700px;
+	position: relative;
+	width: 100%;
 }
 
 .video {
-  height: 100%;
-  /* margin-top: -40px; */
-  object-fit: cover;
-  width: 100%;
-  z-index: -1;
+	height: 100%;
+	/* margin-top: -40px; */
+	object-fit: cover;
+	width: 100%;
+	z-index: -1;
 }
 
 .controls {
-  position: absolute;
-  right: 10px;
-  top: 20px;
+	position: absolute;
+	right: 10px;
+	top: 20px;
 }
 
 .pausePlayButton {
-  align-items: center;
-  background-color: hsla(0, 0%, 50%, 0.5);
-  border-radius: 50%;
-  border: none;
-  color: rgb(223, 223, 223);
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: center;
-  padding: 15px;
-  text-align: center;
+	align-items: center;
+	background-color: hsla(0, 0%, 50%, 0.5);
+	border-radius: 50%;
+	border: none;
+	color: rgb(223, 223, 223);
+	display: flex;
+	font-size: 1.5rem;
+	justify-content: center;
+	padding: 15px;
+	text-align: center;
 }
 
 .textDividerCentered {
-  // margin: 0 2rem;
-  // width: 100%;
-  text-align: center;
-  padding: 0 4rem;
+	// margin: 0 2rem;
+	// width: 100%;
+	text-align: center;
+	padding: 0 4rem;
 }
 
 @media (max-width: 780px) {
-  .videoBottomFrame {
-    .text {
-      font-size: 2rem;
-      width: 80%;
-    }
-  }
+	.videoBottomFrame {
+		.text {
+			font-size: 2rem;
+			width: 80%;
+		}
+	}
 }
 
 @media (max-width: 640px) {
-  .videoWrapper {
-    height: 400px;
-    margin-bottom: 150px;
-  }
-  .videoBottomFrame {
-    .text {
-      font-size: 1.5rem;
-      width: 90%;
-    }
-  }
+	.videoWrapper {
+		height: 400px;
+		margin-bottom: 150px;
+	}
+	.videoBottomFrame {
+		.text {
+			font-size: 1.5rem;
+			width: 90%;
+		}
+	}
 
-  .videoBottomFrame {
-    bottom: -80px;
-    display: flex;
-    height: 130px;
-  }
+	.videoBottomFrame {
+		bottom: -80px;
+		display: flex;
+		height: 130px;
+	}
 }
 
 .textDividerCentered {
-  font-family: var(--fontShadow);
-  font-size: 2rem;
-  letter-spacing: var(--spacing);
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60%;
-  width: 100%;
-  height: 100%;
+	font-family: var(--fontShadow);
+	font-size: 2rem;
+	letter-spacing: var(--spacing);
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60%;
+	width: 100%;
+	height: 100%;
 }

@@ -1,5 +1,5 @@
-import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 import { CustomThemePalette } from "./theme";
+import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 
 interface ResetFonts {
 	h5: false;
@@ -21,8 +21,8 @@ type LinksType = `${Leaves<LinksSet, 0, "">}`;
 
 export interface CustomThemeTypographyBase {
 	fontFamily: string;
-	Gilroy?: TypographyStyleOptions;
-	gilroy?: TypographyStyleOptions;
+	Ubuntu?: TypographyStyleOptions;
+	ubuntu?: TypographyStyleOptions;
 }
 
 export type FontsTrue<T extends string | number | symbol> = {
@@ -162,13 +162,44 @@ export const updateTypography = (
 	typography: CustomThemeTypography,
 	palette: CustomThemePalette,
 ) => {
-	const { labels, headings, ...newTypography } = typography;
+	const { labels, headings, links, paragraphs, ...newTypography } = typography;
+	console.log(links);
 	const typedTypography = newTypography as any; // FIXME: remove any
 	const typos: Record<string, TypographyStyleOptions> = {};
-	const labelText = "label";
+	const labelText = "custom-label_";
+	const linkText = "custom-link_";
+	const headingText = "custom-heading_";
+	const paragraphText = "custom-paragraph_";
 
 	Object.entries(labels).forEach((label: [string, FontSize]) => {
 		typos[`${labelText}${capitalizeString(label[0])}`] = {
+			color: palette.text.primary,
+			fontWeight: label[1].fontWeight,
+			lineHeight: `${label[1].lineHeight}px`,
+			fontSize: `${label[1].fontSize}px`,
+		};
+	});
+
+	Object.entries(links).forEach((label: [string, FontSize]) => {
+		typos[`${linkText}${capitalizeString(label[0])}`] = {
+			color: palette.text.primary,
+			fontWeight: label[1].fontWeight,
+			lineHeight: `${label[1].lineHeight}px`,
+			fontSize: `${label[1].fontSize}px`,
+		};
+	});
+
+	Object.entries(headings).forEach((label: [string, FontSize]) => {
+		typos[`${headingText}${capitalizeString(label[0])}`] = {
+			color: palette.text.primary,
+			fontWeight: label[1].fontWeight,
+			lineHeight: `${label[1].lineHeight}px`,
+			fontSize: `${label[1].fontSize}px`,
+		};
+	});
+
+	Object.entries(paragraphs).forEach((label: [string, FontSize]) => {
+		typos[`${paragraphText}${capitalizeString(label[0])}`] = {
 			color: palette.text.primary,
 			fontWeight: label[1].fontWeight,
 			lineHeight: `${label[1].lineHeight}px`,
