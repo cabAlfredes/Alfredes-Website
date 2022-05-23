@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import Head from "next/head";
-import { useStateContext } from "@/store/store";
-import Image from "next/image";
-import { ImageListWrapper, PageBanner } from "@/components/index";
-import { FullWidthPanel } from "@/components/Layout/templates";
 import { Box, ImageList, ImageListItem } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+import { ImageListWrapper, PageBanner } from "@/components/index";
+import React, { useState } from "react";
+
 import { FullScreenImage } from "@/components/FullScreenImage";
+import { FullWidthPanel } from "@/components/Layout/templates";
+import Head from "next/head";
+import Image from "next/image";
 import { Paper } from "@mui/material";
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
+import { useStateContext } from "@/store/store";
 
 const Masonry = styled("div")(({ theme }) => ({
 	columns: "6 200px",
