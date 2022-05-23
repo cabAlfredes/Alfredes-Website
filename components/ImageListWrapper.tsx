@@ -1,14 +1,15 @@
-import React from "react";
 import { ImageList, ImageListItem } from "@mui/material";
+
 import { Asset } from "@/config/assets";
 import Image from "next/image";
+import React from "react";
 
 interface Props {
 	images: Asset[];
 	onClick: (e: React.SyntheticEvent<EventTarget>) => void;
 }
 
-const ImageListWrapper = ({ images, onClick }: Props) => {
+export const ImageListWrapper = ({ images, onClick }: Props) => {
 	console.log(images);
 	return (
 		<ImageList
@@ -44,5 +45,3 @@ const ImageListWrapper = ({ images, onClick }: Props) => {
 		</ImageList>
 	);
 };
-
-export default ImageListWrapper;
