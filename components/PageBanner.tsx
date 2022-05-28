@@ -1,30 +1,39 @@
+import { Typography, styled } from "@mui/material";
+
 import React from "react";
-import { styled } from "@mui/material/styles";
+import { themeBuilder } from "@/theme/theme-provider";
 
 const PageBannerWrapper = styled("div")(({ theme }) => {
 	return {
-		position: "relative",
-		margin: "auto",
-		width: "100%",
-		backgroundColor: theme.palette.secondary.main,
-		// backgroundImage: 'url("/assets/bg_texture.png")',
-		minHeight: 180,
-		display: "flex",
-		justifyContent: "center",
 		alignItems: "center",
-		fontSize: "3rem",
-		letterSpacing: "0.1rem",
+		backgroundImage: 'url("/assets/banner/cabana.jpeg")',
+		backgroundPosition: "50% 45%",
+		backgroundSize: "cover",
+		display: "flex",
 		fontFamily: "Montserrat",
-		color: theme.palette.secondary.contrastText,
-		marginBottom: theme.spacing(2),
+		fontSize: "3rem",
+		justifyContent: "center",
+		letterSpacing: "0.1rem",
+		margin: "auto",
+		minHeight: 250,
+		position: "relative",
+		width: "100%",
 	};
 });
 
+const Title = styled(Typography)(({ theme }) => ({
+	borderRadius: "0.5rem",
+	padding: theme.spacing(4),
+}));
+
 interface Props {
-	title: string;
-	subtitle?: string;
+	title?: string;
 }
 
 export const PageBanner = ({ title }: Props) => {
-	return <PageBannerWrapper>{title}</PageBannerWrapper>;
+	return (
+		<PageBannerWrapper>
+			{title && <Title variant="h1">{title}</Title>}
+		</PageBannerWrapper>
+	);
 };

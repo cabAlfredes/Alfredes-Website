@@ -1,13 +1,21 @@
-import Box from "@mui/material/Box";
-import { Container } from "@mui/material";
+import { Box, Container, styled } from "@mui/material";
+
 import { PageBanner } from "@/components/index";
+
+const ContainerStyled = styled(Container)(({ theme }) => ({
+	marginTop: theme.spacing(8),
+}));
+
+interface CommonProps {
+	title: string;
+}
 
 interface CenterPanelProps {
 	children: React.ReactNode;
 }
 
 interface CenterPanelWithBanner {
-	bannerTitle: string;
+	bannerTitle?: string;
 	children: React.ReactNode;
 }
 
@@ -22,7 +30,7 @@ export const CenterPanelWithBanner = (props: CenterPanelWithBanner) => {
 			}}
 		>
 			<PageBanner title={bannerTitle} />
-			<Container maxWidth="lg">{children}</Container>
+			<ContainerStyled maxWidth="lg">{children}</ContainerStyled>
 		</Box>
 	);
 };
