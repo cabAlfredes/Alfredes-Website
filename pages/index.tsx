@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
+import { CenterPanel, FullWidthPanel } from "@/components/Layout/templates";
+import { useEffect, useState } from "react";
+
+import About from "@/components/About";
 import Head from "next/head";
-import { useRouter } from "next/router";
 // import { useSpring, config, animated } from 'react-spring';
 import Hero from "@/components/Hero";
-import About from "@/components/About";
 import Services from "@/components/Services";
-import { CenterPanel, FullWidthPanel } from "@/components/Layout/templates";
-import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import { useRouter } from "next/router";
+import { useTheme } from "@mui/material/styles";
 
 const Home = () => {
 	const theme = useTheme();
