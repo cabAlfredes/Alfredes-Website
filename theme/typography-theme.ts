@@ -163,7 +163,7 @@ export const updateTypography = (
 	palette: CustomThemePalette,
 ) => {
 	const { labels, headings, links, paragraphs, ...newTypography } = typography;
-	console.log(links);
+	// console.log(links);
 	const typedTypography = newTypography as any; // FIXME: remove any
 	const typos: Record<string, TypographyStyleOptions> = {};
 	const labelText = "custom-label_";

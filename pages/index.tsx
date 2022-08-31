@@ -5,7 +5,7 @@ import About from "@/components/About";
 import Head from "next/head";
 // import { useSpring, config, animated } from 'react-spring';
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
+import {Services} from "@/components/Services";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useTheme } from "@mui/material/styles";

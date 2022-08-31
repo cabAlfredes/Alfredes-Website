@@ -26,4 +26,11 @@ export const defaultComponentOverrides = (
 	MuiAutocomplete: muiAutocompleteOverrides(spacing, palette),
 	MuiDrawer: muiDrawerOverrides(spacing, palette),
 	MuiSnackbar: muiSnackBarOverrides(spacing, palette),
+	MuiListItem:{
+		styleOverrides:{
+			root:{
+				// color: 'red'
+			}
+		}
+	}
 });

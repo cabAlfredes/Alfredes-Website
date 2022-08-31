@@ -59,6 +59,7 @@ const ContactForm = (props) => {
 							variant="outlined"
 							name="name"
 							label="Nombre"
+							color='secondary'
 							type="text"
 							value={formik.values.name}
 							onChange={formik.handleChange}

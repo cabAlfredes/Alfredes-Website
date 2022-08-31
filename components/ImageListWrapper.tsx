@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const ImageListWrapper = ({ images, onClick }: Props) => {
-	console.log(images);
 	return (
 		<ImageList
 			sx={{
@@ -37,7 +36,10 @@ export const ImageListWrapper = ({ images, onClick }: Props) => {
 							placeholder={"blur"}
 							onClick={onClick}
 							layout="fill"
+							lazyBoundary="10px"
+							objectPosition={'50% 50%'}
 							objectFit="cover"
+							priority={false}
 						/>
 					</ImageListItem>
 				);
