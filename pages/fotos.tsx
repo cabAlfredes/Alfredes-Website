@@ -52,7 +52,7 @@ function Gallery() {
 			<Head>
 				<link rel="stylesheet" href="assets/glide.core.css" />
 				<link rel="stylesheet" href="assets/glide.theme.css" />
-				<title>Fotos</title>
+				<title>Alfredes - Fotos</title>
 			</Head>
 			<div>
 				<PageBanner title="Imágenes de la cabana" />

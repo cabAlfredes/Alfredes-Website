@@ -21,10 +21,15 @@ const PageBannerWrapper = styled("div")(({ theme }) => {
 	};
 });
 
-const Title = styled(Typography)(({ theme }) => ({
-	borderRadius: "0.5rem",
-	padding: theme.spacing(4),
-}));
+const Title = styled(Typography)(({ theme }) =>{
+
+	return  ({
+		borderRadius: "0.5rem",
+		padding: theme.spacing(4),
+		color: theme.palette.common.white,
+		
+	})
+});
 
 interface Props {
 	title?: string;
@@ -33,7 +38,7 @@ interface Props {
 export const PageBanner = ({ title }: Props) => {
 	return (
 		<PageBannerWrapper>
-			{title && <Title variant="h1">{title}</Title>}
+			{title && <Title variant="labelLargeBold">{title}</Title>}
 		</PageBannerWrapper>
 	);
 };

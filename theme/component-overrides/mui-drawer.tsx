@@ -10,23 +10,25 @@ export const muiDrawerOverrides = (
 				display: "none",
 			},
 			"& .MuiPaper-root": {
-				top: "88px",
+				// top: "88px",
 				overflowX: "hidden",
 			},
 			"& .MuiList-root": {
-				paddingTop: `${spacing[3]}px`,
+				paddingTop: `${spacing[2]}px`,
 			},
 			"& .MuiListItem-button": {
+				transition: 'all 0.2s ease-in', 
 				"&:hover": {
-					backgroundColor: palette.secondary.light,
+					backgroundColor: palette.primary.light,
 					paddingLeft: `${spacing[4]}px !important`,
+
 				},
 				paddingRight: "0px!important",
 				marginLeft: `${spacing[0]}px!important`,
 			},
 			"& .MuiListItem-root": {
 				cursor: "pointer",
-				paddingRight: `${spacing[3]}px`,
+				paddingRight: `${spacing[1]}px`,
 				marginLeft: "auto",
 			},
 		},

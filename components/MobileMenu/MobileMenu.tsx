@@ -27,6 +27,8 @@ const MobileMenu = () => {
   };
 
 
+  // console.log(items)
+
   return (
     <div>
       <Drawer

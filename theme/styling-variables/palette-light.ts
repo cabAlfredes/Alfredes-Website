@@ -74,7 +74,7 @@ export const paletteLight: CustomThemePalette = {
 	grey,
 	text: {
 		disabled: grey[400],
-		primary: grey[800],
+		primary: grey[200],
 		secondary: yellow[500],
 	},
 };

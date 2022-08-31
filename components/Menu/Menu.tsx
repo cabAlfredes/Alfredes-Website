@@ -45,12 +45,11 @@ const LinkStyled = styled(Link)(({ theme }) => ({
 	padding: theme.spacing(1),
 	paddingLeft: theme.spacing(3),
 	paddingRight: theme.spacing(3),
-	backgroundColor: theme.palette.light.main,
 	opacity: 0.8,
 	transition: "all 0.25s ease-in-out",
 	":hover": {
-		backgroundColor: theme.palette.background.default,
-		color: theme.palette.light.main,
+		backgroundColor: theme.palette.text.secondary,
+		color: theme.palette.text.primary,
 	},
 }));
 
@@ -61,7 +60,6 @@ const Menu = () => {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	const handleMobileMenu = () => {
-		console.log("handleMobileMenu", showMenu);
 
 		dispatch({
 			type: "TOGGLE_MENU",
@@ -75,7 +73,7 @@ const Menu = () => {
 					<IconButton
 						size="large"
 						edge="start"
-						color="inherit"
+						color="primary"
 						aria-label="menu"
 						onClick={handleMobileMenu}
 					>

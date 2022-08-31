@@ -24,7 +24,11 @@ import { useStateContext } from "@/store/store";
 export const themeBuilder = (darkMode) => {
 	return createTheme({
 		darkMode,
-		palette: darkMode ? paletteDark : paletteLight,
+		// palette: darkMode ? paletteDark : paletteLight,
+		palette: {
+			mode: darkMode ? 'dark' : 'light',
+			...paletteDark
+		},
 		background: {
 			content: white,
 		},
@@ -55,6 +59,7 @@ export const SiteThemeProvider: React.FC = ({
 }) => {
 	const state = useStateContext();
 	const theme = themeBuilder(state.darkMode);
+	console.log(theme)
 
 	return (
 		<MUIThemeProvider theme={theme}>
