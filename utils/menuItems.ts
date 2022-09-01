@@ -17,22 +17,22 @@ export const items: Array<MenuItem> = [
   },
   {
     title: 'Servicios',
-    url: '/services',
+    url: '/servicios',
     target: ''
   },
   {
     title: 'Fotos',
-    url: '/gallery',
+    url: '/fotos',
     target: ''
   },
   {
     title: 'Como Llegar',
-    url: '/map',
+    url: '/como_llegar',
     target: ''
   },
   {
     title: 'Contacto',
-    url: '/contact',
+    url: '/contacto',
     target: ''
   },
 ];
