@@ -17,15 +17,15 @@ export const defaultComponentOverrides = (
 	typography: CustomThemeTypography,
 	spacing: number[],
 ): Components => ({
-	MuiButton: muiButtonOverrides(palette, typography),
-	MuiCheckbox: muiCheckboxOverrides(spacing),
-	MuiRadio: muiRadioOverrides(spacing),
-	MuiSlider: muiSliderOverrides(spacing, palette, typography),
-	MuiSwitch: muiSwitchOverrides(spacing, palette),
-	MuiTextField: muiTextFieldOverrides(spacing, palette, typography),
-	MuiAutocomplete: muiAutocompleteOverrides(spacing, palette),
-	MuiDrawer: muiDrawerOverrides(spacing, palette),
-	MuiSnackbar: muiSnackBarOverrides(spacing, palette),
+	// MuiButton: muiButtonOverrides(palette, typography),
+	// MuiCheckbox: muiCheckboxOverrides(spacing),
+	// MuiRadio: muiRadioOverrides(spacing),
+	// MuiSlider: muiSliderOverrides(spacing, palette, typography),
+	// MuiSwitch: muiSwitchOverrides(spacing, palette),
+	// MuiTextField: muiTextFieldOverrides(spacing, palette, typography),
+	// MuiAutocomplete: muiAutocompleteOverrides(spacing, palette),
+	// MuiDrawer: muiDrawerOverrides(spacing, palette),
+	// MuiSnackbar: muiSnackBarOverrides(spacing, palette),
 	MuiListItem:{
 		styleOverrides:{
 			root:{

@@ -12,12 +12,12 @@ export const items: Array<MenuItem> = [
   },
   {
     title: 'La Cabaña',
-    url: '/#about',
+    url: '/about',
     target: ''
   },
   {
     title: 'Servicios',
-    url: '/#services',
+    url: '/services',
     target: ''
   },
   {

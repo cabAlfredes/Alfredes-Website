@@ -73,7 +73,7 @@ const Menu = () => {
 					<IconButton
 						size="large"
 						edge="start"
-						color="primary"
+						color="secondary"
 						aria-label="menu"
 						onClick={handleMobileMenu}
 					>
