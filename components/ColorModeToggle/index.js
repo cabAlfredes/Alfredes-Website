@@ -18,7 +18,7 @@ function ColorModeToggle() {
 
 	return (
 		<Box>
-			<IconButton sx={{ ml: 1 }} onClick={handleClick} color='primary'>
+			<IconButton sx={{ ml: 1 }} onClick={handleClick} color='secondary'>
 				{theme.palette.type === "dark" ? (
 					<Brightness7Icon />
 				) : (

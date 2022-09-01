@@ -59,7 +59,6 @@ const ContactForm = (props) => {
 							variant="outlined"
 							name="name"
 							label="Nombre"
-							color='secondary'
 							type="text"
 							value={formik.values.name}
 							onChange={formik.handleChange}
@@ -99,6 +98,7 @@ const ContactForm = (props) => {
 									name: "dateFrom",
 									error:
 										formik.touched.dateFrom && Boolean(formik.errors.dateFrom),
+									
 								}}
 								renderInput={(params) => <TextField {...params} />}
 								label="Desde"
@@ -106,7 +106,7 @@ const ContactForm = (props) => {
 								onChange={handleDateFromChange}
 							/>
 							<MobileDatePicker
-								inputFormat="dd/MM/yyyy"
+									inputFormat="dd/MM/yyyy"
 								InputProps={{
 									name: "dateTo",
 									error: formik.touched.dateTo && Boolean(formik.errors.dateTo),
