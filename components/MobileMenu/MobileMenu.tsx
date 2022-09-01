@@ -44,14 +44,14 @@ const MobileMenu = () => {
         >
           <List>
             {items.map((item: MenuItem, index) => (
-              <NextLink href={item.url} passHref>
-                <ListItemButton component={Link} key={index}>
+              <NextLink href={item.url} passHref key={index}>
+                <ListItemButton >
                   {/* <Link> */}
                   {/* <ListItemIcon> */}
                   {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                   {/* </ListItemIcon> */}
-                  <ListItemText>{item.title}</ListItemText>
                   {/* </Link> */}
+                  <ListItemText><a>{item.title}</a></ListItemText>
                 </ListItemButton>
               </NextLink>
             ))}

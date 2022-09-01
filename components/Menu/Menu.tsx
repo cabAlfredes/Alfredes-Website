@@ -7,38 +7,7 @@ import { Link } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NextLink from "next/link";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
-interface MenuItem {
-	urlPath: string;
-	text: string;
-}
-
-const items = [
-	{
-		urlPath: "/",
-		text: "Home",
-	},
-	{
-		urlPath: "/about",
-		text: "La Cabana",
-	},
-	{
-		urlPath: "/servicios",
-		text: "Servicios",
-	},
-	{
-		urlPath: "/fotos",
-		text: "Fotos",
-	},
-	{
-		urlPath: "/como_llegar",
-		text: "Como Llegar",
-	},
-	{
-		urlPath: "/contacto",
-		text: "Contacto",
-	},
-];
+import { items, MenuItem } from "@/utils/menuItems";
 
 const LinkStyled = styled(Link)(({ theme }) => ({
 	borderRadius: theme.spacing(4),
@@ -85,13 +54,13 @@ const Menu = () => {
 			return (
 				<Box component="nav" display="flex" gap={2} mt={2}>
 					{items.map((link: MenuItem, index: number) => (
-						<NextLink key={index} href={link.urlPath} passHref>
+						<NextLink key={index} href={link.url} passHref>
 							<LinkStyled
 								underline="none"
 								color="darkBlue"
 								variant="labelLargeStrike"
 							>
-								{link.text}
+								{link.title}
 							</LinkStyled>
 						</NextLink>
 					))}
