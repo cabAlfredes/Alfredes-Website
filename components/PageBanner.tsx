@@ -47,7 +47,7 @@ interface Props {
 export const PageBanner = ({ title }: Props) => {
   return (
     <PageBannerWrapper>
-      <Left>{title && <Title variant="custom-label_Large" color="secondary">{title}</Title>}</Left>
+      <Left>{title && <Title variant="labelLargeStrike" color="secondary">{title}</Title>}</Left>
       <Right></Right>
     </PageBannerWrapper>
   );
