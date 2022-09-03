@@ -15,7 +15,7 @@ export const HowToArribe = () => {
 				console.log(type);
 				return (
 					<div>
-						<Typography variant={type}>{type}</Typography>
+						<Typography color="secondary" variant={type}>{type}</Typography>
 					</div>
 				);
 			})}

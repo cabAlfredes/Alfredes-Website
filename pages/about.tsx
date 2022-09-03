@@ -1,17 +1,21 @@
-import About from "@/components/About";
-import { CenterPanelWithBanner } from "@/components/Layout/templates";
-import React from "react";
+import { About, ContactForm } from "@/components/index";
+import { TwoColumns } from "@/components/Layout/templates";
 
 const AboutPage = () => {
-	return <About />;
-};
+	return null
+}
 
 export default AboutPage;
 
-AboutPage.getLayout = function getLayout(page) {
-	return (
-		<CenterPanelWithBanner bannerTitle="LA CABAÑA">
-			{page}
-		</CenterPanelWithBanner>
-	);
+AboutPage.getLayout = function getLayout(page: any) {
+  console.log(page);
+  return (
+    <TwoColumns
+      title="la cabaña"
+      leftColumn={<About />}
+      rightColumn={<ContactForm />}
+      showBanner
+      bannerTitle="Como se construyo la cabaña"
+    />
+  );
 };

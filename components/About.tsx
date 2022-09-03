@@ -1,6 +1,6 @@
 import { Typography, Paper, Box} from "@mui/material";
 
-const About = () => {
+export const About = () => {
   return (
     <Paper component="section" >
       <Box p={5}>
@@ -30,4 +30,4 @@ const About = () => {
   );
 };
 
-export default About;
+

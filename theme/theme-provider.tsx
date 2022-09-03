@@ -52,7 +52,7 @@ export const themeBuilder = (darkMode) => {
 	});
 };
 
-export const SiteThemeProvider: React.FC = ({
+export const SiteThemeProvider = ({
 	children,
 }: {
 	children: React.ReactNode;
