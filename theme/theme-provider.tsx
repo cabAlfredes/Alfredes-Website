@@ -38,6 +38,7 @@ export const themeBuilder = (darkMode) => {
 			paragraphs,
 			links,
 			labels,
+			labelModifications
 		},
 		breakpoints: {
 			values: {

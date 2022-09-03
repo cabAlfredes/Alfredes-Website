@@ -44,7 +44,7 @@ export type DefaultFontsCss = FontsCss<LabelsType> &
 
 export interface CustomThemeTypography extends CustomThemeTypographyBase {
 	labels: LabelsSet;
-	// labelModifications: LabelsModifications;
+	labelModifications: LabelsModifications;
 	headings: HeadingsSet;
 	paragraphs: ParagraphsSet;
 	links: LinksSet;
@@ -135,24 +135,24 @@ export interface FontSize {
 	fontSize: number;
 	lineHeight: number;
 	textDecoration?:
-		| "none"
-		| "underline"
-		| "line-through"
-		| "underline line-through";
+	| "none"
+	| "underline"
+	| "line-through"
+	| "underline line-through";
 
 	fontFamily?: string;
 	fontWeight:
-		| "normal"
-		| "bold"
-		| 100
-		| 200
-		| 300
-		| 400
-		| 500
-		| 600
-		| 700
-		| 800
-		| 900;
+	| "normal"
+	| "bold"
+	| 100
+	| 200
+	| 300
+	| 400
+	| 500
+	| 600
+	| 700
+	| 800
+	| 900;
 }
 
 const capitalizeString = (base: string) =>
@@ -162,11 +162,11 @@ export const updateTypography = (
 	typography: CustomThemeTypography,
 	palette: CustomThemePalette,
 ) => {
-	const { labels, headings, links, paragraphs, ...newTypography } = typography;
-	// console.log(links);
+	const { labels, headings, links, paragraphs, labelModifications, ...newTypography } = typography;
+	console.log(labels);
 	const typedTypography = newTypography as any; // FIXME: remove any
 	const typos: Record<string, TypographyStyleOptions> = {};
-	const labelText = "custom-label_";
+	const labelText = "label";
 	const linkText = "custom-link_";
 	const headingText = "custom-heading_";
 	const paragraphText = "custom-paragraph_";
@@ -178,10 +178,25 @@ export const updateTypography = (
 			lineHeight: `${label[1].lineHeight}px`,
 			fontSize: `${label[1].fontSize}px`,
 		};
+
+		Object.entries(labelModifications).forEach((modification) => {
+			const { fontWeight, lineHeight, fontSize, ...mods } = modification[1]
+			typos[
+				`${labelText}${capitalizeString(label[0])}${capitalizeString(
+					modification[0],
+				)}`
+			] = {
+				color: palette.text.primary,
+				fontWeight: fontWeight ?? label[1].fontWeight,
+				lineHeight: `${lineHeight ?? label[1].lineHeight}px`,
+				fontSize: `${fontSize ?? label[1].fontSize}px`,
+				...mods,
+			}
+		})
 	});
 
 	Object.entries(links).forEach((label: [string, FontSize]) => {
-		typos[`${linkText}${capitalizeString(label[0])}`] = {
+		typos[`${capitalizeString(label[0])}`] = {
 			color: palette.text.primary,
 			fontWeight: label[1].fontWeight,
 			lineHeight: `${label[1].lineHeight}px`,
@@ -190,7 +205,7 @@ export const updateTypography = (
 	});
 
 	Object.entries(headings).forEach((label: [string, FontSize]) => {
-		typos[`${headingText}${capitalizeString(label[0])}`] = {
+		typos[`${capitalizeString(label[0])}`] = {
 			color: palette.text.primary,
 			fontWeight: label[1].fontWeight,
 			lineHeight: `${label[1].lineHeight}px`,
@@ -199,7 +214,7 @@ export const updateTypography = (
 	});
 
 	Object.entries(paragraphs).forEach((label: [string, FontSize]) => {
-		typos[`${paragraphText}${capitalizeString(label[0])}`] = {
+		typos[`${capitalizeString(label[0])}`] = {
 			color: palette.text.primary,
 			fontWeight: label[1].fontWeight,
 			lineHeight: `${label[1].lineHeight}px`,
