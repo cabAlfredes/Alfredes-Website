@@ -1,11 +1,11 @@
 /** @format */
-import { useState, useMemo } from "react";
+// import type {} from '@mui/x-date-pickers/themeAugmentation';
 import Layout from "../components/Layout/Layout";
 import { StateProvider } from "../store/store";
 import { SiteThemeProvider } from "../theme/theme-provider";
 import CssBaseline from "@mui/material/CssBaseline";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import "../styles/globals.css";
 
 // export function reportWebVitals(metric) {

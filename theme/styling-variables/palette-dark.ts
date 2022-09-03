@@ -65,7 +65,7 @@ export const paletteDark: CustomThemePalette = {
 	info: { main: red[800] },
 	success: { main: green[800] },
 	background: {
-		default: grey[800],
+		default: grey[100],
 		paper: grey[800],
 		header: yellow[500],
 	},
@@ -73,7 +73,7 @@ export const paletteDark: CustomThemePalette = {
 		disabled: grey[100],
 		disabledOpacity: 0.8,
 		// focus: red[400],
-		// hover: grey[200],
+		hover: grey[900],
 		// selected: green[400],
 	} as TypeAction,
 	grey,

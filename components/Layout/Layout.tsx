@@ -1,9 +1,8 @@
 import Header from '../Header/Header';
-import styles from './layout.module.scss';
 import { Box } from '@mui/system';
 
 const Footer = () => (
-  <div className={styles.footer}>
+  <div>
     Powered by{' '}
     <a href="https://bmunz.dev" target="_blank" rel="noopener noreferrer">
       bmunz.dev

@@ -1,13 +1,8 @@
-import { Box, Container, styled } from "@mui/material";
-
-import { PageBanner } from "@/components/index";
-
-const ContainerStyled = styled(Container)(({ theme }) => ({
-	marginTop: theme.spacing(8),
-}));
+import { Container, Grid, styled } from "@mui/material";
+import { Spacer, PageBanner } from "@/components/index";
 
 interface CommonProps {
-	title: string;
+  title: string;
 }
 
 interface CenterPanelProps {
@@ -16,53 +11,71 @@ interface CenterPanelProps {
 
 interface CenterPanelWithBanner {
 	bannerTitle?: string;
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export const CenterPanelWithBanner = (props: CenterPanelWithBanner) => {
-	const { children, bannerTitle } = props;
+interface TwoColumnsProps extends CommonProps {
+	leftColumn: React.ReactNode;
+  rightColumn: React.ReactNode;
+	showBanner?: boolean;
+	bannerTitle?: string;
+}
 
-	return (
-		<Box
-			component="main"
-			sx={{
-				marginTop: "90px",
-			}}
-		>
-			<PageBanner title={bannerTitle} />
-			<ContainerStyled maxWidth="lg">{children}</ContainerStyled>
-		</Box>
-	);
+const ContainerStyled = styled(Container)(({ theme }) => ({
+  marginTop: theme.spacing(8),
+}));
+
+const MainWrapper = styled("main")(({ theme }) => ({
+  marginTop: "90px",
+}));
+
+
+
+export const CenterPanelWithBanner = (props: CenterPanelWithBanner) => {
+  const { children, bannerTitle } = props;
+
+  return (
+    <MainWrapper>
+      <PageBanner title={bannerTitle} />
+      <ContainerStyled maxWidth="lg">{children}</ContainerStyled>
+    </MainWrapper>
+  );
 };
 
 export const CenterPanel = (props: CenterPanelProps) => {
-	const { children } = props;
+  const { children } = props;
 
-	return (
-		<Box
-			component="main"
-			sx={{
-				marginTop: "150px",
-			}}
-		>
-			<Container maxWidth="lg">{children}</Container>
-		</Box>
-	);
+  return (
+    <MainWrapper>
+      <Container maxWidth="lg">{children}</Container>
+    </MainWrapper>
+  );
+};
+
+export const TwoColumns = (props: TwoColumnsProps) => {
+  const { leftColumn, rightColumn, showBanner, bannerTitle } = props;
+  return (
+    <MainWrapper>
+      {showBanner && <PageBanner title={bannerTitle ?? ""} />}
+      <Spacer size="md" />
+      <Container>
+        <Grid container spacing={5}>
+          <Grid item sm={12} md={8}>
+            {leftColumn}
+          </Grid>
+          <Grid item sm={12} md={4}>
+            {rightColumn}
+          </Grid>
+        </Grid>
+      </Container>
+    </MainWrapper>
+  );
 };
 
 export const FullWidthPanel = ({ children }) => {
-	return (
-		<Box
-			component="main"
-			sx={{
-				marginTop: "90px",
-			}}
-		>
-			{children}
-		</Box>
-	);
+  return <MainWrapper>{children}</MainWrapper>;
 };
 
 export const PanelWrapper = ({ children, className }) => {
-	return <div className={`wrapper-panel ${className}`}>{children}</div>;
+  return <div className={`wrapper-panel ${className}`}>{children}</div>;
 };
