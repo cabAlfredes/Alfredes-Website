@@ -8,28 +8,28 @@ const PageBannerWrapper = styled("div")(({ theme }) => {
     // minHeight: 250,
     position: "relative",
     width: "100%",
-		backgroundColor: theme.palette.accent1,
-		border: '1px solid red',
+		backgroundColor: theme.palette.neutral.dark,
+		// border: '1px solid red',
   };
 });
 
 const Title = styled(Typography)(({ theme }) => {
 	return {				
-    padding: theme.spacing(6),
-    color: theme.palette.common.white,
+    // padding: theme.spacing(6),
+    // color: theme.palette.common.white,
+		fontSize: '36px'
   };
 });
 
-const Left = styled(Box)(({ theme }) => ({
-	border: '1px solid green',
+const Left = styled(Box)(({ theme }) => ({	
 	flex: 1,
 	display: 'flex',
 	justifyContent: 'center',	
 	alignItems: 'center',
+	backgroundColor: 'linear-gradient(to left, #3f87a6, #ebf8e1, #f69d3c)'
 }));
 
-const Right = styled(Box)(({ theme }) => ({
-	border: '1px solid yellow',
+const Right = styled(Box)(({ theme }) => ({	
 	flex: 1,
 	width: '50%',
 	height: 250,
@@ -37,7 +37,7 @@ const Right = styled(Box)(({ theme }) => ({
   backgroundImage: 'url("/assets/banner/cabana.jpeg")',
   backgroundPosition: "50% 45%",
   backgroundSize: "cover",	
-	maskImage: 'linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0.7), rgba(0,0,0,0.0))'
+	maskImage: 'linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0.9), rgba(0,0,0,0.8), rgba(0,0,0,0.8), rgba(0,0,0,0.0))'
 }));
 
 interface Props {
@@ -47,7 +47,7 @@ interface Props {
 export const PageBanner = ({ title }: Props) => {
   return (
     <PageBannerWrapper>
-      <Left>{title && <Title variant="labelLargeStrike" color="secondary">{title}</Title>}</Left>
+      <Left>{title && <Title variant="labelLargeBold" color="textPrimary">{title}</Title>}</Left>
       <Right></Right>
     </PageBannerWrapper>
   );

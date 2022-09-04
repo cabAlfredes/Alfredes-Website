@@ -58,7 +58,7 @@ const Menu = () => {
 							<LinkStyled
 								underline="none"
 								color="darkBlue"
-								variant="labelLargeStrike"
+								variant="linkBody"
 							>
 								{link.title}
 							</LinkStyled>
