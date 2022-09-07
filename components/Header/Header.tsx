@@ -1,5 +1,5 @@
 /** @format */
-import { styled } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Link from "next/link";
 import ColorModeToggle from "../ColorModeToggle";
 import AppBar from "@mui/material/AppBar";
@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Menu from "@/components/Menu/Menu";
 import MobileMenu from "@/components/MobileMenu/MobileMenu";
+import { useMediaQuery } from "@mui/material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 	alignItems: "flex-start",
@@ -25,6 +26,9 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 function Header() {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+	
 	return (
 		<StyledAppBar position="fixed" enableColorOnDark>
 			<StyledToolbar>
@@ -41,10 +45,13 @@ function Header() {
 							/>
 						</a>
 					</Link>
-					<ColorModeToggle />
 				</Box>
-				<Menu />
+				<Box>
+
+				<Menu isMobile={isMobile}/>
 				<MobileMenu />
+					{/* <ColorModeToggle /> */}
+				</Box>
 			</StyledToolbar>
 		</StyledAppBar>
 	);

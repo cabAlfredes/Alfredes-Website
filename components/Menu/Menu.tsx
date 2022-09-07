@@ -1,4 +1,4 @@
-import { keyframes, styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { useStateContext, useStateDispatch } from "@/store/store";
 
 import Box from "@mui/material/Box";
@@ -6,7 +6,6 @@ import IconButton from "@mui/material/IconButton";
 import { Link } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import NextLink from "next/link";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { items, MenuItem } from "@/utils/menuItems";
 
 const LinkStyled = styled(Link)(({ theme }) => ({
@@ -22,11 +21,9 @@ const LinkStyled = styled(Link)(({ theme }) => ({
 	},
 }));
 
-const Menu = () => {
+const Menu = ({isMobile}:{isMobile: boolean}) => {
 	const { showMenu } = useStateContext();
 	const dispatch = useStateDispatch();
-	const theme = useTheme();
-	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	const handleMobileMenu = () => {
 
@@ -38,10 +35,10 @@ const Menu = () => {
 	const Menu = () => {
 		if (isMobile) {
 			return (
-				<Box component="nav">
+				<Box >
 					<IconButton
 						size="large"
-						edge="start"
+						edge="end"
 						color="secondary"
 						aria-label="menu"
 						onClick={handleMobileMenu}
@@ -59,6 +56,7 @@ const Menu = () => {
 								underline="none"
 								color="darkBlue"
 								variant="linkBody"
+								
 							>
 								{link.title}
 							</LinkStyled>
