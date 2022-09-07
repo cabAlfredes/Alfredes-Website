@@ -27,12 +27,11 @@ const MobileMenu = () => {
     });
   };
 
-  // console.log(items)
 
   return (
     <div>
       <Drawer
-        // anchor={anchor}
+        anchor='left'
         open={showMenu}
         onClose={toggleDrawer}
       >
@@ -51,7 +50,7 @@ const MobileMenu = () => {
                   {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
                   {/* </ListItemIcon> */}
                   {/* </Link> */}
-                  <ListItemText><a>{item.title}</a></ListItemText>
+                  <ListItemText>{item.title}</ListItemText>
                 </ListItemButton>
               </NextLink>
             ))}
