@@ -31,7 +31,7 @@ const MobileMenu = () => {
   return (
     <div>
       <Drawer
-        anchor='left'
+        anchor='right'
         open={showMenu}
         onClose={toggleDrawer}
       >
