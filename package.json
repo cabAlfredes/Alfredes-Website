@@ -30,6 +30,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/facebook-js-sdk": "^3.3.5",
     "@types/node": "^18.7.14",
     "@types/react": "^18.0.18",
     "babel-eslint": "^10.1.0",
