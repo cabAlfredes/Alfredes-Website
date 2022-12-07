@@ -1,9 +1,15 @@
-import Header from '../Header/Header';
-import { Box } from '@mui/system';
-import Facebook from '../MessengerChat'
+import Header from "../Header/Header";
+import { Box } from "@mui/system";
+import dynamic from "next/dynamic";
+// import {Chat} from '../MessengerChat/Chat'
+const Chat = dynamic(() => import("../MessengerChat/Chat"), {
+  suspense: true,
+  ssr: false,
+});
+
 const Footer = () => (
   <div>
-    Powered by{' '}
+    Powered by{" "}
     <a href="https://bmunz.dev" target="_blank" rel="noopener noreferrer">
       bmunz.dev
     </a>
@@ -14,9 +20,9 @@ function Layout({ children }) {
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh'
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
       }}
     >
       <Header />
@@ -26,11 +32,11 @@ function Layout({ children }) {
         sx={{
           py: 3,
           px: 2,
-          mt: 'auto',
+          mt: "auto",
         }}
       >
         <Footer />
-<Facebook/>
+        <Chat />
       </Box>
     </Box>
   );
