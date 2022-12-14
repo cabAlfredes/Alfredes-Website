@@ -9,6 +9,7 @@ import NextLink from "next/link";
 import { items, MenuItem } from "@/utils/menuItems";
 
 const LinkStyled = styled(Link)(({ theme }) => ({
+	fontFamily: 'Neucha, cursive',
 	borderRadius: theme.spacing(4),
 	padding: theme.spacing(1),
 	paddingLeft: theme.spacing(3),
