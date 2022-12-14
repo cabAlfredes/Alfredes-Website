@@ -1,5 +1,5 @@
 import Header from "../Header/Header";
-import { Box } from "@mui/system";
+import { Box, Typography} from "@mui/material";
 import dynamic from "next/dynamic";
 // import {Chat} from '../MessengerChat/Chat'
 const Chat = dynamic(() => import("../MessengerChat/Chat"), {
@@ -8,12 +8,18 @@ const Chat = dynamic(() => import("../MessengerChat/Chat"), {
 });
 
 const Footer = () => (
-  <div>
-    Powered by{" "}
+  <Box sx={{
+    display: 'flex',
+    justifyContent: 'center'
+  }}>
+
+  <Typography variant='labelMediumBold' color='secondary'>
+    Desarrollo de {' '}
     <a href="https://bmunz.dev" target="_blank" rel="noopener noreferrer">
       bmunz.dev
     </a>
-  </div>
+  </Typography>
+  </Box>
 );
 
 function Layout({ children }) {

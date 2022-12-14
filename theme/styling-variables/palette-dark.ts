@@ -81,5 +81,6 @@ export const paletteDark: CustomThemePalette = {
 		disabled: grey[400],
 		primary: grey[50],
 		secondary: grey[200],
+		contrast: grey[900] 
 	},
 };
