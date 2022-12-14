@@ -56,15 +56,17 @@ function Gallery() {
 			</Head>
 			<div>
 				<PageBanner title="Imágenes de la cabana" />
+				
 				<Box p={2}>
-					<Typography variant="h4" color="text.primary">
+					<Typography variant="h4" color="text.contrast">
 						Fotos del Interior
 					</Typography>
 				</Box>
 				<ImageListWrapper images={images.interior} onClick={handleClick} />
+				
 
 				<Box p={2} mt={8}>
-					<Typography variant="h4" color="text.primary">
+					<Typography variant="h4" color="text.contrast">
 						Fotos del Exterior
 					</Typography>
 				</Box>

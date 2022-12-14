@@ -60,7 +60,6 @@ export const SiteThemeProvider = ({
 }) => {
 	const state = useStateContext();
 	const theme = themeBuilder(state.darkMode);
-	console.log(theme)
 
 	return (
 		<MUIThemeProvider theme={theme}>
