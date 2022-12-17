@@ -50,12 +50,6 @@ function Hero() {
 					{(isPlaying && isVideoReady) || isPlaying ? <FaPause /> : <FaPlay />}
 				</button>
 			</div>
-
-			{/* <HeroDivider>
-        <div className={styles.textDividerCentered}>
-          donde el silencio solo es interrumpido por el cantar de los pájaros
-        </div>
-      </HeroDivider> */}
 		</Box>
 	);
 }
