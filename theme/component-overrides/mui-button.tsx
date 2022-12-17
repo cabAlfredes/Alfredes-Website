@@ -76,7 +76,7 @@ export const muiButtonOverrides = (
 		},
 		outlinedPrimary: {
 			color: palette.primary.main,
-			borderColor: palette.main,
+			borderColor: palette.primary.main,
 			"&:hover": {
 				background: palette.light,
 			},
