@@ -67,6 +67,10 @@ declare module "@mui/material/styles" {
 	}
 }
 
+interface TypeTextCustom extends TypeText{
+	contrast: string
+}
+
 export interface CustomThemePalette {
 	mode: PaletteMode;
 	primary: SimplePaletteColorOptions;
@@ -99,7 +103,7 @@ export interface CustomThemePalette {
 		disabledOpacity: number;
 	};
 	grey: Color;
-	text: TypeText;
+	text: TypeTextCustom;
 }
 
 export interface CustomThemeProps {

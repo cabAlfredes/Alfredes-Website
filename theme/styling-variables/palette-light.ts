@@ -6,7 +6,7 @@ import {
 	hotPink,
 	lightBlue,
 	lime,
-	purple,
+	// purple,
 	red,
 	teal,
 	white,
