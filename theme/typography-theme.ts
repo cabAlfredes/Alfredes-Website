@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { CustomThemePalette } from "./theme";
 import { TypographyStyleOptions } from "@mui/material/styles/createTypography";
 
@@ -163,7 +164,7 @@ export const updateTypography = (
 	palette: CustomThemePalette,
 ) => {
 	const { labels, headings, links, paragraphs, labelModifications, ...newTypography } = typography;
-	console.log(labels);
+	
 	const typedTypography = newTypography as any; // FIXME: remove any
 	const typos: Record<string, TypographyStyleOptions> = {};
 	const labelText = "label";

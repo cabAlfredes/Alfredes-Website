@@ -1,8 +1,8 @@
 import { TwoColumns } from "@/components/Layout/templates";
 import { Services, ContactForm } from "@/components/index";
 
-const ServiciosPage = (props) => {
-  console.log(props);
+const ServiciosPage = () => {
+  
   return null;
 };
 
