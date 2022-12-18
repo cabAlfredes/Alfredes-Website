@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import { useEffect, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
-import HeroDivider from "@/components/HeroDivider";
 import styles from "./hero.module.scss";
 import { Box } from "@mui/system";
 
@@ -25,7 +24,7 @@ function Hero() {
 					isPlaying ? video.play() : video.pause();
 					setIsVideoReady(true);
 				})
-				.catch((error) => {
+				.catch(() => {
 					// Auto-play was prevented
 					setIsVideoReady(false);
 				});

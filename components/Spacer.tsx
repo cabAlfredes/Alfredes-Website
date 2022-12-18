@@ -4,9 +4,10 @@ export interface SpacerProps {
   size?: "xl" | "lg" | "md" | "sm" | "xs";
 }
 
-const getSize: (theme: Theme, size: SpacerProps["size"]) => string = (
-  theme,
-  size
+
+const getSize = (
+  theme : Theme,
+  size : SpacerProps["size"]
 ) => {
   switch (size) {
     case "xl":
