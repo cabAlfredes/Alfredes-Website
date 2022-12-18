@@ -8,7 +8,7 @@ const AboutPage = () => {
 export default AboutPage;
 
 AboutPage.getLayout = function getLayout(page: any) {
-  console.log(page);
+  
   return (
     <TwoColumns
       title="la cabaña"

@@ -48,8 +48,8 @@ function Gallery() {
 	return (
 		<>
 			<Head>
-				<link rel="stylesheet" href="assets/glide.core.css" />
-				<link rel="stylesheet" href="assets/glide.theme.css" />
+				{/* <link rel="stylesheet" href="assets/glide.core.css" />
+				<link rel="stylesheet" href="assets/glide.theme.css" /> */}
 				<title>Alfredes - Fotos</title>
 			</Head>
 			<div>
