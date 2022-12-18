@@ -6,7 +6,7 @@ import React from "react";
 
 interface Props {
 	images: Asset[];
-	onClick: (e: React.SyntheticEvent<EventTarget>) => void;
+	onClick: () => void;
 }
 
 export const ImageListWrapper = ({ images, onClick }: Props) => {

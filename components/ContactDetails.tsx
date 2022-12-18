@@ -1,7 +1,7 @@
 import { FaInstagram, FaFacebook, FaWhatsapp, FaGoogle } from "react-icons/fa";
-import { Link, Paper, Stack, Typography } from "@mui/material";
+import { Link, Paper, Stack } from "@mui/material";
 
-function ContactDetails(props) {
+function ContactDetails() {
   return (
     <div>
       <Paper

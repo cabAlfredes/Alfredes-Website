@@ -1,12 +1,12 @@
 import Header from "../Header/Header";
 import { Box, Typography} from "@mui/material";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 // import {Chat} from '../MessengerChat/Chat'
 
-const Chat = dynamic(() => import("../MessengerChat/Chat"), {
-  suspense: true,
-  ssr: false,
-});
+// const Chat = dynamic(() => import("../MessengerChat/Chat"), {
+//   suspense: true,
+//   ssr: false,
+// });
 
 const Footer = () => (
   <Box sx={{

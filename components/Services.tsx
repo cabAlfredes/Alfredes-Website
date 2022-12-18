@@ -1,4 +1,4 @@
-import { Typography, Paper, Box } from "@mui/material";
+import { Paper, Box } from "@mui/material";
 
 export const Services = () => (
   <Paper component="section">

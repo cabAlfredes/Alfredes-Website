@@ -8,7 +8,7 @@ const ServiciosPage = (props) => {
 
 export default ServiciosPage;
 
-ServiciosPage.getLayout = function getLayout(page: any) {  
+ServiciosPage.getLayout = function getLayout() {  
   return (
     <TwoColumns
       title="Servicios"

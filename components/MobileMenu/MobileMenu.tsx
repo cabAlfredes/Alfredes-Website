@@ -6,14 +6,9 @@ import {
   Box,
   Drawer,
   List,
-  ListItem,
   ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Link,
+  ListItemText,  
 } from "@mui/material";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { items, MenuItem } from "@/utils/menuItems";
 import NextLink from "next/link";
 

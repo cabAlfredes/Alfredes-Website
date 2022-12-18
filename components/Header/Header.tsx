@@ -1,7 +1,6 @@
 /** @format */
 import { styled, useTheme } from "@mui/material/styles";
 import Link from "next/link";
-import ColorModeToggle from "../ColorModeToggle";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -21,7 +20,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 	},
 }));
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
+const StyledAppBar = styled(AppBar)(() => ({
 	clipPath: " polygon(0 0, 100% 0, 100% 75%, 0 100%)",
 }));
 
