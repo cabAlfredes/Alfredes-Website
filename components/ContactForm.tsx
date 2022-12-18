@@ -4,9 +4,9 @@ import { Box } from "@mui/system";
 import { TextField, Stack, Paper } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import {DatePicker} from "@mui/x-date-pickers";
+import { DatePicker } from "@mui/x-date-pickers";
 
-interface FormData {
+export interface FormProps {
   name: string;
   email: string;
   message: string;
@@ -27,7 +27,7 @@ const validationSchema = yup.object({
 });
 
 export const ContactForm = (props: ContactFormProps) => {
-  const formik = useFormik<FormData>({
+  const formik = useFormik<FormProps>({
     initialValues: {
       name: "",
       email: "",
@@ -38,7 +38,15 @@ export const ContactForm = (props: ContactFormProps) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      fetch("/api/emailHandler", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        console.log(res);
+      });
     },
   });
 
