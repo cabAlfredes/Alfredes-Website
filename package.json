@@ -20,6 +20,7 @@
     "date-fns": "^2.29.2",
     "formik": "^2.2.9",
     "load-script": "^2.0.0",
+    "mailgun-js": "^0.22.0",
     "next": "^12.2.5",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.0.7",
     "@types/facebook-js-sdk": "^3.3.5",
+    "@types/mailgun-js": "^0.22.13",
     "@types/node": "^18.7.14",
     "@types/react": "^18.0.18",
     "babel-eslint": "^10.1.0",

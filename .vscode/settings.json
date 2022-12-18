@@ -1,11 +1,15 @@
 {
   "cSpell.words": [
+    "alfredes",
     "Alfredes",
     "biosfera",
     "Cabaña",
     "crossorigin",
     "formik",
     "FREDES",
+    "mailgun",
+    "Mailgun",
+    "MAILGUN",
     "Servicios"
   ],
   "typescript.tsdk": "node_modules\\typescript\\lib",
