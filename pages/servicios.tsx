@@ -1,14 +1,14 @@
 import { TwoColumns } from "@/components/Layout/templates";
 import { Services, ContactForm } from "@/components/index";
 
-const ServiciosPage = (props) => {
-  console.log(props);
+const ServiciosPage = () => {
+  
   return null;
 };
 
 export default ServiciosPage;
 
-ServiciosPage.getLayout = function getLayout(page: any) {  
+ServiciosPage.getLayout = function getLayout() {  
   return (
     <TwoColumns
       title="Servicios"

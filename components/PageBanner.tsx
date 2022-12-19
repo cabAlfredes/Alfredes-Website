@@ -18,7 +18,7 @@ const PageBannerWrapper = styled("div")(({ theme }) => {
   };
 });
 
-const Title = styled(Typography)(({ theme }) => {
+const Title = styled(Typography)(() => {
   return {
     // padding: theme.spacing(6),
     // color: theme.palette.common.white,
@@ -28,7 +28,7 @@ const Title = styled(Typography)(({ theme }) => {
   };
 });
 
-const Left = styled(Box)(({ theme }) => ({
+const Left = styled(Box)(() => ({
   // flex: 1,
   width: '100%',
   display: "flex",

@@ -6,7 +6,7 @@ import {
 	hotPink,
 	lightBlue,
 	lime,
-	purple,
+	// purple,
 	red,
 	teal,
 	white,
@@ -76,5 +76,6 @@ export const paletteLight: CustomThemePalette = {
 		disabled: grey[400],
 		primary: grey[200],
 		secondary: yellow[500],
+		contrast: grey[900],
 	},
 };

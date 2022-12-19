@@ -1,3 +1,4 @@
+
 import { Container, Grid, styled } from "@mui/material";
 import { Spacer, PageBanner } from "@/components/index";
 
@@ -9,7 +10,7 @@ interface CenterPanelProps {
 	children: React.ReactNode;
 }
 
-interface CenterPanelWithBanner {
+interface CenterPanelWithBannerProps {
 	bannerTitle?: string;
   children: React.ReactNode;
 }
@@ -25,13 +26,13 @@ const ContainerStyled = styled(Container)(({ theme }) => ({
   marginTop: theme.spacing(8),
 }));
 
-const MainWrapper = styled("main")(({ theme }) => ({
+const MainWrapper = styled("main")(() => ({
   marginTop: "90px",
 }));
 
 
 
-export const CenterPanelWithBanner = (props: CenterPanelWithBanner) => {
+export const CenterPanelWithBanner = (props: CenterPanelWithBannerProps) => {
   const { children, bannerTitle } = props;
 
   return (

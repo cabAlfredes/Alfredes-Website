@@ -1,6 +1,6 @@
 import {
-	black,
-	darkBlue,
+	// black,
+	// darkBlue,
 	green,
 	grey,
 	hotPink,
@@ -8,8 +8,8 @@ import {
 	lime,
 	purple,
 	red,
-	teal,
-	white,
+	// teal,
+	// white,
 	yellow,
 } from "./colours";
 // import {
