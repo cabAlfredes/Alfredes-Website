@@ -26,7 +26,7 @@ export const FullScreenImage = ({ imageSrc, open, handleClose }: props) => {
   return (
     <Backdrop component="div" open={open} onClick={handleClose}>
       <FullScreenWrapper>
-        <Image src={src} layout="fill" objectFit="contain" />
+        <Image src={src} layout="fill" objectFit="contain" alt="imagen de la cabaña"/>
       </FullScreenWrapper>
     </Backdrop>
   );

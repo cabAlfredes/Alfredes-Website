@@ -1,12 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import { TextField, Stack, Paper } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import {DatePicker} from "@mui/x-date-pickers";
+import { DatePicker } from "@mui/x-date-pickers";
+import { useState } from "react";
 
-interface FormData {
+export interface FormProps {
   name: string;
   email: string;
   message: string;
@@ -27,7 +28,10 @@ const validationSchema = yup.object({
 });
 
 export const ContactForm = (props: ContactFormProps) => {
-  const formik = useFormik<FormData>({
+  const [messageSent, setMessageSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const formik = useFormik<FormProps>({
     initialValues: {
       name: "",
       email: "",
@@ -38,7 +42,21 @@ export const ContactForm = (props: ContactFormProps) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      setSending(true)
+      fetch("/api/emailHandler", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then(() => {
+        setMessageSent(true);
+        setSending(false)
+      }).catch((err)=>{
+        setMessageSent(false);
+        setSending(false)
+        console.log(err)
+      });
     },
   });
 
@@ -62,103 +80,110 @@ export const ContactForm = (props: ContactFormProps) => {
           padding: 5,
         }}
       >
-        <form onSubmit={formik.handleSubmit}>
-          <Stack spacing={2}>
-            <TextField
-              variant="outlined"
-              name="name"
-              label="Nombre"
-              type="text"
-              value={formik.values.name}
-              onChange={formik.handleChange}
-              error={formik.touched.name && Boolean(formik.errors.name)}
-              helperText={formik.touched.name && formik.errors.name}
-            />
-            <TextField
-              variant="outlined"
-              name="email"
-              label="Email"
-              type="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-            <TextField
-              variant="outlined"
-              name="phone"
-              type="phone"
-              label="Teléfono"
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              error={formik.touched.phone && Boolean(formik.errors.phone)}
-              helperText={formik.touched.phone && formik.errors.phone}
-            />
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <DatePicker
-                inputFormat="dd/MM/yyyy"
-                InputProps={{
-                  name: "dateFrom",
-                  error:
-                    formik.touched.dateFrom && Boolean(formik.errors.dateFrom),
-                }}
-                renderInput={(params) => <TextField {...params} />}
-                label="Desde"
-                value={formik.values.dateFrom}
-                onChange={handleDateFromChange}
-              />
-              <DatePicker
-                inputFormat="dd/MM/yyyy"
-                InputProps={{
-                  name: "dateTo",
-                  error: formik.touched.dateTo && Boolean(formik.errors.dateTo),
-                }}
-                renderInput={(params) => <TextField {...params} />}
-                label="Hasta"
-                value={formik.values.dateTo}
-                onChange={handleDateToChange}
-              />
-            </Box>
-
-            <TextField
-              multiline
-              variant="outlined"
-              name="message"
-              label="Mensaje"
-              aria-label="escribe el mensaje"
-              style={{ width: "100%" }}
-              value={formik.values.message}
-              onChange={formik.handleChange}
-              error={formik.touched.message && Boolean(formik.errors.message)}
-              helperText={formik.touched.message && formik.errors.message}
-            />
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <Button
-                type="reset"
+        {messageSent ? (
+          <Box>Gracias, mensaje enviado</Box>
+        ) : (
+          <form onSubmit={formik.handleSubmit}>
+            <Stack spacing={2}>
+              <TextField
                 variant="outlined"
-                color="primary"
-                onClick={() => formik.resetForm()}
+                name="name"
+                label="Nombre"
+                type="text"
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                error={formik.touched.name && Boolean(formik.errors.name)}
+                helperText={formik.touched.name && formik.errors.name}
+              />
+              <TextField
+                variant="outlined"
+                name="email"
+                label="Email"
+                type="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
+              <TextField
+                variant="outlined"
+                name="phone"
+                type="phone"
+                label="Teléfono"
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                error={formik.touched.phone && Boolean(formik.errors.phone)}
+                helperText={formik.touched.phone && formik.errors.phone}
+              />
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
               >
-                Borrar
-              </Button>
-              <Button type="submit" variant="contained" color="primary">
-                Enviar
-              </Button>
-            </Box>
-          </Stack>
-        </form>
+                <DatePicker
+                  inputFormat="dd/MM/yyyy"
+                  InputProps={{
+                    name: "dateFrom",
+                    error:
+                      formik.touched.dateFrom &&
+                      Boolean(formik.errors.dateFrom),
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                  label="Desde"
+                  value={formik.values.dateFrom}
+                  onChange={handleDateFromChange}
+                />
+                <DatePicker
+                  inputFormat="dd/MM/yyyy"
+                  InputProps={{
+                    name: "dateTo",
+                    error:
+                      formik.touched.dateTo && Boolean(formik.errors.dateTo),
+                  }}
+                  renderInput={(params) => <TextField {...params} />}
+                  label="Hasta"
+                  value={formik.values.dateTo}
+                  onChange={handleDateToChange}
+                />
+              </Box>
+
+              <TextField
+                multiline
+                variant="outlined"
+                name="message"
+                label="Mensaje"
+                aria-label="escribe el mensaje"
+                style={{ width: "100%" }}
+                value={formik.values.message}
+                onChange={formik.handleChange}
+                error={formik.touched.message && Boolean(formik.errors.message)}
+                helperText={formik.touched.message && formik.errors.message}
+              />
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Button
+                  type="reset"
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => formik.resetForm()}
+                  disabled={sending}
+                >
+                  Borrar
+                </Button>
+                <Button type="submit" variant="contained" color="primary">
+                  Enviar
+                </Button>
+              </Box>
+            </Stack>
+          </form>
+        )}
       </Paper>
     </Box>
   );

@@ -1,22 +1,15 @@
-import { Box, Paper, Typography, useTheme } from "@mui/material";
-
-import Image from "next/image";
-import SectionTitle from "@/components/SectionTitle";
+import { Box, Paper, Typography } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { Spacer } from "./Spacer";
 
 export const HowToArribe = () => {
-  const theme = useTheme();
-  const { typography } = theme;
-  const types = Object.keys(typography);
-  console.log(types);
-
+  
   return (
     <section>
       <Grid2 container spacing={2}>
         <Grid2 sm={12} md={6}>
           <Paper>
-            <Box p={2}>
+            <Box p={6}>
               <Typography variant="h4">¿COMO LLEGAR?</Typography>
               <Typography variant="labelMediumBold">
                 (SOLO CON RESERVA PREVIA)
@@ -33,7 +26,7 @@ export const HowToArribe = () => {
               <Typography>
                 En la boletaría de la linea interisleña indicar que se va al
                 Arroyo Fredes y Estudiantes, Muelle el Arroyon de Gomez. <br/>
-								 En la boletaría de la linea interisleña decir que se va a la cabaña
+								En la boletaría de la linea interisleña decir que se va a la cabaña
                 ALFREDES en el Arroyo Fredes indicando que se baja en el muelle
                 EL MOSQUITO en el arroyo Fredes. 
 								<br/>
@@ -41,19 +34,19 @@ export const HowToArribe = () => {
                 lancha debes subir, se recomienda estar con anticipación ya que
                 suele haber bastante gente.
 								<br/>
-								 Siempre Consultar con anticipación
+								Siempre Consultar con anticipación
                 en la cabaña que horario es el mas conveniente.
               </Typography>
             </Box>
           </Paper>
           <Spacer />
           <Paper>
-            <Box p={2}>
+            <Box p={6}>
               <Typography>Coordenadas de la Cabaña</Typography>
               <Typography>para llegar en tu propia lancha.</Typography>
               <Typography>
-                G M S.s Lat: 34º 13' 34.5'' S /Long: 58º 33' 25.3'' O G M.m Lat:
-                34º 13.574'S /Long: 58º 33.421' O
+                G M S.s Lat: 34º 13&apos; 34.5&apos;&apos; S /Long: 58º 33&apos; 25.3&apos;&apos; O G M.m Lat:
+                34º 13.574&apos;S /Long: 58º 33.421&apos; O
               </Typography>
             </Box>
           </Paper>

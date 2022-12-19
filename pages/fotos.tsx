@@ -1,26 +1,24 @@
-import { Box, ImageList, ImageListItem } from "@mui/material";
+/* eslint-disable @next/next/no-css-tags */
+import { Box } from "@mui/material";
 import { ImageListWrapper, PageBanner } from "@/components/index";
 import React, { useState } from "react";
 
 import { FullScreenImage } from "@/components/FullScreenImage";
 import { FullWidthPanel } from "@/components/Layout/templates";
 import Head from "next/head";
-import Image from "next/image";
-import { Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { styled } from "@mui/material/styles";
 import { useStateContext } from "@/store/store";
 
-const Masonry = styled("div")(({ theme }) => ({
-	columns: "6 200px",
-	padding: theme.spacing(2),
-}));
+// const Masonry = styled("div")(({ theme }) => ({
+// 	columns: "6 200px",
+// 	padding: theme.spacing(2),
+// }));
 
-const Item = styled("div")(({ theme }) => ({
-	position: "relative",
-	marginBottom: theme.spacing(2),
-	borderRadius: theme.shape.borderRadius,
-}));
+// const Item = styled("div")(({ theme }) => ({
+// 	position: "relative",
+// 	marginBottom: theme.spacing(2),
+// 	borderRadius: theme.shape.borderRadius,
+// }));
 
 export interface ImageData {
 	src: string;
@@ -50,8 +48,8 @@ function Gallery() {
 	return (
 		<>
 			<Head>
-				<link rel="stylesheet" href="assets/glide.core.css" />
-				<link rel="stylesheet" href="assets/glide.theme.css" />
+				{/* <link rel="stylesheet" href="assets/glide.core.css" />
+				<link rel="stylesheet" href="assets/glide.theme.css" /> */}
 				<title>Alfredes - Fotos</title>
 			</Head>
 			<div>

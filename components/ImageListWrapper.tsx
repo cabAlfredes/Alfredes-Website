@@ -6,6 +6,7 @@ import React from "react";
 
 interface Props {
 	images: Asset[];
+	// eslint-disable-next-line no-unused-vars
 	onClick: (e: React.SyntheticEvent<EventTarget>) => void;
 }
 

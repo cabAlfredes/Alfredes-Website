@@ -8,7 +8,7 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 function ColorModeToggle() {
 	const theme = useTheme();
 	const dispatch = useStateDispatch();
-	console.log(theme.palette.mode);
+	
 
 	const handleClick = () => {
 		dispatch({

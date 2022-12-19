@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { useStateContext, useStateDispatch } from "@/store/store";
+import {  useStateDispatch } from "@/store/store";
 
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -22,8 +22,7 @@ const LinkStyled = styled(Link)(({ theme }) => ({
 	},
 }));
 
-const Menu = ({isMobile}:{isMobile: boolean}) => {
-	const { showMenu } = useStateContext();
+const Menu = ({isMobile}:{isMobile: boolean}) => {	
 	const dispatch = useStateDispatch();
 
 	const handleMobileMenu = () => {
