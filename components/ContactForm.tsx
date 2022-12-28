@@ -1,6 +1,4 @@
-// import { useState } from "react";
-import Button from "@mui/material/Button";
-import { Box } from "@mui/system";
+import { Box, Button, Typography } from "@mui/material";
 import { TextField, Stack, Paper } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -71,7 +69,7 @@ export const ContactForm = (props: ContactFormProps) => {
     <Box
       sx={{
         position: props?.sticky ? "sticky" : "inherit",
-        top: "105px",
+        top: "105px",        
       }}
     >
       <Paper
@@ -80,6 +78,7 @@ export const ContactForm = (props: ContactFormProps) => {
           padding: 5,
         }}
       >
+        <Typography mb={2}>Envíanos un Mensaje </Typography>
         {messageSent ? (
           <Box>Gracias, mensaje enviado</Box>
         ) : (
