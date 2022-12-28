@@ -11,6 +11,8 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 
 const LinkStyled = styled(Link)(({ theme }) => ({
   fontFamily: "Neucha, cursive",
+  fontWeight: 700,
+  letterSpacing: 1.5,
   borderRadius: theme.spacing(4),
   padding: theme.spacing(1),
   paddingLeft: theme.spacing(3),
