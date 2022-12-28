@@ -2,13 +2,13 @@ import { Typography, Box, styled } from "@mui/material";
 
 const PageBannerWrapper = styled("div")(({ theme }) => {
   return {
-    backgroundImage: 'url("/assets/banner/cabana.jpeg")',
+    backgroundImage: 'url("/assets/banner/cabana.jpg")',
     display: "flex",
     minHeight: 250,
     position: "relative",
     width: "100%",
     backgroundColor: theme.palette.accent1,
-    backgroundPosition: "50% 45%",
+    backgroundPosition: "55% 45%",
     backgroundSize: "cover",
   };
 });
