@@ -20,12 +20,14 @@ const Home = () => {
         }}
       >
         <Image
-          src="/assets/images/slider/foto_1.jpg"
+          src="/assets/hero_xl.jpg"
           layout="fill"
           objectFit="cover"
           // width="1440px"
           // height="1080px"
+          priority
           alt="hero imagen de la cabaña"
+          objectPosition='left'
         />
 
         <Box
