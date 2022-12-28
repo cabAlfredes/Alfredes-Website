@@ -41,6 +41,7 @@ export const ImageListWrapper = ({ images, onClick }: Props) => {
 							objectPosition={'50% 50%'}
 							objectFit="cover"
 							priority={false}
+							title={image.src.src}
 						/>
 					</ImageListItem>
 				);
