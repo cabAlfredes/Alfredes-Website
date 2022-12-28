@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
 import styles from "./hero.module.scss";
-import { Box } from "@mui/system";
+import { Box } from "@mui/material";
 
 function Hero() {
 	const [isPlaying, setIsPlaying] = useState(false);
