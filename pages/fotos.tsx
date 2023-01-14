@@ -44,7 +44,7 @@ function Gallery() {
 	const handleClose = (): void => {
 		setImageSelected(null);
 	};
-
+	
 	return (
 		<>
 			<Head>
@@ -60,7 +60,9 @@ function Gallery() {
 						Fotos del Interior
 					</Typography>
 				</Box>
+
 				<ImageListWrapper images={images.interior} onClick={handleClick} />
+
 				
 
 				<Box p={2} mt={8}>
