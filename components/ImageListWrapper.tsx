@@ -7,6 +7,7 @@ import {
 
 import { Asset } from "@/config/assets";
 import Image from "next/legacy/image";
+
 import React, { useEffect, useState } from "react";
 
 interface Props {
