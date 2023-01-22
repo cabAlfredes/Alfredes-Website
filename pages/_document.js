@@ -1,7 +1,8 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-const description = "Cabaña en alquiler de fin de semana, disponible durante todo el año en el delta de Buenos Aires. Podes remar, pescar o solo relajarte y disfrutar del Delta donde la tranquilidad solo es interrumpida por el cantar de los pájaros."
+const description = "Cabaña en alquiler disponible durante todo el año en el delta de Buenos Aires. Podes remar, pescar o solo relajarte y disfrutar del delta donde la tranquilidad solo es interrumpida por el cantar de los pájaros."
 const imageOG = '/assets/media_image.png'
+const imageTwitter = 'assets/media_image_tw.png'
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx) {
@@ -22,7 +23,7 @@ class MyDocument extends Document {
 						<meta property="og:type" content="website" />
 						<meta property="og:title" content="Cabaña Alfredes | La Cabaña" key="title" />
 						<meta property="og:description" content={description} />
-						<meta property="og:image" content={imageOG} />
+						<meta property="og:image" content={imageOG} alt='foto de la Cabaña'/>
 						<meta property="og:image:width" content="1200"/>
 						<meta property="og:image:height" content="598"/>
 
@@ -30,9 +31,10 @@ class MyDocument extends Document {
 						<meta name="twitter:card" content="summary_large_image" />
 						<meta property="twitter:domain" content="alfredes.com.ar" />
 						<meta property="twitter:url" content="https://alfredes.com.ar/" />
-						<meta name="twitter:title" content="Cabaña Alfredes" />
+						<meta name="twitter:title" content="Cabaña Alfredes" alt='foto de la Cabaña'/>
 						<meta name="twitter:description" content={description} />
-						<meta name="twitter:image" content={imageOG} />
+						<meta name="twitter:image" content={imageTwitter} />						
+						
 						<link
 							rel="preconnect"
 							href="https://fonts.gstatic.com"
