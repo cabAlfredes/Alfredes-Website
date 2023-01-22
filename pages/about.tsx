@@ -11,7 +11,7 @@ AboutPage.getLayout = function getLayout(page: any) {
   
   return (
     <TwoColumns
-      title="la cabaña"
+      title="Cabaña Alfredes | La Cabaña"
       leftColumn={<About />}
       rightColumn={<ContactForm />}
       showBanner

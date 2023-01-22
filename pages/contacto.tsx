@@ -22,6 +22,6 @@ export default Contact;
 
 Contact.getLayout = function getLayout(page) {
   return (
-    <CenterPanelWithBanner bannerTitle="Contacto">{page}</CenterPanelWithBanner>
+    <CenterPanelWithBanner bannerTitle="Contacto" pageTitle="Cabaña Alfredes | Contacto">{page}</CenterPanelWithBanner>
   );
 };
