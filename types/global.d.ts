@@ -1,5 +1,5 @@
-// interface Window {
-//   fbAsyncInit: any;
-//   FB: any
-
+// declare global {
+//   interface Window {
+//       dataLayer:any;
+//   }
 // }

@@ -54,7 +54,7 @@ const Menu = ({ isMobile }: { isMobile: boolean }) => {
         <Box>
           <Box component="nav" display="flex" gap={2} mt={2}>
             {items.map((link: MenuItem, index: number) => (
-              <NextLink key={index} href={link.url} passHref>
+              <NextLink key={index} href={link.url} passHref legacyBehavior>
                 <LinkStyled
                   underline="none"
                   color="darkBlue"
