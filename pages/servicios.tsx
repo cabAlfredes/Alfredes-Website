@@ -1,16 +1,16 @@
 import { TwoColumns } from "@/components/Layout/templates";
 import { Services, ContactForm } from "@/components/index";
 
-const ServiciosPage = () => {  
+const ServiciosPage = () => {
   return null;
 };
 
 export default ServiciosPage;
 
-ServiciosPage.getLayout = function getLayout() {  
+ServiciosPage.getLayout = function getLayout() {
   return (
     <TwoColumns
-      title="Servicios"
+      title="Cabaña Alfredes | Servicios"
       leftColumn={
         <>
           <Services />

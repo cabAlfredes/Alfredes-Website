@@ -10,7 +10,7 @@ export default ComoLlegar;
 
 ComoLlegar.getLayout = function getLayout(page) {
 	return (
-		<CenterPanelWithBanner bannerTitle="Donde esta la Cabaña Alfredes">
+		<CenterPanelWithBanner bannerTitle="Donde esta la Cabaña Alfredes" pageTitle="Cabaña Alfredes | Como llegar?">
 			{page}
 		</CenterPanelWithBanner>
 	);

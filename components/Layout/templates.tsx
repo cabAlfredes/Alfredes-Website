@@ -1,25 +1,26 @@
-
 import { Container, Grid, styled } from "@mui/material";
 import { Spacer, PageBanner } from "@/components/index";
+import Head from "next/head";
 
 interface CommonProps {
   title: string;
 }
 
 interface CenterPanelProps {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 interface CenterPanelWithBannerProps {
-	bannerTitle?: string;
+  bannerTitle?: string;
+  pageTitle?: string;
   children: React.ReactNode;
 }
 
 interface TwoColumnsProps extends CommonProps {
-	leftColumn: React.ReactNode;
+  leftColumn: React.ReactNode;
   rightColumn: React.ReactNode;
-	showBanner?: boolean;
-	bannerTitle?: string;
+  showBanner?: boolean;
+  bannerTitle?: string;
 }
 
 const ContainerStyled = styled(Container)(({ theme }) => ({
@@ -30,13 +31,14 @@ const MainWrapper = styled("main")(() => ({
   marginTop: "90px",
 }));
 
-
-
 export const CenterPanelWithBanner = (props: CenterPanelWithBannerProps) => {
-  const { children, bannerTitle } = props;
+  const { children, bannerTitle, pageTitle } = props;
 
   return (
     <MainWrapper>
+      <Head>
+        <title>{props.pageTitle ?? "Cabaña Alfredes"}</title>
+      </Head>
       <PageBanner title={bannerTitle} />
       <ContainerStyled maxWidth="lg">{children}</ContainerStyled>
     </MainWrapper>
@@ -57,6 +59,9 @@ export const TwoColumns = (props: TwoColumnsProps) => {
   const { leftColumn, rightColumn, showBanner, bannerTitle } = props;
   return (
     <MainWrapper>
+      <Head>
+        <title>{props.title ?? "Cabaña Alfredes"}</title>
+      </Head>
       {showBanner && <PageBanner title={bannerTitle ?? ""} />}
       <Spacer size="md" />
       <Container>
