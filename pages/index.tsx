@@ -2,7 +2,7 @@ import { FullWidthPanel } from "@/components/Layout/templates";
 import Head from "next/head";
 // import Hero from "@/components/VideoHero";
 import { Box } from "@mui/material";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { ContactForm } from "../components";
 
 const Home = () => {

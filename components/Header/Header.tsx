@@ -29,21 +29,21 @@ function Header() {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 	
 	return (
-		<StyledAppBar position="fixed" enableColorOnDark>
+        <StyledAppBar position="fixed" enableColorOnDark>
 			<StyledToolbar>
 				<Box display="flex" height="100%" maxWidth="100pxs">
 					<Link href="/">
-						<a>
-							<Box
-								component="img"
-								sx={{
-									width: "250px",
-									fill: "green",
-								}}
-								src="/logo.svg"
-							/>
-						</a>
-					</Link>
+
+                        <Box
+                            component="img"
+                            sx={{
+                                width: "250px",
+                                fill: "green",
+                            }}
+                            src="/logo.svg"
+                        />
+
+                    </Link>
 				</Box>
 				<Box>
 
@@ -53,7 +53,7 @@ function Header() {
 				</Box>
 			</StyledToolbar>
 		</StyledAppBar>
-	);
+    );
 }
 
 export default Header;

@@ -6,7 +6,8 @@ import {
 } from "@mui/material";
 
 import { Asset } from "@/config/assets";
-import Image from "next/image";
+import Image from "next/legacy/image";
+
 import React, { useEffect, useState } from "react";
 
 interface Props {
