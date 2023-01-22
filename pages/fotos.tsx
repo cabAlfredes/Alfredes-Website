@@ -2,8 +2,7 @@
 import { Box } from "@mui/material";
 import { ImageListWrapper, PageBanner } from "@/components/index";
 import React, { useState } from "react";
-import Image from "next/image";
-
+// import Image from "next/image";
 import { FullScreenImage } from "@/components/FullScreenImage";
 import { FullWidthPanel } from "@/components/Layout/templates";
 import Head from "next/head";
@@ -62,7 +61,7 @@ function Gallery() {
           </Typography>
         </Box>
 
-        <Box
+        {/* <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr 1fr 1fr",
@@ -89,18 +88,18 @@ function Gallery() {
                 data-src={image.src.src}
                 placeholder={"blur"}
                 // onClick={onClick}
-                layout="fill"
-                lazyBoundary="10px"
-                objectPosition={"50% 50%"}
-                objectFit="cover"
+                // layout="fill"
+                // lazyBoundary="10px"
+                // objectPosition={"50% 50%"}
+                // objectFit="cover"
                 priority={false}
                 title={image.src.src}
               />
             </Box>
           ))}
-        </Box>
+        </Box> */}
 
-        {/* <ImageListWrapper images={images.interior} onClick={handleClick} /> */}
+        <ImageListWrapper images={images.interior} onClick={handleClick} />
 
         <Box p={2} mt={8}>
           <Typography variant="h4" color="text.contrast">
