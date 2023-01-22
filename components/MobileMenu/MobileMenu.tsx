@@ -38,13 +38,9 @@ const MobileMenu = () => {
         >
           <List>
             {items.map((item: MenuItem, index) => (
-              <NextLink href={item.url} passHref key={index}>
+              <NextLink href={item.url} passHref key={index} legacyBehavior>
                 <ListItemButton >
-                  {/* <Link> */}
-                  {/* <ListItemIcon> */}
-                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                  {/* </ListItemIcon> */}
-                  {/* </Link> */}
+          
                   <ListItemText>{item.title}</ListItemText>
                 </ListItemButton>
               </NextLink>
