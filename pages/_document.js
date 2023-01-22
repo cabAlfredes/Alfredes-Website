@@ -1,7 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-const description = "	Cabaña en alquiler de fin de semana, disponible durante todo el año en el delta de Buenos Aires. Podes remar, pescar o solo relajarte y disfrutar del Delta donde la tranquilidad solo es interrumpida por el cantar de los pájaros."
-const imageOG = '/assets/hero_xl.jpg'
+const description = "Cabaña en alquiler de fin de semana, disponible durante todo el año en el delta de Buenos Aires. Podes remar, pescar o solo relajarte y disfrutar del Delta donde la tranquilidad solo es interrumpida por el cantar de los pájaros."
+const imageOG = '/assets/media_image.png'
 
 class MyDocument extends Document {
 	static async getInitialProps(ctx) {
@@ -23,6 +23,8 @@ class MyDocument extends Document {
 						<meta property="og:title" content="Cabaña Alfredes | La Cabaña" key="title" />
 						<meta property="og:description" content={description} />
 						<meta property="og:image" content={imageOG} />
+						<meta property="og:image:width" content="1200"/>
+						<meta property="og:image:height" content="598"/>
 
 						{/* <!-- Twitter Meta Tags --> */}
 						<meta name="twitter:card" content="summary_large_image" />
