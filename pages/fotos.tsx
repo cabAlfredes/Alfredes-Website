@@ -41,6 +41,7 @@ function Gallery() {
     return;
   };
 
+
   const handleClose = (): void => {
     setImageSelected(null);
   };
