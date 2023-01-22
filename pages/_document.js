@@ -1,6 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-const description = "Cabaña en alquiler de fin de semana, disponible durante todo el año en el delta de Buenos Aires. Podes remar, pescar o solo relajarte y disfrutar del Delta donde la tranquilidad solo es interrumpida por el cantar de los pájaros."
+const description = "Cabaña en alquiler disponible durante todo el año en el delta de Buenos Aires. Podes remar, pescar o solo relajarte y disfrutar del delta donde la tranquilidad solo es interrumpida por el cantar de los pájaros."
 const imageOG = '/assets/media_image.png'
 
 class MyDocument extends Document {
