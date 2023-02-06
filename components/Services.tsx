@@ -1,9 +1,28 @@
-import { Paper, Box } from "@mui/material";
+import { Paper, Box, Alert } from "@mui/material";
+import { Wifi, SolarPower } from "@mui/icons-material";
+import CountertopsIcon from "@mui/icons-material/Countertops";
+import FlatwareIcon from "@mui/icons-material/Flatware";
+import KitchenIcon from "@mui/icons-material/Kitchen";
+import HotelIcon from "@mui/icons-material/Hotel";
+import DeckIcon from "@mui/icons-material/Deck";
+import RowingIcon from "@mui/icons-material/Rowing";
+import OutdoorGrillIcon from "@mui/icons-material/OutdoorGrill";
 
 export const Services = () => (
   <Paper component="section">
     <Box p={5}>
       <ul>
+        <li>
+          <Alert icon={<Wifi/>}>
+            
+            Ahora la cabaña esta conectada a internet.
+          </Alert>
+        </li>
+        <li>
+          <SolarPower />
+          Tenemos Paneles solares para poder seguir teniendo luz en caso de
+          corte.
+        </li>
         <li>
           La Cabaña cuenta con un living cocina-comedor equipada con utensilios
           y elementos de cocina para 2 ó 4 personas.
