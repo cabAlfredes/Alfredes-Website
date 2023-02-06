@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.0.7",
+    "@next/swc-darwin-x64": "^13.1.6",
     "@types/facebook-js-sdk": "^3.3.5",
     "@types/mailgun-js": "^0.22.13",
     "@types/node": "^18.7.14",
