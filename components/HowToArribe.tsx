@@ -1,9 +1,8 @@
 import { Box, Paper, Typography } from "@mui/material";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import Grid2 from "@mui/material/Grid";
 import { Spacer } from "./Spacer";
 
 export const HowToArribe = () => {
-  
   return (
     <section>
       <Grid2 container spacing={2}>
@@ -25,17 +24,16 @@ export const HowToArribe = () => {
               </Typography>
               <Typography>
                 En la boletaría de la linea interisleña indicar que se va al
-                Arroyo Fredes y Estudiantes, Muelle el Arroyon de Gomez. <br/>
-								En la boletaría de la linea interisleña decir que se va a la cabaña
-                ALFREDES en el Arroyo Fredes indicando que se baja en el muelle
-                EL MOSQUITO en el arroyo Fredes. 
-								<br/>
-								Preguntar en la rampa en que
-                lancha debes subir, se recomienda estar con anticipación ya que
-                suele haber bastante gente.
-								<br/>
-								Siempre Consultar con anticipación
-                en la cabaña que horario es el mas conveniente.
+                Arroyo Fredes y Estudiantes, Muelle el Arroyon de Gomez. <br />
+                En la boletaría de la linea interisleña decir que se va a la
+                cabaña ALFREDES en el Arroyo Fredes indicando que se baja en el
+                muelle EL MOSQUITO en el arroyo Fredes.
+                <br />
+                Preguntar en la rampa en que lancha debes subir, se recomienda
+                estar con anticipación ya que suele haber bastante gente.
+                <br />
+                Siempre Consultar con anticipación en la cabaña que horario es
+                el mas conveniente.
               </Typography>
             </Box>
           </Paper>
@@ -45,8 +43,9 @@ export const HowToArribe = () => {
               <Typography>Coordenadas de la Cabaña</Typography>
               <Typography>para llegar en tu propia lancha.</Typography>
               <Typography>
-                G M S.s Lat: 34º 13&apos; 34.5&apos;&apos; S /Long: 58º 33&apos; 25.3&apos;&apos; O G M.m Lat:
-                34º 13.574&apos;S /Long: 58º 33.421&apos; O
+                G M S.s Lat: 34º 13&apos; 34.5&apos;&apos; S /Long: 58º 33&apos;
+                25.3&apos;&apos; O G M.m Lat: 34º 13.574&apos;S /Long: 58º
+                33.421&apos; O
               </Typography>
             </Box>
           </Paper>
