@@ -13,5 +13,7 @@
     "Servicios"
   ],
   "typescript.tsdk": "node_modules\\typescript\\lib",
-  "cSpell.language": "en,es,es-ES"
+  "cSpell.language": "en,es,es-ES",
+  "editor.allowVariableFonts": true,
+  "editor.fontFamily": "Monaspace Argon Frozen"
 }
