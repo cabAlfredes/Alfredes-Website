@@ -1,12 +1,32 @@
 import type { APIRoute } from "astro";
-import type { FormProps } from "@/components/ContactForm";
+import Mailgun from "mailgun-js";
 
-const mailgun = require("mailgun-js");
+export interface FormProps {
+  name: string;
+  email: string;
+  message: string;
+  dateFrom: string;
+  dateTo: string;
+  phone: string;
+}
+
 const DOMAIN = "alfredes.com.ar";
-const mg = mailgun({ apiKey: process.env.MAILGUN, domain: DOMAIN });
 
 export const POST: APIRoute = async ({ request }) => {
   try {
+    const apiKey = import.meta.env.MAILGUN || process.env.MAILGUN;
+    if (!apiKey) {
+      console.error("MAILGUN API key is not configured");
+      return new Response(
+        JSON.stringify({ error: "Email service not configured" }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+
+    const mg = Mailgun({ apiKey, domain: DOMAIN });
     const body: FormProps = await request.json();
     console.log("BODY", body);
 

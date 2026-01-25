@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import { ContactForm } from '../components/ContactForm';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <BaseLayout title="Cabaña Alfredes | Contacto">
@@ -65,7 +65,7 @@ import { ContactForm } from '../components/ContactForm';
 
       <!-- Contact Form -->
       <div class="lg:col-span-2">
-        <ContactForm client:load />
+        <ContactForm />
       </div>
       </div>
     </div>

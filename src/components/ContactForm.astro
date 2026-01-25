@@ -1,0 +1,265 @@
+---
+interface Props {
+  sticky?: boolean;
+}
+
+const { sticky = false } = Astro.props;
+---
+
+<div class:list={[sticky && "sticky top-[105px]"]}>
+  <div class="rounded-lg border bg-card text-card-foreground shadow-sm shadow-lg">
+    <div class="flex flex-col space-y-1.5 p-6">
+      <h3 class="text-2xl font-semibold leading-none tracking-tight">
+        Envíanos un Mensaje
+      </h3>
+    </div>
+    <div class="p-6 pt-0">
+      <!-- Success Message (hidden by default) -->
+      <div id="success-message" class="hidden text-center py-8">
+        <p class="text-lg font-semibold text-green-600">
+          ¡Gracias! Mensaje enviado
+        </p>
+        <button
+          type="button"
+          id="send-another-btn"
+          class="mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+        >
+          Enviar otro mensaje
+        </button>
+      </div>
+
+      <!-- Contact Form -->
+      <form id="contact-form" class="space-y-4" novalidate>
+        <div class="space-y-2">
+          <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Nombre
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          />
+          <p class="hidden text-sm text-destructive" data-error="name">Requerido</p>
+        </div>
+
+        <div class="space-y-2">
+          <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          />
+          <p class="hidden text-sm text-destructive" data-error="email"></p>
+        </div>
+
+        <div class="space-y-2">
+          <label for="phone" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Teléfono
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          />
+          <p class="hidden text-sm text-destructive" data-error="phone">Requerido</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-2">
+            <label for="dateFrom" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Desde
+            </label>
+            <input
+              id="dateFrom"
+              name="dateFrom"
+              type="date"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            />
+            <p class="hidden text-sm text-destructive" data-error="dateFrom">Requerido</p>
+          </div>
+
+          <div class="space-y-2">
+            <label for="dateTo" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+              Hasta
+            </label>
+            <input
+              id="dateTo"
+              name="dateTo"
+              type="date"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            />
+            <p class="hidden text-sm text-destructive" data-error="dateTo">Requerido</p>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Mensaje
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          ></textarea>
+          <p class="hidden text-sm text-destructive" data-error="message">Requerido</p>
+        </div>
+
+        <div class="flex justify-between gap-4">
+          <button
+            type="button"
+            id="reset-btn"
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+          >
+            Borrar
+          </button>
+          <button
+            type="submit"
+            id="submit-btn"
+            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          >
+            Enviar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successMessage = document.getElementById('success-message') as HTMLDivElement;
+  const sendAnotherBtn = document.getElementById('send-another-btn') as HTMLButtonElement;
+  const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  const fields = ['name', 'email', 'phone', 'dateFrom', 'dateTo', 'message'] as const;
+  const touched: Record<string, boolean> = {};
+
+  // Email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function validateField(fieldName: string, value: string): string | null {
+    if (!value.trim()) {
+      return 'Requerido';
+    }
+    if (fieldName === 'email' && !emailRegex.test(value)) {
+      return 'Ingrese un email válido';
+    }
+    return null;
+  }
+
+  function showError(fieldName: string, message: string | null) {
+    const input = document.getElementById(fieldName) as HTMLInputElement | HTMLTextAreaElement;
+    const errorEl = document.querySelector(`[data-error="${fieldName}"]`) as HTMLParagraphElement;
+    
+    if (message && touched[fieldName]) {
+      input.classList.add('border-destructive');
+      errorEl.textContent = message;
+      errorEl.classList.remove('hidden');
+    } else {
+      input.classList.remove('border-destructive');
+      errorEl.classList.add('hidden');
+    }
+  }
+
+  function validateForm(): boolean {
+    let isValid = true;
+    
+    fields.forEach(fieldName => {
+      const input = document.getElementById(fieldName) as HTMLInputElement | HTMLTextAreaElement;
+      const error = validateField(fieldName, input.value);
+      touched[fieldName] = true;
+      showError(fieldName, error);
+      if (error) isValid = false;
+    });
+    
+    return isValid;
+  }
+
+  function resetForm() {
+    form.reset();
+    fields.forEach(fieldName => {
+      touched[fieldName] = false;
+      showError(fieldName, null);
+    });
+  }
+
+  function setLoading(loading: boolean) {
+    submitBtn.disabled = loading;
+    resetBtn.disabled = loading;
+    submitBtn.textContent = loading ? 'Enviando...' : 'Enviar';
+  }
+
+  // Add blur handlers for touched state
+  fields.forEach(fieldName => {
+    const input = document.getElementById(fieldName) as HTMLInputElement | HTMLTextAreaElement;
+    
+    input.addEventListener('blur', () => {
+      touched[fieldName] = true;
+      const error = validateField(fieldName, input.value);
+      showError(fieldName, error);
+    });
+    
+    input.addEventListener('input', () => {
+      if (touched[fieldName]) {
+        const error = validateField(fieldName, input.value);
+        showError(fieldName, error);
+      }
+    });
+  });
+
+  // Form submit handler
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+    
+    setLoading(true);
+    
+    const formData = {
+      name: (document.getElementById('name') as HTMLInputElement).value,
+      email: (document.getElementById('email') as HTMLInputElement).value,
+      phone: (document.getElementById('phone') as HTMLInputElement).value,
+      dateFrom: (document.getElementById('dateFrom') as HTMLInputElement).value,
+      dateTo: (document.getElementById('dateTo') as HTMLInputElement).value,
+      message: (document.getElementById('message') as HTMLTextAreaElement).value,
+    };
+    
+    try {
+      const response = await fetch('/api/emailHandler', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      
+      if (response.ok) {
+        form.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+        resetForm();
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  });
+
+  // Reset button handler
+  resetBtn.addEventListener('click', resetForm);
+
+  // Send another message button handler
+  sendAnotherBtn.addEventListener('click', () => {
+    successMessage.classList.add('hidden');
+    form.classList.remove('hidden');
+  });
+</script>
