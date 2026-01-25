@@ -1,28 +1,132 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { ContactForm } from '../components/ContactForm';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactForm from "../components/ContactForm.astro";
 ---
 
 <BaseLayout title="Cabaña Alfredes">
   <div>
-    <!-- Hero Section -->
-    <div class="relative h-[calc(100vh-64px)] block">
-      <img
-        src="/assets/hero_xl.jpg"
-        class="w-full h-full object-cover object-left"
-        alt="hero imagen de la cabaña"
-        loading="eager"
-      />
+    <!-- Full-page Video Hero Section -->
+    <div class="relative min-h-screen w-full overflow-hidden">
+      <!-- Video Background -->
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="/assets/hero_xl.jpg"
+        class="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/alfredes_web_1.mp4" type="video/mp4" />
+        <!-- Fallback image if video doesn't load -->
+        <img
+          src="/assets/hero_xl.jpg"
+          alt="Cabaña Alfredes"
+          class="w-full h-full object-cover"
+        />
+      </video>
 
-      <!-- Desktop Contact Form -->
-      <div class="hidden md:block fixed top-[80px] right-0 w-full max-w-sm">
-        <ContactForm sticky client:load />
+      <!-- Dark overlay for better text readability -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/30"
+      >
       </div>
-    </div>
 
-    <!-- Mobile Contact Form -->
-    <div class="md:hidden">
-      <ContactForm sticky client:load />
+      <!-- Two Column Layout -->
+      <div
+        class="relative z-10 container mx-auto px-4 min-h-screen flex items-center"
+      >
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full py-8"
+        >
+          <!-- Left Column - Hero Content -->
+          <div class="flex flex-col justify-center text-white">
+            <h1
+              class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow-lg tracking-tight"
+            >
+              Cabaña Alfredes
+            </h1>
+            <p
+              class="text-xl md:text-2xl font-light mb-6 text-shadow-md text-white/90"
+            >
+              Tu refugio en el Delta del Paraná
+            </p>
+            <div class="space-y-4 text-lg text-white/80 text-shadow-sm">
+              <p>
+                Escápate de la rutina y descubre la tranquilidad del delta.
+                Nuestra cabaña te ofrece el lugar perfecto para desconectar y
+                disfrutar de la naturaleza.
+              </p>
+              <ul class="space-y-2">
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-emerald-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Rodeada de naturaleza y tranquilidad</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-emerald-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Acceso directo al río</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-emerald-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Totalmente equipada para tu comodidad</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column - Contact Form -->
+          <div class="flex items-center justify-center lg:justify-end">
+            <div class="w-full max-w-md">
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce hidden md:block">
+        <svg class="w-8 h-8 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div> -->
     </div>
   </div>
+
+  <style>
+    .text-shadow-lg {
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+    .text-shadow-md {
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+    .text-shadow-sm {
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+  </style>
 </BaseLayout>
