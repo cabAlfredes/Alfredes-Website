@@ -12,6 +12,14 @@ export interface FormProps {
 
 const DOMAIN = "alfredes.com.ar";
 
+// Handle GET requests (returns 405 Method Not Allowed)
+export const GET: APIRoute = async () => {
+  return new Response(JSON.stringify({ error: "Method not allowed" }), {
+    status: 405,
+    headers: { "Content-Type": "application/json" },
+  });
+};
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const apiKey = import.meta.env.MAILGUN || process.env.MAILGUN;
