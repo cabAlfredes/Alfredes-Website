@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), sitemap()],
-  output: "server",
+  output: "static",
   adapter: node({
     mode: "standalone",
   }),
