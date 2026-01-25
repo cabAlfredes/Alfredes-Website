@@ -1,8 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HomePage from '../components/pages/HomePage';
+import { ContactForm } from '../components/ContactForm';
 ---
 
 <BaseLayout title="Cabaña Alfredes">
-  <HomePage client:load />
+  <div>
+    <!-- Hero Section -->
+    <div class="relative h-[calc(100vh-64px)] block">
+      <img
+        src="/assets/hero_xl.jpg"
+        class="w-full h-full object-cover object-left"
+        alt="hero imagen de la cabaña"
+        loading="eager"
+      />
+
+      <!-- Desktop Contact Form -->
+      <div class="hidden md:block fixed top-[80px] right-0 w-full max-w-sm">
+        <ContactForm sticky client:load />
+      </div>
+    </div>
+
+    <!-- Mobile Contact Form -->
+    <div class="md:hidden">
+      <ContactForm sticky client:load />
+    </div>
+  </div>
 </BaseLayout>

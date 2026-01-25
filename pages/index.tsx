@@ -27,7 +27,7 @@ const Home = () => {
           // height="1080px"
           priority
           alt="hero imagen de la cabaña"
-          objectPosition='left'
+          objectPosition="left"
         />
 
         <Box
@@ -47,15 +47,14 @@ const Home = () => {
         </Box>
       </Box>
       <Box
-          sx={(theme) => ({            
-
-            [theme.breakpoints.up("md")]: {
-              display: "none",
-            },
-          })}
-        >
-          <ContactForm sticky />
-        </Box>
+        sx={(theme) => ({
+          [theme.breakpoints.up("md")]: {
+            display: "none",
+          },
+        })}
+      >
+        <ContactForm sticky />
+      </Box>
     </div>
   );
 };

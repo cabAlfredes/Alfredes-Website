@@ -6,11 +6,14 @@ This file contains guidelines and commands for agentic coding agents working in 
 
 This is an Astro-based website for "Cabaña Alfredes" - a cabin rental business. The project uses:
 
-- **Framework**: Astro v5.16.11 with React integration
+- **Framework**: Astro v5.16.11 with minimal React integration
 - **Styling**: Tailwind CSS with custom design system + shadcn/ui components
 - **UI Components**: shadcn/ui (Radix UI + custom variants)
-- **State Management**: React Context + useReducer
-- **Forms**: Formik + Yup validation
+- **Navigation**: Custom Astro navbar with responsive mobile menu
+- **State Management**: React Context + useReducer (minimal usage)
+- **Forms**: Formik + Yup validation (React components only where needed)
+- **Pages**: All pages converted to Astro (static content) with React islands for interactivity
+- **Gallery**: Premium image gallery with hero banner, tabbed navigation, masonry layout, lightbox modal, and smooth animations
 - **Language**: TypeScript (mixed with some JavaScript files)
 
 ## Build Commands
