@@ -8,17 +8,17 @@ const currentPath = Astro.url.pathname;
     <div class="flex justify-between h-16">
       <!-- Logo -->
       <div class="flex items-center">
-        <a href="/" class="text-xl font-bold text-primary">
-          Cabaña Alfredes
-        </a>
+        <a href="/" class="text-xl font-bold text-primary"> Cabaña Alfredes </a>
       </div>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8">
+      <div class="hidden md:flex items-center space-x-4">
         <a
           href="/"
           class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === '/' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Inicio
@@ -26,7 +26,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/about"
           class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === '/about' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/about"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           La Cabaña
@@ -34,7 +36,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/servicios"
           class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === '/servicios' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/servicios"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Servicios
@@ -42,7 +46,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/fotos"
           class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === '/fotos' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/fotos"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Fotos
@@ -50,7 +56,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/contacto"
           class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === '/contacto' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/contacto"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Contacto
@@ -58,7 +66,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/como_llegar"
           class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === '/como_llegar' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/como_llegar"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Cómo Llegar
@@ -73,8 +83,17 @@ const currentPath = Astro.url.pathname;
           aria-label="Toggle menu"
           id="mobile-menu-button"
         >
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
@@ -86,7 +105,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/"
           class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === '/' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Inicio
@@ -94,7 +115,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/about"
           class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === '/about' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/about"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           La Cabaña
@@ -102,7 +125,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/servicios"
           class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === '/servicios' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/servicios"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Servicios
@@ -110,7 +135,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/fotos"
           class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === '/fotos' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/fotos"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Fotos
@@ -118,7 +145,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/contacto"
           class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === '/contacto' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/contacto"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Contacto
@@ -126,7 +155,9 @@ const currentPath = Astro.url.pathname;
         <a
           href="/como_llegar"
           class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === '/como_llegar' ? 'text-primary bg-primary/10' : 'text-gray-700 hover:text-primary hover:bg-primary/5'
+            currentPath === "/como_llegar"
+              ? "text-primary bg-primary/10"
+              : "text-gray-700 hover:text-primary hover:bg-primary/5"
           }`}
         >
           Cómo Llegar
@@ -138,12 +169,12 @@ const currentPath = Astro.url.pathname;
 
 <script>
   // Mobile menu toggle functionality
-  const button = document.getElementById('mobile-menu-button');
-  const menu = document.getElementById('mobile-menu');
+  const button = document.getElementById("mobile-menu-button");
+  const menu = document.getElementById("mobile-menu");
 
   if (button && menu) {
-    button.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+    button.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
     });
   }
 </script>
