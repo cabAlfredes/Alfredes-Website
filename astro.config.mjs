@@ -1,17 +1,13 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
-import node from "@astrojs/node";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-
-import vercelStatic from "@astrojs/vercel";
-
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react(), sitemap()],
+  integrations: [sitemap()],
   output: "static",
-  adapter: vercelStatic({
+  adapter: vercel({
     webAnalytics: {
       enabled: true,
     },

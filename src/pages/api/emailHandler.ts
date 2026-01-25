@@ -1,6 +1,9 @@
 import type { APIRoute } from "astro";
 import Mailgun from "mailgun-js";
 
+// This route must be server-rendered, not prerendered
+export const prerender = false;
+
 export interface FormProps {
   name: string;
   email: string;
@@ -11,14 +14,6 @@ export interface FormProps {
 }
 
 const DOMAIN = "alfredes.com.ar";
-
-// Handle GET requests (returns 405 Method Not Allowed)
-export const GET: APIRoute = async () => {
-  return new Response(JSON.stringify({ error: "Method not allowed" }), {
-    status: 405,
-    headers: { "Content-Type": "application/json" },
-  });
-};
 
 export const POST: APIRoute = async ({ request }) => {
   try {
