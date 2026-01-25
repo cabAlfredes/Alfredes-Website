@@ -1,6 +1,19 @@
+/* stylelint-disable at-rule-no-unknown */
+/* Tailwind directives — handled by PostCSS + Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("/assets/fonts/Neucha-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "Neucha";
+  font-weight: normal;
+  font-style: normal;
+}
 
 @layer base {
   :root {
@@ -53,6 +66,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
