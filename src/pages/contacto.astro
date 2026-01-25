@@ -1,17 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 import { ContactForm } from '../components/ContactForm';
 ---
 
 <BaseLayout title="Cabaña Alfredes | Contacto">
-  <div class="container mx-auto px-4 py-8">
-    <!-- Banner -->
-    <div class="mb-8 text-center">
-      <h1 class="text-3xl font-bold mb-4">Contacto</h1>
-    </div>
+  <div class="min-h-screen bg-gradient-to-b from-emerald-50/50 via-white to-amber-50/30">
+    <PageHero title="Contacto" subtitle="Estamos para ayudarte con tu reserva" />
 
-    <!-- Contact Layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="container mx-auto px-4 py-12">
+      <!-- Contact Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <!-- Contact Details -->
       <div class="lg:col-span-1">
         <div class="bg-card rounded-lg shadow-sm border p-6">
@@ -67,6 +66,7 @@ import { ContactForm } from '../components/ContactForm';
       <!-- Contact Form -->
       <div class="lg:col-span-2">
         <ContactForm client:load />
+      </div>
       </div>
     </div>
   </div>

@@ -1,16 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <BaseLayout title="Cabaña Alfredes | Cómo llegar">
-  <div class="container mx-auto px-4 py-8">
-    <!-- Banner -->
-    <div class="mb-8 text-center">
-      <h1 class="text-3xl font-bold mb-4">Donde esta la Cabaña Alfredes</h1>
-    </div>
+  <div class="min-h-screen bg-gradient-to-b from-emerald-50/50 via-white to-amber-50/30">
+    <PageHero title="Cómo Llegar" subtitle="Encuentra el camino a tu descanso" />
 
-    <!-- Two Column Layout -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="container mx-auto px-4 py-12">
+      <!-- Two Column Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Left Column - Instructions -->
       <div class="space-y-6">
         <!-- How to Arrive Section -->
@@ -72,6 +71,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             loading="lazy"
           ></iframe>
         </div>
+      </div>
       </div>
     </div>
   </div>
