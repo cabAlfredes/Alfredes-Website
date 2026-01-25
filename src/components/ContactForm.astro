@@ -7,20 +7,32 @@ const { sticky = false } = Astro.props;
 ---
 
 <div class:list={[sticky && "sticky top-[105px]"]}>
-  <div class="rounded-xl border bg-card text-card-foreground shadow-lg overflow-hidden">
+  <div
+    class="rounded-xl border bg-card text-card-foreground shadow-lg overflow-hidden"
+  >
     <!-- Header with gradient -->
     <div class="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+        <div
+          class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center"
+        >
           <!-- Mail icon -->
-          <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          <svg
+            class="w-6 h-6 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect><path
+              d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
         </div>
         <div>
-          <h3 class="text-2xl font-bold text-white">
-            Envíanos un Mensaje
-          </h3>
+          <h3 class="text-2xl font-bold text-white">Envíanos un Mensaje</h3>
           <p class="text-emerald-100 text-sm">Te respondemos a la brevedad</p>
         </div>
       </div>
@@ -29,24 +41,46 @@ const { sticky = false } = Astro.props;
     <div class="p-6">
       <!-- Success Message (hidden by default) -->
       <div id="success-message" class="hidden text-center py-12">
-        <div class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div
+          class="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4"
+        >
           <!-- Check icon -->
-          <svg class="w-10 h-10 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 6 9 17l-5-5"/>
+          <svg
+            class="w-10 h-10 text-emerald-600"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 6 9 17l-5-5"></path>
           </svg>
         </div>
         <p class="text-xl font-semibold text-emerald-700 mb-2">
           ¡Gracias! Mensaje enviado
         </p>
-        <p class="text-muted-foreground mb-6">Nos pondremos en contacto pronto</p>
+        <p class="text-muted-foreground mb-6">
+          Nos pondremos en contacto pronto
+        </p>
         <button
           type="button"
           id="send-another-btn"
           class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 h-11 px-6"
         >
           <!-- Plus icon -->
-          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"/><path d="M12 5v14"/>
+          <svg
+            class="w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path><path d="M12 5v14"></path>
           </svg>
           Enviar otro mensaje
         </button>
@@ -56,10 +90,23 @@ const { sticky = false } = Astro.props;
       <form id="contact-form" class="space-y-5" novalidate>
         <!-- Name field with icon -->
         <div class="space-y-2">
-          <label for="name" class="text-sm font-medium text-foreground flex items-center gap-2">
+          <label
+            for="name"
+            class="text-sm font-medium text-foreground flex items-center gap-2"
+          >
             <!-- User icon -->
-            <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/>
+            <svg
+              class="w-4 h-4 text-emerald-600"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="8" r="5"></circle><path
+                d="M20 21a8 8 0 0 0-16 0"></path>
             </svg>
             Nombre
           </label>
@@ -70,21 +117,50 @@ const { sticky = false } = Astro.props;
             placeholder="Tu nombre completo"
             class="flex h-11 w-full rounded-lg border-2 border-gray-200 bg-white px-4 py-2 text-sm transition-colors placeholder:text-muted-foreground focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-50"
           />
-          <p class="hidden text-sm text-red-500 flex items-center gap-1" data-error="name">
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+          <p
+            class="hidden text-sm text-red-500 flex items-center gap-1"
+            data-error="name"
+          >
+            <svg
+              class="w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle><line
+                x1="12"
+                x2="12"
+                y1="8"
+                y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line>
             </svg>
             <span>Requerido</span>
           </p>
         </div>
 
         <!-- Email and Phone in a row -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="space-y-2">
-            <label for="email" class="text-sm font-medium text-foreground flex items-center gap-2">
+            <label
+              for="email"
+              class="text-sm font-medium text-foreground flex items-center gap-2"
+            >
               <!-- Mail icon -->
-              <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              <svg
+                class="w-4 h-4 text-emerald-600"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect><path
+                  d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
               Email
             </label>
@@ -95,19 +171,50 @@ const { sticky = false } = Astro.props;
               placeholder="tu@email.com"
               class="flex h-11 w-full rounded-lg border-2 border-gray-200 bg-white px-4 py-2 text-sm transition-colors placeholder:text-muted-foreground focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-50"
             />
-            <p class="hidden text-sm text-red-500 flex items-center gap-1" data-error="email">
-              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+            <p
+              class="hidden text-sm text-red-500 flex items-center gap-1"
+              data-error="email"
+            >
+              <svg
+                class="w-4 h-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle><line
+                  x1="12"
+                  x2="12"
+                  y1="8"
+                  y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"
+                ></line>
               </svg>
               <span></span>
             </p>
           </div>
 
           <div class="space-y-2">
-            <label for="phone" class="text-sm font-medium text-foreground flex items-center gap-2">
+            <label
+              for="phone"
+              class="text-sm font-medium text-foreground flex items-center gap-2"
+            >
               <!-- Phone icon -->
-              <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <svg
+                class="w-4 h-4 text-emerald-600"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                ></path>
               </svg>
               Teléfono
             </label>
@@ -118,9 +225,26 @@ const { sticky = false } = Astro.props;
               placeholder="+54 9 11 1234-5678"
               class="flex h-11 w-full rounded-lg border-2 border-gray-200 bg-white px-4 py-2 text-sm transition-colors placeholder:text-muted-foreground focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-50"
             />
-            <p class="hidden text-sm text-red-500 flex items-center gap-1" data-error="phone">
-              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+            <p
+              class="hidden text-sm text-red-500 flex items-center gap-1"
+              data-error="phone"
+            >
+              <svg
+                class="w-4 h-4"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle><line
+                  x1="12"
+                  x2="12"
+                  y1="8"
+                  y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"
+                ></line>
               </svg>
               <span>Requerido</span>
             </p>
@@ -129,16 +253,38 @@ const { sticky = false } = Astro.props;
 
         <!-- Date Range Section -->
         <div class="space-y-2">
-          <label class="text-sm font-medium text-foreground flex items-center gap-2">
+          <label
+            class="text-sm font-medium text-foreground flex items-center gap-2"
+          >
             <!-- Calendar icon -->
-            <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>
+            <svg
+              class="w-4 h-4 text-emerald-600"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M8 2v4"></path><path d="M16 2v4"></path><rect
+                width="18"
+                height="18"
+                x="3"
+                y="4"
+                rx="2"></rect><path d="M3 10h18"></path>
             </svg>
             Fechas de estadía
           </label>
-          <div class="flex items-center gap-2 p-3 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg border-2 border-emerald-200">
+          <div
+            class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-2 p-3 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-lg border-2 border-emerald-200"
+          >
             <div class="flex-1">
-              <label for="dateFrom" class="text-xs text-emerald-700 font-medium block mb-1">Llegada</label>
+              <label
+                for="dateFrom"
+                class="text-xs text-emerald-700 font-medium block mb-1"
+                >Llegada</label
+              >
               <input
                 id="dateFrom"
                 name="dateFrom"
@@ -146,14 +292,42 @@ const { sticky = false } = Astro.props;
                 class="w-full h-10 rounded-md border border-emerald-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
               />
             </div>
-            <div class="flex flex-col items-center justify-end pb-1">
-              <!-- Arrow right icon -->
-              <svg class="w-5 h-5 text-emerald-500 mt-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            <div class="hidden sm:flex flex-col items-center justify-end pb-1">
+              <!-- Arrow right icon (horizontal - desktop) -->
+              <svg
+                class="w-5 h-5 text-emerald-500 mt-5"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+            <div class="flex sm:hidden items-center justify-center">
+              <!-- Arrow down icon (vertical - mobile) -->
+              <svg
+                class="w-5 h-5 text-emerald-500"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path>
               </svg>
             </div>
             <div class="flex-1">
-              <label for="dateTo" class="text-xs text-emerald-700 font-medium block mb-1">Salida</label>
+              <label
+                for="dateTo"
+                class="text-xs text-emerald-700 font-medium block mb-1"
+                >Salida</label
+              >
               <input
                 id="dateTo"
                 name="dateTo"
@@ -162,21 +336,66 @@ const { sticky = false } = Astro.props;
               />
             </div>
           </div>
-          <div id="date-summary" class="hidden text-sm text-emerald-700 bg-emerald-50 rounded-md px-3 py-2 flex items-center gap-2">
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          <div
+            id="date-summary"
+            class="hidden text-sm text-emerald-700 bg-emerald-50 rounded-md px-3 py-2 flex items-center gap-2"
+          >
+            <svg
+              class="w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle><polyline
+                points="12 6 12 12 16 14"></polyline>
             </svg>
             <span id="nights-count"></span>
           </div>
-          <p class="hidden text-sm text-red-500 flex items-center gap-1" data-error="dateFrom">
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+          <p
+            class="hidden text-sm text-red-500 flex items-center gap-1"
+            data-error="dateFrom"
+          >
+            <svg
+              class="w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle><line
+                x1="12"
+                x2="12"
+                y1="8"
+                y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line>
             </svg>
             <span>Selecciona la fecha de llegada</span>
           </p>
-          <p class="hidden text-sm text-red-500 flex items-center gap-1" data-error="dateTo">
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+          <p
+            class="hidden text-sm text-red-500 flex items-center gap-1"
+            data-error="dateTo"
+          >
+            <svg
+              class="w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle><line
+                x1="12"
+                x2="12"
+                y1="8"
+                y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line>
             </svg>
             <span>Selecciona la fecha de salida</span>
           </p>
@@ -184,10 +403,22 @@ const { sticky = false } = Astro.props;
 
         <!-- Message field -->
         <div class="space-y-2">
-          <label for="message" class="text-sm font-medium text-foreground flex items-center gap-2">
+          <label
+            for="message"
+            class="text-sm font-medium text-foreground flex items-center gap-2"
+          >
             <!-- Message icon -->
-            <svg class="w-4 h-4 text-emerald-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+            <svg
+              class="w-4 h-4 text-emerald-600"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
             </svg>
             Mensaje
           </label>
@@ -198,9 +429,25 @@ const { sticky = false } = Astro.props;
             placeholder="Cuéntanos sobre tu consulta o reserva..."
             class="flex min-h-[120px] w-full rounded-lg border-2 border-gray-200 bg-white px-4 py-3 text-sm transition-colors placeholder:text-muted-foreground focus:outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
           ></textarea>
-          <p class="hidden text-sm text-red-500 flex items-center gap-1" data-error="message">
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+          <p
+            class="hidden text-sm text-red-500 flex items-center gap-1"
+            data-error="message"
+          >
+            <svg
+              class="w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10"></circle><line
+                x1="12"
+                x2="12"
+                y1="8"
+                y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line>
             </svg>
             <span>Requerido</span>
           </p>
@@ -214,8 +461,19 @@ const { sticky = false } = Astro.props;
             class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border-2 border-gray-300 bg-white text-gray-700 hover:bg-gray-50 hover:border-gray-400 h-11 px-5"
           >
             <!-- Trash icon -->
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+            <svg
+              class="w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 6h18"></path><path
+                d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path
+                d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
             </svg>
             Borrar
           </button>
@@ -225,8 +483,17 @@ const { sticky = false } = Astro.props;
             class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 shadow-lg shadow-emerald-500/25 h-11 px-8"
           >
             <!-- Send icon -->
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+            <svg
+              class="w-4 h-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path>
             </svg>
             <span id="submit-text">Enviar</span>
           </button>
@@ -237,25 +504,38 @@ const { sticky = false } = Astro.props;
 </div>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  const successMessage = document.getElementById('success-message') as HTMLDivElement;
-  const sendAnotherBtn = document.getElementById('send-another-btn') as HTMLButtonElement;
-  const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-  const submitText = document.getElementById('submit-text') as HTMLSpanElement;
-  const dateSummary = document.getElementById('date-summary') as HTMLDivElement;
-  const nightsCount = document.getElementById('nights-count') as HTMLSpanElement;
-  const dateFrom = document.getElementById('dateFrom') as HTMLInputElement;
-  const dateTo = document.getElementById('dateTo') as HTMLInputElement;
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const successMessage = document.getElementById(
+    "success-message",
+  ) as HTMLDivElement;
+  const sendAnotherBtn = document.getElementById(
+    "send-another-btn",
+  ) as HTMLButtonElement;
+  const resetBtn = document.getElementById("reset-btn") as HTMLButtonElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitText = document.getElementById("submit-text") as HTMLSpanElement;
+  const dateSummary = document.getElementById("date-summary") as HTMLDivElement;
+  const nightsCount = document.getElementById(
+    "nights-count",
+  ) as HTMLSpanElement;
+  const dateFrom = document.getElementById("dateFrom") as HTMLInputElement;
+  const dateTo = document.getElementById("dateTo") as HTMLInputElement;
 
-  const fields = ['name', 'email', 'phone', 'dateFrom', 'dateTo', 'message'] as const;
+  const fields = [
+    "name",
+    "email",
+    "phone",
+    "dateFrom",
+    "dateTo",
+    "message",
+  ] as const;
   const touched: Record<string, boolean> = {};
 
   // Email validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   // Set minimum date to today
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   dateFrom.min = today;
   dateTo.min = today;
 
@@ -265,106 +545,114 @@ const { sticky = false } = Astro.props;
       const to = new Date(dateTo.value);
       const diffTime = to.getTime() - from.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      
+
       if (diffDays > 0) {
-        nightsCount.textContent = `Estadía de ${diffDays} noche${diffDays > 1 ? 's' : ''}`;
-        dateSummary.classList.remove('hidden');
+        nightsCount.textContent = `Estadía de ${diffDays} noche${diffDays > 1 ? "s" : ""}`;
+        dateSummary.classList.remove("hidden");
       } else {
-        dateSummary.classList.add('hidden');
+        dateSummary.classList.add("hidden");
       }
     } else {
-      dateSummary.classList.add('hidden');
+      dateSummary.classList.add("hidden");
     }
   }
 
   // Update dateTo min when dateFrom changes
-  dateFrom.addEventListener('change', () => {
+  dateFrom.addEventListener("change", () => {
     if (dateFrom.value) {
       dateTo.min = dateFrom.value;
       if (dateTo.value && dateTo.value < dateFrom.value) {
-        dateTo.value = '';
+        dateTo.value = "";
       }
     }
     updateDateSummary();
   });
 
-  dateTo.addEventListener('change', updateDateSummary);
+  dateTo.addEventListener("change", updateDateSummary);
 
   function validateField(fieldName: string, value: string): string | null {
     if (!value.trim()) {
-      if (fieldName === 'dateFrom') return 'Selecciona la fecha de llegada';
-      if (fieldName === 'dateTo') return 'Selecciona la fecha de salida';
-      return 'Requerido';
+      if (fieldName === "dateFrom") return "Selecciona la fecha de llegada";
+      if (fieldName === "dateTo") return "Selecciona la fecha de salida";
+      return "Requerido";
     }
-    if (fieldName === 'email' && !emailRegex.test(value)) {
-      return 'Ingrese un email válido';
+    if (fieldName === "email" && !emailRegex.test(value)) {
+      return "Ingrese un email válido";
     }
     return null;
   }
 
   function showError(fieldName: string, message: string | null) {
-    const input = document.getElementById(fieldName) as HTMLInputElement | HTMLTextAreaElement;
-    const errorEl = document.querySelector(`[data-error="${fieldName}"]`) as HTMLParagraphElement;
-    
+    const input = document.getElementById(fieldName) as
+      | HTMLInputElement
+      | HTMLTextAreaElement;
+    const errorEl = document.querySelector(
+      `[data-error="${fieldName}"]`,
+    ) as HTMLParagraphElement;
+
     if (message && touched[fieldName]) {
-      input.classList.add('border-red-500');
-      input.classList.remove('border-gray-200', 'border-emerald-300');
+      input.classList.add("border-red-500");
+      input.classList.remove("border-gray-200", "border-emerald-300");
       if (errorEl) {
-        const spanEl = errorEl.querySelector('span');
+        const spanEl = errorEl.querySelector("span");
         if (spanEl) spanEl.textContent = message;
-        errorEl.classList.remove('hidden');
+        errorEl.classList.remove("hidden");
       }
     } else {
-      input.classList.remove('border-red-500');
-      if (fieldName === 'dateFrom' || fieldName === 'dateTo') {
-        input.classList.add('border-emerald-300');
+      input.classList.remove("border-red-500");
+      if (fieldName === "dateFrom" || fieldName === "dateTo") {
+        input.classList.add("border-emerald-300");
       } else {
-        input.classList.add('border-gray-200');
+        input.classList.add("border-gray-200");
       }
-      if (errorEl) errorEl.classList.add('hidden');
+      if (errorEl) errorEl.classList.add("hidden");
     }
   }
 
   function validateForm(): boolean {
     let isValid = true;
-    
-    fields.forEach(fieldName => {
-      const input = document.getElementById(fieldName) as HTMLInputElement | HTMLTextAreaElement;
+
+    fields.forEach((fieldName) => {
+      const input = document.getElementById(fieldName) as
+        | HTMLInputElement
+        | HTMLTextAreaElement;
       const error = validateField(fieldName, input.value);
       touched[fieldName] = true;
       showError(fieldName, error);
       if (error) isValid = false;
     });
-    
+
     return isValid;
   }
 
   function resetForm() {
     form.reset();
-    fields.forEach(fieldName => {
+    fields.forEach((fieldName) => {
       touched[fieldName] = false;
       showError(fieldName, null);
     });
-    dateSummary.classList.add('hidden');
+    dateSummary.classList.add("hidden");
   }
 
   function setLoading(loading: boolean) {
     submitBtn.disabled = loading;
     resetBtn.disabled = loading;
-    submitText.textContent = loading ? 'Enviando...' : 'Enviar';
+    submitText.textContent = loading ? "Enviando..." : "Enviar";
   }
 
   // Add blur handlers for touched state
-  fields.forEach(fieldName => {
-    const input = document.getElementById(fieldName) as HTMLInputElement | HTMLTextAreaElement;
-    
-    input.addEventListener('blur', () => {
+  fields.forEach((fieldName) => {
+    const input = document.getElementById(fieldName) as
+      | HTMLInputElement
+      | HTMLTextAreaElement;
+
+    input.addEventListener("blur", () => {
       touched[fieldName] = true;
       const error = validateField(fieldName, input.value);
       showError(fieldName, error);
     });
-    
-    input.addEventListener('input', () => {
+
+    input.addEventListener("input", () => {
       if (touched[fieldName]) {
         const error = validateField(fieldName, input.value);
         showError(fieldName, error);
@@ -373,36 +661,37 @@ const { sticky = false } = Astro.props;
   });
 
   // Form submit handler
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
-    
+
     setLoading(true);
-    
+
     const formData = {
-      name: (document.getElementById('name') as HTMLInputElement).value,
-      email: (document.getElementById('email') as HTMLInputElement).value,
-      phone: (document.getElementById('phone') as HTMLInputElement).value,
-      dateFrom: (document.getElementById('dateFrom') as HTMLInputElement).value,
-      dateTo: (document.getElementById('dateTo') as HTMLInputElement).value,
-      message: (document.getElementById('message') as HTMLTextAreaElement).value,
+      name: (document.getElementById("name") as HTMLInputElement).value,
+      email: (document.getElementById("email") as HTMLInputElement).value,
+      phone: (document.getElementById("phone") as HTMLInputElement).value,
+      dateFrom: (document.getElementById("dateFrom") as HTMLInputElement).value,
+      dateTo: (document.getElementById("dateTo") as HTMLInputElement).value,
+      message: (document.getElementById("message") as HTMLTextAreaElement)
+        .value,
     };
-    
+
     try {
-      const response = await fetch('/api/emailHandler', {
-        method: 'POST',
+      const response = await fetch("/api/emailHandler", {
+        method: "POST",
         body: JSON.stringify(formData),
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
-      
+
       if (response.ok) {
-        form.classList.add('hidden');
-        successMessage.classList.remove('hidden');
+        form.classList.add("hidden");
+        successMessage.classList.remove("hidden");
         resetForm();
       }
     } catch (err) {
@@ -413,11 +702,11 @@ const { sticky = false } = Astro.props;
   });
 
   // Reset button handler
-  resetBtn.addEventListener('click', resetForm);
+  resetBtn.addEventListener("click", resetForm);
 
   // Send another message button handler
-  sendAnotherBtn.addEventListener('click', () => {
-    successMessage.classList.add('hidden');
-    form.classList.remove('hidden');
+  sendAnotherBtn.addEventListener("click", () => {
+    successMessage.classList.add("hidden");
+    form.classList.remove("hidden");
   });
 </script>
