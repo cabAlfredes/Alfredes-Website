@@ -41,7 +41,7 @@ const interiorImages = [
   { src: photo_int_5, alt: 'Escalera y salamandra de leña', cols: 1, rows: 1 },
   { src: photo_int_6, alt: 'Baño completo', cols: 1, rows: 1 },
   { src: photo_int_7, alt: 'Cocina equipada', cols: 1, rows: 2 },
-  { src: photo_int_8, alt: 'Vista interior hacia el exterior', cols: 1, rows: 2 },
+  { src: photo_int_8, alt: 'Vista interior hacia el exterior', cols: 1, rows: 1 },
   { src: photo_int_4, alt: 'Amplia vista del exterior', cols: 1, rows: 2 },
 ];
 ---
@@ -101,7 +101,6 @@ const interiorImages = [
                 alt={image.alt}
                 class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
                 loading="lazy"
-                data-src={image.src}
               />
 
               <!-- Overlay with info -->
@@ -139,7 +138,6 @@ const interiorImages = [
                 alt={image.alt}
                 class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
                 loading="lazy"
-                data-src={image.src}
               />
 
               <!-- Overlay with info -->
@@ -164,7 +162,7 @@ const interiorImages = [
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4">
       <div class="relative max-w-5xl max-h-full">
-        <img id="lightbox-image" src="" alt="" class="max-w-full max-h-full object-contain" />
+        <img id="lightbox-image" src="" alt="" class="max-w-full h-full max-h-[95vh] object-contain" />
         <button id="lightbox-close" class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors">
           ✕
         </button>
@@ -231,16 +229,21 @@ const interiorImages = [
     let currentImages: ImageData[] = [];
     let currentIndex: number = 0;
 
-    // Add click handlers to all images
-    document.querySelectorAll<HTMLImageElement>('.gallery-section img').forEach((img: HTMLImageElement): void => {
-      img.addEventListener('click', (): void => {
-        const gallerySection = img.closest('.gallery-section') as HTMLElement;
-        currentImages = Array.from(gallerySection.querySelectorAll<HTMLImageElement>('img')).map((img: HTMLImageElement): ImageData => ({
-          src: img.src,
-          alt: img.alt
-        }));
+    // Add click handlers to gallery image containers
+    document.querySelectorAll<HTMLDivElement>('.gallery-section .group').forEach((container: HTMLDivElement, index: number): void => {
+      container.addEventListener('click', (): void => {
+        const gallerySection = container.closest('.gallery-section') as HTMLElement;
+        const allContainers = Array.from(gallerySection.querySelectorAll<HTMLDivElement>('.group'));
 
-        currentIndex = Array.from(gallerySection.querySelectorAll<HTMLImageElement>('img')).indexOf(img);
+        currentImages = allContainers.map((cont: HTMLDivElement): ImageData => {
+          const img = cont.querySelector('img') as HTMLImageElement;
+          return {
+            src: img.src,
+            alt: img.alt
+          };
+        });
+
+        currentIndex = allContainers.indexOf(container);
 
         openLightbox(currentImages[currentIndex]);
       });
