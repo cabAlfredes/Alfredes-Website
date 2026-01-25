@@ -1,30 +1,48 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import foto_1 from '@/assets/gallery/exterior/foto_1.jpg';
+import foto_2 from '@/assets/gallery/exterior/foto_2.jpg';
+import foto_3 from '@/assets/gallery/exterior/foto_3.jpg';
+import foto_4 from '@/assets/gallery/exterior/foto_4.jpg';
+import foto_5 from '@/assets/gallery/exterior/foto_5.jpg';
+import foto_6 from '@/assets/gallery/exterior/foto_6.jpg';
+import foto_7 from '@/assets/gallery/exterior/foto_7.jpg';
+import foto_8 from '@/assets/gallery/exterior/foto_8.jpg';
+import foto_9 from '@/assets/gallery/exterior/foto_9.jpg';
+import foto_10 from '@/assets/gallery/exterior/foto_10.jpg';
+import photo_int_2 from '@/assets/gallery/interior/photo_int_2.jpg';
+import photo_int_3 from '@/assets/gallery/interior/photo_int_3.jpg';
+import photo_int_4 from '@/assets/gallery/interior/photo_int_4.jpg';
+import photo_int_5 from '@/assets/gallery/interior/photo_int_5.jpg';
+import photo_int_6 from '@/assets/gallery/interior/photo_int_6.jpg';
+import photo_int_7 from '@/assets/gallery/interior/photo_int_7.jpg';
+import photo_int_8 from '@/assets/gallery/interior/photo_int_8.jpg';
+import photo_int_9 from '@/assets/gallery/interior/photo_int_9.jpg';
 
 // Image data for the gallery
 const exteriorImages = [
-  { src: '/assets/gallery/exterior/foto_1.jpg', alt: 'Vista aérea de la cabaña desde dron', cols: 1, rows: 2 },
-  { src: '/assets/gallery/exterior/foto_2.jpg', alt: 'Fachada frontal de la cabaña', cols: 1, rows: 1 },
-  { src: '/assets/gallery/exterior/foto_4.jpg', alt: 'Vista panorámica desde dron', cols: 1, rows: 1 },
-  { src: '/assets/gallery/exterior/foto_3.jpg', alt: 'Exterior completo de la cabaña', cols: 2, rows: 2 },
-  { src: '/assets/gallery/exterior/foto_5.jpg', alt: 'Vista lateral del exterior', cols: 1, rows: 2 },
-  { src: '/assets/gallery/exterior/foto_6.jpg', alt: 'Muelle y río desde la cabaña', cols: 1, rows: 1 },
-  { src: '/assets/gallery/exterior/foto_7.jpg', alt: 'Raposeras y vegetación del río', cols: 1, rows: 1 },
-  { src: '/assets/gallery/exterior/foto_8.jpg', alt: 'Detalle del exterior', cols: 1, rows: 1 },
-  { src: '/assets/gallery/exterior/foto_9.jpg', alt: 'Río y naturaleza circundante', cols: 1, rows: 1 },
-  { src: '/assets/gallery/exterior/foto_10.jpg', alt: 'Vista del río Parana', cols: 1, rows: 1 },
+  { src: foto_1, alt: 'Vista aérea de la cabaña desde dron', cols: 1, rows: 2 },
+  { src: foto_2, alt: 'Fachada frontal de la cabaña', cols: 1, rows: 1 },
+  { src: foto_4, alt: 'Vista panorámica desde dron', cols: 1, rows: 1 },
+  { src: foto_3, alt: 'Exterior completo de la cabaña', cols: 2, rows: 2 },
+  { src: foto_5, alt: 'Vista lateral del exterior', cols: 1, rows: 2 },
+  { src: foto_6, alt: 'Muelle y río desde la cabaña', cols: 1, rows: 1 },
+  { src: foto_7, alt: 'Raposeras y vegetación del río', cols: 1, rows: 1 },
+  { src: foto_8, alt: 'Detalle del exterior', cols: 1, rows: 1 },
+  { src: foto_9, alt: 'Río y naturaleza circundante', cols: 1, rows: 1 },
+  { src: foto_10, alt: 'Vista del río Parana', cols: 1, rows: 1 },
 ];
 
 const interiorImages = [
-  { src: '/assets/gallery/interior/photo_int_9.jpg', alt: 'Cama matrimonial con vista al río', cols: 2, rows: 2 },
-  { src: '/assets/gallery/interior/photo_int_2.jpg', alt: 'Vista del río desde la habitación', cols: 1, rows: 1 },
-  { src: '/assets/gallery/interior/photo_int_3.jpg', alt: 'Banco de madera en el interior', cols: 1, rows: 2 },
-  { src: '/assets/gallery/interior/photo_int_5.jpg', alt: 'Escalera y salamandra de leña', cols: 1, rows: 1 },
-  { src: '/assets/gallery/interior/photo_int_6.jpg', alt: 'Baño completo', cols: 1, rows: 1 },
-  { src: '/assets/gallery/interior/photo_int_7.jpg', alt: 'Cocina equipada', cols: 1, rows: 2 },
-  { src: '/assets/gallery/interior/photo_int_8.jpg', alt: 'Vista interior hacia el exterior', cols: 1, rows: 2 },
-  { src: '/assets/gallery/interior/photo_int_4.jpg', alt: 'Amplia vista del exterior', cols: 1, rows: 2 },
+  { src: photo_int_9, alt: 'Cama matrimonial con vista al río', cols: 2, rows: 2 },
+  { src: photo_int_2, alt: 'Vista del río desde la habitación', cols: 1, rows: 1 },
+  { src: photo_int_3, alt: 'Banco de madera en el interior', cols: 1, rows: 2 },
+  { src: photo_int_5, alt: 'Escalera y salamandra de leña', cols: 1, rows: 1 },
+  { src: photo_int_6, alt: 'Baño completo', cols: 1, rows: 1 },
+  { src: photo_int_7, alt: 'Cocina equipada', cols: 1, rows: 2 },
+  { src: photo_int_8, alt: 'Vista interior hacia el exterior', cols: 1, rows: 2 },
+  { src: photo_int_4, alt: 'Amplia vista del exterior', cols: 1, rows: 2 },
 ];
 ---
 
@@ -78,7 +96,7 @@ const interiorImages = [
         {interiorImages.map((image, index) => (
           <div class="break-inside-avoid mb-4">
             <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1">
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
                 class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500"
@@ -167,13 +185,23 @@ const interiorImages = [
   </style>
 
   <script>
-    // Tab switching functionality
-    const tabInterior = document.getElementById('tab-interior');
-    const tabExterior = document.getElementById('tab-exterior');
-    const galleryInterior = document.getElementById('gallery-interior');
-    const galleryExterior = document.getElementById('gallery-exterior');
+    interface ImageData {
+      src: string;
+      alt: string;
+    }
 
-    function switchTab(activeTab, activeGallery, inactiveTab, inactiveGallery) {
+    // Tab switching functionality
+    const tabInterior = document.getElementById('tab-interior') as HTMLButtonElement;
+    const tabExterior = document.getElementById('tab-exterior') as HTMLButtonElement;
+    const galleryInterior = document.getElementById('gallery-interior') as HTMLDivElement;
+    const galleryExterior = document.getElementById('gallery-exterior') as HTMLDivElement;
+
+    function switchTab(
+      activeTab: HTMLElement,
+      activeGallery: HTMLElement,
+      inactiveTab: HTMLElement,
+      inactiveGallery: HTMLElement
+    ): void {
       activeTab.classList.add('active-tab');
       activeTab.classList.remove('text-muted-foreground', 'hover:bg-primary/5');
       activeTab.classList.add('text-primary', 'bg-primary/10');
@@ -185,71 +213,71 @@ const interiorImages = [
       inactiveGallery.classList.add('hidden');
     }
 
-    tabInterior.addEventListener('click', () => {
+    tabInterior.addEventListener('click', (): void => {
       switchTab(tabInterior, galleryInterior, tabExterior, galleryExterior);
     });
 
-    tabExterior.addEventListener('click', () => {
+    tabExterior.addEventListener('click', (): void => {
       switchTab(tabExterior, galleryExterior, tabInterior, galleryInterior);
     });
 
     // Lightbox functionality
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    const lightboxClose = document.getElementById('lightbox-close');
-    const lightboxPrev = document.getElementById('lightbox-prev');
-    const lightboxNext = document.getElementById('lightbox-next');
+    const lightbox = document.getElementById('lightbox') as HTMLDivElement;
+    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+    const lightboxClose = document.getElementById('lightbox-close') as HTMLButtonElement;
+    const lightboxPrev = document.getElementById('lightbox-prev') as HTMLButtonElement;
+    const lightboxNext = document.getElementById('lightbox-next') as HTMLButtonElement;
 
-    let currentImages = [];
-    let currentIndex = 0;
+    let currentImages: ImageData[] = [];
+    let currentIndex: number = 0;
 
     // Add click handlers to all images
-    document.querySelectorAll('.gallery-section img').forEach((img, index) => {
-      img.addEventListener('click', () => {
-        const gallerySection = img.closest('.gallery-section');
-        currentImages = Array.from(gallerySection.querySelectorAll('img')).map(img => ({
+    document.querySelectorAll<HTMLImageElement>('.gallery-section img').forEach((img: HTMLImageElement): void => {
+      img.addEventListener('click', (): void => {
+        const gallerySection = img.closest('.gallery-section') as HTMLElement;
+        currentImages = Array.from(gallerySection.querySelectorAll<HTMLImageElement>('img')).map((img: HTMLImageElement): ImageData => ({
           src: img.src,
           alt: img.alt
         }));
 
-        currentIndex = Array.from(gallerySection.querySelectorAll('img')).indexOf(img);
+        currentIndex = Array.from(gallerySection.querySelectorAll<HTMLImageElement>('img')).indexOf(img);
 
         openLightbox(currentImages[currentIndex]);
       });
     });
 
-    function openLightbox(imageData) {
+    function openLightbox(imageData: ImageData): void {
       lightboxImage.src = imageData.src;
       lightboxImage.alt = imageData.alt;
       lightbox.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
     }
 
-    function closeLightbox() {
+    function closeLightbox(): void {
       lightbox.classList.add('hidden');
       document.body.style.overflow = 'auto';
     }
 
     lightboxClose.addEventListener('click', closeLightbox);
 
-    lightbox.addEventListener('click', (e) => {
+    lightbox.addEventListener('click', (e: MouseEvent): void => {
       if (e.target === lightbox) {
         closeLightbox();
       }
     });
 
-    lightboxPrev.addEventListener('click', () => {
+    lightboxPrev.addEventListener('click', (): void => {
       currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
       openLightbox(currentImages[currentIndex]);
     });
 
-    lightboxNext.addEventListener('click', () => {
+    lightboxNext.addEventListener('click', (): void => {
       currentIndex = (currentIndex + 1) % currentImages.length;
       openLightbox(currentImages[currentIndex]);
     });
 
     // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', (e: KeyboardEvent): void => {
       if (lightbox.classList.contains('hidden')) return;
 
       if (e.key === 'Escape') {
