@@ -129,6 +129,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 				} else {
 					/* the viewport is more than 600 pixels wide */
 					console.log("This is a wide screen — more than 600px wide.");
+					showHeroContent();
 					loadVideo().then(() => {
 						video.play().catch(() => {});
 					});
