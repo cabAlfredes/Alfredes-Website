@@ -4,129 +4,193 @@ import ContactForm from "../components/ContactForm.astro";
 ---
 
 <BaseLayout title="Cabaña Alfredes">
-  <div>
-    <!-- Full-page Video Hero Section -->
-    <div class="relative min-h-screen w-full overflow-hidden">
-      <!-- Video Background -->
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        poster="/assets/hero_xl.jpg"
-        class="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/alfredes_web_1.mp4" type="video/mp4" />
-        <!-- Fallback image if video doesn't load -->
-        <img
-          src="/assets/hero_xl.jpg"
-          alt="Cabaña Alfredes"
-          class="w-full h-full object-cover"
-        />
-      </video>
+	<div>
+		<!-- Full-page Video Hero Section -->
+		<div class="relative h-screen w-full overflow-hidden">
+			<!-- Video Background (source added via JS) -->
+			<video
+				id="hero-video"
+				muted
+				loop
+				poster="/assets/hero_xl.jpg"
+				preload="none"
+				class="absolute inset-0 w-full h-full object-cover"
+				data-src="/assets/hero-video.mp4"
+			>
+			</video>
 
-      <!-- Dark overlay for better text readability -->
-      <div
-        class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/30"
-      >
-      </div>
+			<!-- Dark overlay -->
 
-      <!-- Two Column Layout -->
-      <div
-        class="relative z-10 container mx-auto px-4 min-h-screen flex items-center"
-      >
-        <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full py-8"
-        >
-          <!-- Left Column - Hero Content -->
-          <div class="flex flex-col justify-center text-white">
-            <h1
-              class="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-shadow-lg tracking-tight"
-            >
-              Cabaña Alfredes
-            </h1>
-            <p
-              class="text-xl md:text-2xl font-light mb-6 text-shadow-md text-white/90"
-            >
-              Tu refugio en el Delta del Paraná
-            </p>
-            <div class="space-y-4 text-lg text-white/80 text-shadow-sm">
-              <p>
-                Escápate de la rutina y descubre la tranquilidad del delta.
-                Nuestra cabaña te ofrece el lugar perfecto para desconectar y
-                disfrutar de la naturaleza.
-              </p>
-              <ul class="space-y-2">
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-emerald-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Rodeada de naturaleza y tranquilidad</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-emerald-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Acceso directo al río</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-emerald-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Totalmente equipada para tu comodidad</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+			<div
+				id="hero-overlay"
+				class="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30 transition-opacity duration-500"
+			>
+				<!-- Hero Content - Left aligned like Beyonk -->
+				<div
+					id="hero-content"
+					class="relative z-10 container mx-auto px-6 md:px-12 min-h-screen flex items-center transition-opacity duration-500"
+				>
+					<div class="max-w-2xl text-white">
+						<h1
+							class="text-5xl md:text-6xl lg:text-7xl font-bold italic mb-6 text-shadow-lg tracking-tight leading-tight"
+						>
+							Cabaña Alfredes.
+						</h1>
+						<p
+							class="text-lg md:text-xl font-light mb-10 text-white/85 text-shadow-sm"
+						>
+							Tu refugio en el Delta del Paraná. Naturaleza, río y tranquilidad.
+						</p>
 
-          <!-- Right Column - Contact Form -->
-          <div class="flex items-center justify-center lg:justify-end">
-            <div class="w-full max-w-md">
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </div>
+						<!-- CTA Buttons -->
+						<div class="flex flex-wrap items-center gap-4">
+							<a
+								href="/contacto"
+								class="px-8 py-3.5 bg-emerald-800 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-colors text-lg"
+							>
+								Reservá tu estadía
+							</a>
+							<!-- <button
+								id="hero-play-btn"
+								class="flex items-center gap-3 px-6 py-3.5 border-2 border-white/50 hover:border-white rounded-lg transition-colors group"
+							>
+								<span
+									class="w-10 h-10 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-colors"
+								>
+									<svg
+										class="w-5 h-5 text-white ml-0.5"
+										fill="currentColor"
+										viewBox="0 0 24 24"
+									>
+										<path d="M8 5v14l11-7z"></path>
+									</svg>
+								</span>
+								<span class="text-white font-medium text-lg">Ver video</span>
+							</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="absolute top-1 right-1 z-50 flex gap-2">
+				<div
+					id="pause"
+					class="bg-slate-500 cursor-pointer text-white px-3 py-1 rounded-md text-sm hidden"
+					role="button"
+				>
+					pause
+				</div>
+				<div
+					id="play"
+					class="bg-slate-500 cursor-pointer text-white px-3 py-1 rounded-md text-sm"
+					role="button"
+				>
+					play
+				</div>
+			</div>
+		</div>
 
-      <!-- Scroll indicator
-      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce hidden md:block">
-        <svg class="w-8 h-8 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div> -->
-    </div>
-  </div>
+		<script>
+			const video = document.getElementById("hero-video") as HTMLVideoElement;
+			// const playBtn = document.getElementById("hero-play-btn")!;
+			const pauseBtn = document.getElementById("pause")!;
+			const playBtn = document.getElementById("play")!;
+			const heroContent = document.getElementById("hero-content")!;
+			const heroOverlay = document.getElementById("hero-overlay")!;
+			const videoSrc = video.dataset.src!;
+			let videoLoaded = false;
+			const isMobile = window.matchMedia("(max-width: 767px)");
 
-  <style>
-    .text-shadow-lg {
-      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-    }
-    .text-shadow-md {
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-    }
-    .text-shadow-sm {
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-  </style>
+			function loadVideo(): Promise<void> {
+				if (videoLoaded) return Promise.resolve();
+				videoLoaded = true;
+				// Fetch once as blob so looping never re-downloads
+				return fetch(videoSrc)
+					.then((res) => res.blob())
+					.then((blob) => {
+						video.src = URL.createObjectURL(blob);
+					});
+			}
+
+			function hideHeroContent() {
+				heroContent.style.opacity = "0";
+				heroContent.style.pointerEvents = "none";
+				heroOverlay.style.opacity = "0";
+				// pauseBtn.classList.remove("hidden");
+			}
+
+			function showHeroContent() {
+				heroContent.style.opacity = "1";
+				heroContent.style.pointerEvents = "";
+				heroOverlay.style.opacity = "1";
+				// pauseBtn.classList.add("hidden");
+			}
+
+			// Desktop: silently autoplay muted in background
+			if (!isMobile.matches) {
+				loadVideo().then(() => {
+					video.controls = true;
+					video.play().catch(() => {});
+				});
+			}
+
+			// "Ver video" button: load (if needed), hide text, play with controls
+			playBtn.addEventListener("click", () => {
+				if (isMobile.matches) {
+					hideHeroContent();
+				}
+				loadVideo().then(() => {
+					video.muted = true;
+					video.controls = true;
+					video.play().catch(() => {});
+				});
+			});
+
+			// "pause" button: pause video, show hero content again
+			pauseBtn.addEventListener("click", () => {
+				video.pause();
+				pauseBtn.classList.add("hidden");
+				if (isMobile.matches) {
+					showHeroContent();
+				}
+			});
+
+			video.addEventListener("playing", () => {
+				console.log("Video playing");
+				pauseBtn.classList.remove("hidden");
+				playBtn.classList.add("hidden");
+
+				if (isMobile.matches) {
+					hideHeroContent();
+				}
+			});
+
+			video.addEventListener("pause", () => {
+				console.log("Video paused");
+				pauseBtn.classList.add("hidden");
+				playBtn.classList.remove("hidden");
+				showHeroContent();
+			});
+
+			// If user pauses via controls, show hero content again
+			video.addEventListener("pause", () => {
+				if (video.controls) {
+					showHeroContent();
+					video.controls = false;
+					video.muted = true;
+				}
+			});
+		</script>
+
+		<style>
+			.text-shadow-lg {
+				text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+			}
+			.text-shadow-md {
+				text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+			}
+			.text-shadow-sm {
+				text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+			}
+		</style>
+	</div>
 </BaseLayout>
