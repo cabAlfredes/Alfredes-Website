@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ContactForm from "../components/ContactForm.astro";
 ---
 
 <BaseLayout title="Cabaña Alfredes">
@@ -42,7 +41,6 @@ import ContactForm from "../components/ContactForm.astro";
 							Tu refugio en el Delta del Paraná. Naturaleza, río y tranquilidad.
 						</p>
 
-						<!-- CTA Buttons -->
 						<div class="flex flex-wrap items-center gap-4">
 							<a
 								href="/contacto"
@@ -50,60 +48,48 @@ import ContactForm from "../components/ContactForm.astro";
 							>
 								Reservá tu estadía
 							</a>
-							<!-- <button
-								id="hero-play-btn"
-								class="flex items-center gap-3 px-6 py-3.5 border-2 border-white/50 hover:border-white rounded-lg transition-colors group"
-							>
-								<span
-									class="w-10 h-10 rounded-full bg-white/20 group-hover:bg-white/30 flex items-center justify-center transition-colors"
-								>
-									<svg
-										class="w-5 h-5 text-white ml-0.5"
-										fill="currentColor"
-										viewBox="0 0 24 24"
-									>
-										<path d="M8 5v14l11-7z"></path>
-									</svg>
-								</span>
-								<span class="text-white font-medium text-lg">Ver video</span>
-							</button> -->
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="absolute top-1 right-1 z-50 flex gap-2">
-				<div
-					id="pause"
-					class="bg-slate-500 cursor-pointer text-white px-3 py-1 rounded-md text-sm hidden"
-					role="button"
+			<button
+				id="video-toggle"
+				class="video-toggle-btn absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/60 hover:scale-110 hover:border-white/40"
+				aria-label="Play video"
+			>
+				<svg
+					id="icon-play"
+					class="w-5 h-5 ml-0.5"
+					fill="currentColor"
+					viewBox="0 0 24 24"
 				>
-					pause
-				</div>
-				<div
-					id="play"
-					class="bg-slate-500 cursor-pointer text-white px-3 py-1 rounded-md text-sm"
-					role="button"
+					<path d="M8 5v14l11-7z"></path>
+				</svg>
+				<svg
+					id="icon-pause"
+					class="w-5 h-5 hidden"
+					fill="currentColor"
+					viewBox="0 0 24 24"
 				>
-					play
-				</div>
-			</div>
+					<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+				</svg>
+			</button>
 		</div>
 
 		<script>
 			const video = document.getElementById("hero-video") as HTMLVideoElement;
-			// const playBtn = document.getElementById("hero-play-btn")!;
-			const pauseBtn = document.getElementById("pause")!;
-			const playBtn = document.getElementById("play")!;
+			const toggleBtn = document.getElementById("video-toggle")!;
+			const iconPlay = document.getElementById("icon-play")!;
+			const iconPause = document.getElementById("icon-pause")!;
 			const heroContent = document.getElementById("hero-content")!;
 			const heroOverlay = document.getElementById("hero-overlay")!;
 			const videoSrc = video.dataset.src!;
 			let videoLoaded = false;
-			const isMobile = window.matchMedia("(max-width: 767px)");
+			const media = window.matchMedia("(max-width: 767px)");
 
 			function loadVideo(): Promise<void> {
 				if (videoLoaded) return Promise.resolve();
 				videoLoaded = true;
-				// Fetch once as blob so looping never re-downloads
 				return fetch(videoSrc)
 					.then((res) => res.blob())
 					.then((blob) => {
@@ -111,72 +97,77 @@ import ContactForm from "../components/ContactForm.astro";
 					});
 			}
 
+			function showPlayIcon() {
+				iconPlay.classList.remove("hidden");
+				iconPause.classList.add("hidden");
+				toggleBtn.setAttribute("aria-label", "Play video");
+			}
+
+			function showPauseIcon() {
+				iconPlay.classList.add("hidden");
+				iconPause.classList.remove("hidden");
+				toggleBtn.setAttribute("aria-label", "Pause video");
+			}
+
 			function hideHeroContent() {
 				heroContent.style.opacity = "0";
 				heroContent.style.pointerEvents = "none";
 				heroOverlay.style.opacity = "0";
-				// pauseBtn.classList.remove("hidden");
 			}
 
 			function showHeroContent() {
 				heroContent.style.opacity = "1";
 				heroContent.style.pointerEvents = "";
 				heroOverlay.style.opacity = "1";
-				// pauseBtn.classList.add("hidden");
 			}
 
-			// Desktop: silently autoplay muted in background
-			if (!isMobile.matches) {
+			media.onchange = (e) => {
+				if (e.matches) {
+					/* the viewport is 600 pixels wide or less */
+					console.log("This is a narrow screen — less than 600px wide.");
+					video.pause();
+				} else {
+					/* the viewport is more than 600 pixels wide */
+					console.log("This is a wide screen — more than 600px wide.");
+					loadVideo().then(() => {
+						video.play().catch(() => {});
+					});
+				}
+			};
+
+			// Desktop: autoplay muted in background
+			if (!media.matches) {
 				loadVideo().then(() => {
-					video.controls = true;
 					video.play().catch(() => {});
 				});
 			}
 
-			// "Ver video" button: load (if needed), hide text, play with controls
-			playBtn.addEventListener("click", () => {
-				if (isMobile.matches) {
+			// Toggle button: play or pause
+			toggleBtn.addEventListener("click", () => {
+				if (!video.paused) {
+					video.pause();
+					return;
+				}
+				if (media.matches) {
 					hideHeroContent();
 				}
 				loadVideo().then(() => {
 					video.muted = true;
-					video.controls = true;
 					video.play().catch(() => {});
 				});
-			});
-
-			// "pause" button: pause video, show hero content again
-			pauseBtn.addEventListener("click", () => {
-				video.pause();
-				pauseBtn.classList.add("hidden");
-				if (isMobile.matches) {
-					showHeroContent();
-				}
 			});
 
 			video.addEventListener("playing", () => {
-				console.log("Video playing");
-				pauseBtn.classList.remove("hidden");
-				playBtn.classList.add("hidden");
-
-				if (isMobile.matches) {
+				showPauseIcon();
+				if (media.matches) {
 					hideHeroContent();
 				}
 			});
 
 			video.addEventListener("pause", () => {
-				console.log("Video paused");
-				pauseBtn.classList.add("hidden");
-				playBtn.classList.remove("hidden");
-				showHeroContent();
-			});
-
-			// If user pauses via controls, show hero content again
-			video.addEventListener("pause", () => {
-				if (video.controls) {
+				showPlayIcon();
+				if (media.matches) {
 					showHeroContent();
-					video.controls = false;
-					video.muted = true;
 				}
 			});
 		</script>
