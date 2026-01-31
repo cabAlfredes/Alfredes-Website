@@ -11,13 +11,102 @@ export interface FormProps {
   dateFrom: string;
   dateTo: string;
   phone: string;
+  turnstileToken: string;
+}
+
+interface TurnstileResponse {
+  success: boolean;
+  "error-codes"?: string[];
+  challenge_ts?: string;
+  hostname?: string;
 }
 
 const DOMAIN = "alfredes.com.ar";
+const TURNSTILE_VERIFY_URL =
+  "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
-export const POST: APIRoute = async ({ request }) => {
+async function verifyTurnstileToken(
+  token: string,
+  ip?: string,
+): Promise<boolean> {
+  const secretKey =
+    import.meta.env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY;
+
+  if (!secretKey) {
+    console.error("TURNSTILE_SECRET_KEY is not configured");
+    return false;
+  }
+
   try {
-    const apiKey = import.meta.env.MAILGUN || process.env.MAILGUN;
+    const formData = new URLSearchParams();
+    formData.append("secret", secretKey);
+    formData.append("response", token);
+    if (ip) {
+      formData.append("remoteip", ip);
+    }
+
+    const response = await fetch(TURNSTILE_VERIFY_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: formData,
+    });
+
+    const result: TurnstileResponse = await response.json();
+
+    if (!result.success) {
+      console.error("Turnstile verification failed:", result["error-codes"]);
+    }
+
+    return result.success;
+  } catch (error) {
+    console.error("Turnstile verification error:", error);
+    return false;
+  }
+}
+
+export const POST: APIRoute = async ({ request, clientAddress }) => {
+  try {
+    // Get client IP for Turnstile verification
+    const ip =
+      clientAddress ||
+      request.headers.get("cf-connecting-ip") ||
+      request.headers.get("x-forwarded-for") ||
+      undefined;
+
+    const body: FormProps = await request.json();
+    console.log("BODY", body);
+
+    // Verify Turnstile token first
+    if (!body.turnstileToken) {
+      return new Response(
+        JSON.stringify({
+          error: "captcha_failed",
+          message: "CAPTCHA token missing",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    }
+
+    const isValidToken = await verifyTurnstileToken(body.turnstileToken, ip);
+    if (!isValidToken) {
+      return new Response(
+        JSON.stringify({
+          error: "captcha_failed",
+          message: "CAPTCHA verification failed",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+    }
+
+    const apiKey = import.meta.env.MAILGUN;
     if (!apiKey) {
       console.error("MAILGUN API key is not configured");
       return new Response(
@@ -25,13 +114,11 @@ export const POST: APIRoute = async ({ request }) => {
         {
           status: 500,
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
     }
 
     const mg = Mailgun({ apiKey, domain: DOMAIN });
-    const body: FormProps = await request.json();
-    console.log("BODY", body);
 
     const data = {
       from: `${body.name} <${body.email}>`,
@@ -52,7 +139,7 @@ export const POST: APIRoute = async ({ request }) => {
             new Response(JSON.stringify({ error }), {
               status: error.statusCode || 500,
               headers: { "Content-Type": "application/json" },
-            })
+            }),
           );
           return;
         }
@@ -61,7 +148,7 @@ export const POST: APIRoute = async ({ request }) => {
           new Response(JSON.stringify({ body }), {
             status: 200,
             headers: { "Content-Type": "application/json" },
-          })
+          }),
         );
       });
     });

@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { sticky = false } = Astro.props;
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 
 <div class:list={["@container", sticky && "sticky top-[105px]"]}>
@@ -210,6 +211,23 @@ const { sticky = false } = Astro.props;
           </p>
         </div>
 
+        <!-- Cloudflare Turnstile CAPTCHA -->
+        <div class="space-y-2">
+          <div 
+            id="turnstile-widget"
+            class="cf-turnstile" 
+            data-sitekey={turnstileSiteKey}
+            data-theme="light"
+            data-language="es"
+          ></div>
+          <p class="hidden text-sm text-red-500 flex items-center gap-1" data-error="turnstile">
+            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>
+            </svg>
+            <span>Por favor, completa la verificación</span>
+          </p>
+        </div>
+
         <!-- Action buttons -->
         <div class="flex justify-between gap-4 pt-2">
           <button
@@ -240,6 +258,9 @@ const { sticky = false } = Astro.props;
   </div>
 </div>
 
+<!-- Cloudflare Turnstile Script -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const successMessage = document.getElementById('success-message') as HTMLDivElement;
@@ -251,6 +272,7 @@ const { sticky = false } = Astro.props;
   const nightsCount = document.getElementById('nights-count') as HTMLSpanElement;
   const dateFrom = document.getElementById('dateFrom') as HTMLInputElement;
   const dateTo = document.getElementById('dateTo') as HTMLInputElement;
+  const turnstileError = document.querySelector('[data-error="turnstile"]') as HTMLParagraphElement;
 
   const fields = ['name', 'email', 'phone', 'dateFrom', 'dateTo', 'message'] as const;
   const touched: Record<string, boolean> = {};
@@ -376,6 +398,30 @@ const { sticky = false } = Astro.props;
     });
   });
 
+  // Get Turnstile token
+  function getTurnstileToken(): string | null {
+    const input = document.querySelector('input[name="cf-turnstile-response"]') as HTMLInputElement;
+    return input?.value || null;
+  }
+
+  // Show/hide Turnstile error
+  function showTurnstileError(show: boolean) {
+    if (turnstileError) {
+      if (show) {
+        turnstileError.classList.remove('hidden');
+      } else {
+        turnstileError.classList.add('hidden');
+      }
+    }
+  }
+
+  // Reset Turnstile widget
+  function resetTurnstile() {
+    if (typeof window !== 'undefined' && (window as any).turnstile) {
+      (window as any).turnstile.reset();
+    }
+  }
+
   // Form submit handler
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -383,6 +429,14 @@ const { sticky = false } = Astro.props;
     if (!validateForm()) {
       return;
     }
+
+    // Validate Turnstile token
+    const turnstileToken = getTurnstileToken();
+    if (!turnstileToken) {
+      showTurnstileError(true);
+      return;
+    }
+    showTurnstileError(false);
     
     setLoading(true);
     
@@ -393,6 +447,7 @@ const { sticky = false } = Astro.props;
       dateFrom: (document.getElementById('dateFrom') as HTMLInputElement).value,
       dateTo: (document.getElementById('dateTo') as HTMLInputElement).value,
       message: (document.getElementById('message') as HTMLTextAreaElement).value,
+      turnstileToken,
     };
     
     try {
@@ -404,10 +459,18 @@ const { sticky = false } = Astro.props;
         },
       });
       
+      const result = await response.json();
+      
       if (response.ok) {
         form.classList.add('hidden');
         successMessage.classList.remove('hidden');
         resetForm();
+        resetTurnstile();
+      } else if (result.error === 'captcha_failed') {
+        showTurnstileError(true);
+        resetTurnstile();
+      } else {
+        console.error('Form submission error:', result.error);
       }
     } catch (err) {
       console.error(err);
