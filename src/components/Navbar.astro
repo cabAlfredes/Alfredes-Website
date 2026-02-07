@@ -1,180 +1,502 @@
 ---
-// Get current path for active link highlighting
 const currentPath = Astro.url.pathname;
+
+const navLinks = [
+  { href: "/", label: "Inicio" },
+  { href: "/about", label: "La Cabaña" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/fotos", label: "Fotos" },
+  { href: "/contacto", label: "Contacto" },
+  { href: "/como_llegar", label: "Cómo Llegar" },
+];
 ---
 
-<nav class="bg-white shadow-md border-b">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16">
-      <!-- Logo -->
-      <div class="flex items-center">
-        <a href="/" class="text-xl font-bold text-primary"> Cabaña Alfredes </a>
-      </div>
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <!-- Logo -->
+    <a href="/" class="navbar-logo">
+      <img src="/logo.png" alt="Cabaña Alfredes" class="logo-img" />
+    </a>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-4">
-        <a
-          href="/"
-          class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === "/"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Inicio
-        </a>
-        <a
-          href="/about"
-          class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === "/about"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          La Cabaña
-        </a>
-        <a
-          href="/servicios"
-          class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === "/servicios"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Servicios
-        </a>
-        <a
-          href="/fotos"
-          class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === "/fotos"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Fotos
-        </a>
-        <a
-          href="/contacto"
-          class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === "/contacto"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Contacto
-        </a>
-        <a
-          href="/como_llegar"
-          class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-            currentPath === "/como_llegar"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Cómo Llegar
-        </a>
-      </div>
-
-      <!-- Mobile menu button -->
-      <div class="md:hidden flex items-center">
-        <button
-          type="button"
-          class="text-gray-700 hover:text-primary focus:outline-none focus:text-primary"
-          aria-label="Toggle menu"
-          id="mobile-menu-button"
-        >
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+    <!-- Desktop Navigation -->
+    <div class="nav-links">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href;
+        return (
+          <a
+            href={link.href}
+            class={`nav-link ${isActive ? "active" : ""}`}
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
+            <span class="nav-link-text">{link.label}</span>
+            <svg class="nav-leaf" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
+            </svg>
+          </a>
+        );
+      })}
     </div>
 
-    <!-- Mobile Navigation -->
-    <div class="md:hidden hidden" id="mobile-menu">
-      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-        <a
-          href="/"
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === "/"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Inicio
-        </a>
-        <a
-          href="/about"
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === "/about"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          La Cabaña
-        </a>
-        <a
-          href="/servicios"
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === "/servicios"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Servicios
-        </a>
-        <a
-          href="/fotos"
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === "/fotos"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Fotos
-        </a>
-        <a
-          href="/contacto"
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === "/contacto"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Contacto
-        </a>
-        <a
-          href="/como_llegar"
-          class={`block px-3 py-2 rounded-md text-base font-medium ${
-            currentPath === "/como_llegar"
-              ? "text-primary bg-primary/10"
-              : "text-gray-700 hover:text-primary hover:bg-primary/5"
-          }`}
-        >
-          Cómo Llegar
-        </a>
+    <!-- Mobile menu button -->
+    <button
+      type="button"
+      class="mobile-toggle"
+      aria-label="Toggle menu"
+      id="mobile-menu-button"
+    >
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-menu hidden" id="mobile-menu">
+    <div class="mobile-menu-inner">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href;
+        return (
+          <a
+            href={link.href}
+            class={`mobile-link ${isActive ? "active" : ""}`}
+          >
+            <svg class="mobile-leaf-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
+            </svg>
+            <span>{link.label}</span>
+          </a>
+        );
+      })}
     </div>
   </div>
 </nav>
 
+<!-- Floating leaves background decoration -->
+<div class="floating-leaves" aria-hidden="true">
+  <svg class="floating-leaf fl-1" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
+  </svg>
+  <svg class="floating-leaf fl-2" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
+  </svg>
+  <svg class="floating-leaf fl-3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
+  </svg>
+</div>
+
+<style>
+  /* ===== Navbar Base ===== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(34, 120, 69, 0.12);
+  }
+
+  .navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow:
+      0 4px 24px rgba(34, 120, 69, 0.08),
+      0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .navbar-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+    transition: height 0.3s ease;
+  }
+
+  .navbar.scrolled .navbar-inner {
+    height: 3.75rem;
+  }
+
+  /* ===== Logo ===== */
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-logo:hover {
+    transform: scale(1.04);
+  }
+
+  .logo-img {
+    height: 3rem;
+    width: auto;
+    transition: height 0.3s ease;
+  }
+
+  .navbar.scrolled .logo-img {
+    height: 2.25rem;
+  }
+
+  /* ===== Desktop Nav Links ===== */
+  .nav-links {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #3d5a47;
+    text-decoration: none;
+    border-radius: 9999px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .nav-link-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Leaf icon on links */
+  .nav-leaf {
+    width: 0;
+    height: 14px;
+    color: #2d8a4e;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: rotate(-30deg) scale(0.5);
+  }
+
+  /* Underline grow effect */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, #2d8a4e, #4ade80);
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  /* Hover state */
+  .nav-link:hover {
+    color: #1a6b35;
+    background: rgba(34, 120, 69, 0.06);
+  }
+
+  .nav-link:hover .nav-leaf {
+    width: 14px;
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .nav-link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  /* Active state */
+  .nav-link.active {
+    color: #fff;
+    background: linear-gradient(135deg, #227845, #2d8a4e);
+    box-shadow:
+      0 2px 10px rgba(34, 120, 69, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .nav-link.active .nav-leaf {
+    width: 14px;
+    opacity: 1;
+    color: rgba(255, 255, 255, 0.85);
+    transform: rotate(0deg) scale(1);
+    animation: leafSway 3s ease-in-out infinite;
+  }
+
+  .nav-link.active::after {
+    display: none;
+  }
+
+  @keyframes leafSway {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(8deg) scale(1.05); }
+    75% { transform: rotate(-5deg) scale(0.98); }
+  }
+
+  /* ===== Mobile Toggle ===== */
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    transition: background 0.2s ease;
+  }
+
+  .mobile-toggle:hover {
+    background: rgba(34, 120, 69, 0.08);
+  }
+
+  @media (min-width: 768px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 22px;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    background: #3d5a47;
+    border-radius: 2px;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ===== Mobile Menu ===== */
+  .mobile-menu {
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+  }
+
+  .mobile-menu.open {
+    max-height: 28rem;
+    opacity: 1;
+  }
+
+  .mobile-menu.hidden {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-menu-inner {
+    padding: 0.75rem 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    border-top: 1px solid rgba(34, 120, 69, 0.1);
+  }
+
+  .mobile-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #3d5a47;
+    text-decoration: none;
+    transition: all 0.25s ease;
+  }
+
+  .mobile-link:hover {
+    background: rgba(34, 120, 69, 0.06);
+    color: #1a6b35;
+    padding-left: 1.25rem;
+  }
+
+  .mobile-leaf-icon {
+    width: 16px;
+    height: 16px;
+    color: #2d8a4e;
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .mobile-link:hover .mobile-leaf-icon {
+    opacity: 1;
+    transform: rotate(15deg);
+  }
+
+  .mobile-link.active {
+    background: linear-gradient(135deg, #227845, #2d8a4e);
+    color: #fff;
+  }
+
+  .mobile-link.active .mobile-leaf-icon {
+    color: rgba(255, 255, 255, 0.85);
+    opacity: 1;
+    animation: leafSway 3s ease-in-out infinite;
+  }
+
+  /* ===== Floating Leaves ===== */
+  .floating-leaves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4.5rem;
+    pointer-events: none;
+    z-index: 49;
+    overflow: hidden;
+  }
+
+  .floating-leaf {
+    position: absolute;
+    color: rgba(34, 120, 69, 0.07);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+
+  .fl-1 {
+    width: 20px;
+    top: 8px;
+    left: 15%;
+    animation: floatLeaf1 8s infinite;
+  }
+
+  .fl-2 {
+    width: 16px;
+    top: 14px;
+    left: 55%;
+    animation: floatLeaf2 11s infinite;
+  }
+
+  .fl-3 {
+    width: 22px;
+    top: 6px;
+    left: 82%;
+    animation: floatLeaf3 9s infinite;
+  }
+
+  @keyframes floatLeaf1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.07; }
+    25% { transform: translate(12px, 6px) rotate(25deg); opacity: 0.12; }
+    50% { transform: translate(-5px, 10px) rotate(-10deg); opacity: 0.07; }
+    75% { transform: translate(8px, 3px) rotate(15deg); opacity: 0.1; }
+  }
+
+  @keyframes floatLeaf2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.06; }
+    33% { transform: translate(-10px, 8px) rotate(-20deg); opacity: 0.1; }
+    66% { transform: translate(6px, 4px) rotate(15deg); opacity: 0.08; }
+  }
+
+  @keyframes floatLeaf3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+    20% { transform: translate(8px, 5px) rotate(20deg); opacity: 0.12; }
+    60% { transform: translate(-12px, 8px) rotate(-15deg); opacity: 0.06; }
+    80% { transform: translate(4px, 2px) rotate(10deg); opacity: 0.1; }
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .floating-leaf,
+    .nav-link.active .nav-leaf,
+    .mobile-link.active .mobile-leaf-icon {
+      animation: none;
+    }
+
+    .nav-link,
+    .nav-leaf,
+    .nav-link::after,
+    .mobile-link,
+    .mobile-menu,
+    .hamburger span {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+
 <script>
-  // Mobile menu toggle functionality
+  const navbar = document.getElementById("navbar");
   const button = document.getElementById("mobile-menu-button");
   const menu = document.getElementById("mobile-menu");
+  const hamburger = document.getElementById("hamburger");
 
-  if (button && menu) {
+  // Scroll effect — shrink navbar & add shadow
+  let lastScroll = 0;
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 20) {
+      navbar?.classList.add("scrolled");
+    } else {
+      navbar?.classList.remove("scrolled");
+    }
+    lastScroll = scrollY;
+  });
+
+  // Mobile menu toggle
+  if (button && menu && hamburger) {
     button.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
+      const isOpen = menu.classList.contains("open");
+      if (isOpen) {
+        menu.classList.remove("open");
+        menu.classList.add("hidden");
+        hamburger.classList.remove("open");
+      } else {
+        menu.classList.remove("hidden");
+        // Force reflow so the transition triggers
+        void menu.offsetHeight;
+        menu.classList.add("open");
+        hamburger.classList.add("open");
+      }
     });
   }
+
+  // Close mobile menu on outside click
+  document.addEventListener("click", (e) => {
+    if (menu && hamburger && button) {
+      if (
+        !menu.contains(e.target as Node) &&
+        !button.contains(e.target as Node) &&
+        menu.classList.contains("open")
+      ) {
+        menu.classList.remove("open");
+        menu.classList.add("hidden");
+        hamburger.classList.remove("open");
+      }
+    }
+  });
 </script>
