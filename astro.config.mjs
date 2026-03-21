@@ -13,6 +13,13 @@ export default defineConfig({
     },
   }),
   site: "https://www.alfredes.com.ar",
+  i18n: {
+    defaultLocale: "es",
+    locales: ["es", "en", "pt"],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },

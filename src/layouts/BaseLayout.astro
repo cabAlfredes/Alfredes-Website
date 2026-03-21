@@ -6,10 +6,12 @@ export interface Props {
 const { title } = Astro.props;
 import '../styles/globals.css';
 import Navbar from '../components/Navbar.astro';
+
+const lang = Astro.currentLocale ?? 'es';
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Cabaña Alfredes - Alquiler de cabañas en Argentina" />

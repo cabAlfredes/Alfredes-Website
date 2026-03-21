@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../PageHero.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations(Astro.currentLocale);
+---
+
+<BaseLayout title={t('meta.comoLlegar')}>
+  <div class="min-h-screen bg-gradient-to-b from-emerald-50/50 via-white to-amber-50/30">
+    <PageHero title={t('arrive.pageTitle')} subtitle={t('arrive.pageSubtitle')} />
+
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Left Column - Instructions -->
+        <div class="space-y-6">
+          <div class="bg-card rounded-lg shadow-sm border p-6">
+            <h2 class="text-2xl font-bold mb-4 text-red-600">{t('arrive.heading')}</h2>
+            <p class="text-sm font-semibold text-red-600 mb-4">{t('arrive.reservationOnly')}</p>
+
+            <div class="space-y-4 text-muted-foreground">
+              <p>{t('arrive.p1')}</p>
+              <p>{t('arrive.p2')}</p>
+              <p>{t('arrive.p3')}</p>
+            </div>
+          </div>
+
+          <div class="bg-card rounded-lg shadow-sm border p-6">
+            <h3 class="text-lg font-semibold mb-4">{t('arrive.coordsTitle')}</h3>
+            <p class="text-muted-foreground mb-2">{t('arrive.coordsSubtitle')}</p>
+            <div class="font-mono text-sm bg-muted p-3 rounded">
+              <p>G M S.s Lat: 34º 13' 34.5'' S / Long: 58º 33' 25.3'' O</p>
+              <p>G M.m Lat: 34º 13.574' S / Long: 58º 33.421' O</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column - Map -->
+        <div>
+          <div class="bg-card rounded-lg shadow-sm border overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1tFXr40dZr1XFxpD4GW9AklEdEK0&ehbc=2E312F"
+              width="100%"
+              height="500"
+              class="border-0"
+              allowfullscreen=""
+              loading="eager"
+              title={t('arrive.mapTitle')}
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
