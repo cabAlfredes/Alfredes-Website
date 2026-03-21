@@ -1,39 +1,68 @@
 ---
+import { useTranslations, getLocaleSwitcherPaths } from '../i18n/utils';
+import { languages } from '../i18n/translations';
+
+const locale = Astro.currentLocale ?? 'es';
+const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
 
+const prefix = locale === 'es' ? '' : `/${locale}`;
+
 const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/about", label: "La Cabaña" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/fotos", label: "Fotos" },
-  { href: "/contacto", label: "Contacto" },
-  { href: "/como_llegar", label: "Cómo Llegar" },
+  { href: `${prefix}/`,            label: t('nav.home') },
+  { href: `${prefix}/about`,       label: t('nav.about') },
+  { href: `${prefix}/servicios`,   label: t('nav.services') },
+  { href: `${prefix}/fotos`,       label: t('nav.photos') },
+  { href: `${prefix}/contacto`,    label: t('nav.contact') },
+  { href: `${prefix}/como_llegar`, label: t('nav.howToArrive') },
 ];
+
+const localePaths = getLocaleSwitcherPaths(currentPath, locale);
+
+function isActive(href: string): boolean {
+  if (href === `${prefix}/`) return currentPath === href;
+  return currentPath.startsWith(href);
+}
 ---
 
 <nav class="navbar" id="navbar">
   <div class="navbar-inner">
     <!-- Logo -->
-    <a href="/" class="navbar-logo">
+    <a href={`${prefix}/`} class="navbar-logo">
       <img src="/logo.png" alt="Cabaña Alfredes" class="logo-img" />
     </a>
 
     <!-- Desktop Navigation -->
     <div class="nav-links">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href;
-        return (
-          <a
-            href={link.href}
-            class={`nav-link ${isActive ? "active" : ""}`}
-          >
-            <span class="nav-link-text">{link.label}</span>
-            <svg class="nav-leaf" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
-            </svg>
-          </a>
-        );
-      })}
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`nav-link ${isActive(link.href) ? "active" : ""}`}
+        >
+          <span class="nav-link-text">{link.label}</span>
+          <svg class="nav-leaf" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
+          </svg>
+        </a>
+      ))}
+
+      <!-- Language switcher (desktop) -->
+      <div class="lang-switcher" id="lang-switcher-desktop">
+        <button class="lang-btn" id="lang-btn-desktop" aria-label="Change language">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/>
+          </svg>
+          <span>{languages[locale as keyof typeof languages]}</span>
+          <svg class="w-3 h-3 chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown-desktop">
+          <a href={localePaths.es} class={`lang-option ${locale === 'es' ? 'lang-active' : ''}`}>🇦🇷 Español</a>
+          <a href={localePaths.en} class={`lang-option ${locale === 'en' ? 'lang-active' : ''}`}>🇬🇧 English</a>
+          <a href={localePaths.pt} class={`lang-option ${locale === 'pt' ? 'lang-active' : ''}`}>🇧🇷 Português</a>
+        </div>
+      </div>
     </div>
 
     <!-- Mobile menu button -->
@@ -54,20 +83,24 @@ const navLinks = [
   <!-- Mobile Navigation -->
   <div class="mobile-menu hidden" id="mobile-menu">
     <div class="mobile-menu-inner">
-      {navLinks.map((link) => {
-        const isActive = currentPath === link.href;
-        return (
-          <a
-            href={link.href}
-            class={`mobile-link ${isActive ? "active" : ""}`}
-          >
-            <svg class="mobile-leaf-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
-            </svg>
-            <span>{link.label}</span>
-          </a>
-        );
-      })}
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class={`mobile-link ${isActive(link.href) ? "active" : ""}`}
+        >
+          <svg class="mobile-leaf-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z" />
+          </svg>
+          <span>{link.label}</span>
+        </a>
+      ))}
+
+      <!-- Language switcher (mobile) -->
+      <div class="mobile-lang-row">
+        <a href={localePaths.es} class={`mobile-lang-btn ${locale === 'es' ? 'mobile-lang-active' : ''}`}>🇦🇷 ES</a>
+        <a href={localePaths.en} class={`mobile-lang-btn ${locale === 'en' ? 'mobile-lang-active' : ''}`}>🇬🇧 EN</a>
+        <a href={localePaths.pt} class={`mobile-lang-btn ${locale === 'pt' ? 'mobile-lang-active' : ''}`}>🇧🇷 PT</a>
+      </div>
     </div>
   </div>
 </nav>
@@ -177,7 +210,6 @@ const navLinks = [
     z-index: 1;
   }
 
-  /* Leaf icon on links */
   .nav-leaf {
     width: 0;
     height: 14px;
@@ -187,7 +219,6 @@ const navLinks = [
     transform: rotate(-30deg) scale(0.5);
   }
 
-  /* Underline grow effect */
   .nav-link::after {
     content: "";
     position: absolute;
@@ -202,7 +233,6 @@ const navLinks = [
     transform-origin: center;
   }
 
-  /* Hover state */
   .nav-link:hover {
     color: #1a6b35;
     background: rgba(34, 120, 69, 0.06);
@@ -218,7 +248,6 @@ const navLinks = [
     transform: translateX(-50%) scaleX(1);
   }
 
-  /* Active state */
   .nav-link.active {
     color: #fff;
     background: linear-gradient(135deg, #227845, #2d8a4e);
@@ -243,6 +272,111 @@ const navLinks = [
     0%, 100% { transform: rotate(0deg) scale(1); }
     25% { transform: rotate(8deg) scale(1.05); }
     75% { transform: rotate(-5deg) scale(0.98); }
+  }
+
+  /* ===== Language Switcher ===== */
+  .lang-switcher {
+    position: relative;
+    margin-left: 0.5rem;
+  }
+
+  .lang-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #3d5a47;
+    background: rgba(34, 120, 69, 0.06);
+    border: 1px solid rgba(34, 120, 69, 0.2);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn:hover {
+    background: rgba(34, 120, 69, 0.12);
+    border-color: rgba(34, 120, 69, 0.35);
+  }
+
+  .chevron {
+    transition: transform 0.2s ease;
+  }
+
+  .lang-switcher.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: white;
+    border: 1px solid rgba(34, 120, 69, 0.15);
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+    overflow: hidden;
+    z-index: 60;
+  }
+
+  .lang-switcher.open .lang-dropdown {
+    display: block;
+  }
+
+  .lang-option {
+    display: block;
+    padding: 0.6rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #3d5a47;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  .lang-option:hover {
+    background: rgba(34, 120, 69, 0.06);
+  }
+
+  .lang-active {
+    background: rgba(34, 120, 69, 0.1);
+    color: #1a6b35;
+    font-weight: 600;
+  }
+
+  /* ===== Mobile Lang Row ===== */
+  .mobile-lang-row {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem 0.25rem;
+    border-top: 1px solid rgba(34, 120, 69, 0.1);
+    margin-top: 0.25rem;
+  }
+
+  .mobile-lang-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #3d5a47;
+    text-decoration: none;
+    background: rgba(34, 120, 69, 0.05);
+    border: 1px solid rgba(34, 120, 69, 0.15);
+    transition: all 0.2s ease;
+  }
+
+  .mobile-lang-btn:hover {
+    background: rgba(34, 120, 69, 0.12);
+  }
+
+  .mobile-lang-active {
+    background: linear-gradient(135deg, #227845, #2d8a4e);
+    color: white;
+    border-color: transparent;
   }
 
   /* ===== Mobile Toggle ===== */
@@ -308,7 +442,7 @@ const navLinks = [
   }
 
   .mobile-menu.open {
-    max-height: 28rem;
+    max-height: 32rem;
     opacity: 1;
   }
 
@@ -430,7 +564,6 @@ const navLinks = [
     80% { transform: translate(4px, 2px) rotate(10deg); opacity: 0.1; }
   }
 
-  /* Reduce motion for accessibility */
   @media (prefers-reduced-motion: reduce) {
     .floating-leaf,
     .nav-link.active .nav-leaf,
@@ -455,16 +588,13 @@ const navLinks = [
   const menu = document.getElementById("mobile-menu");
   const hamburger = document.getElementById("hamburger");
 
-  // Scroll effect — shrink navbar & add shadow
-  let lastScroll = 0;
+  // Scroll effect
   window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    if (scrollY > 20) {
+    if (window.scrollY > 20) {
       navbar?.classList.add("scrolled");
     } else {
       navbar?.classList.remove("scrolled");
     }
-    lastScroll = scrollY;
   });
 
   // Mobile menu toggle
@@ -477,7 +607,6 @@ const navLinks = [
         hamburger.classList.remove("open");
       } else {
         menu.classList.remove("hidden");
-        // Force reflow so the transition triggers
         void menu.offsetHeight;
         menu.classList.add("open");
         hamburger.classList.add("open");
@@ -499,4 +628,21 @@ const navLinks = [
       }
     }
   });
+
+  // Desktop language switcher dropdown toggle
+  const langSwitcher = document.getElementById("lang-switcher-desktop");
+  const langBtn = document.getElementById("lang-btn-desktop");
+
+  if (langBtn && langSwitcher) {
+    langBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      langSwitcher.classList.toggle("open");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!langSwitcher.contains(e.target as Node)) {
+        langSwitcher.classList.remove("open");
+      }
+    });
+  }
 </script>
