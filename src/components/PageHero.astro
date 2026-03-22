@@ -8,127 +8,38 @@ interface Props {
 const { title, subtitle, image = "/assets/hero_xl.jpg" } = Astro.props;
 ---
 
-<!-- Hero Banner -->
-<div class="page-hero">
+<div class="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
   <!-- Background image -->
   <div
-    class="hero-bg"
+    class="absolute inset-0 bg-cover bg-center scale-105"
     style={`background-image: url('${image}');`}
   ></div>
 
-  <!-- Gradient overlays -->
-  <div class="hero-overlay-top"></div>
-  <div class="hero-overlay-bottom"></div>
+  <!-- Dark top vignette -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent"></div>
+
+  <!-- Green bottom fade -->
+  <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/70 via-emerald-900/20 to-transparent"></div>
 
   <!-- Content -->
-  <div class="hero-content">
-    <h1 class="hero-title">{title}</h1>
-    {subtitle && <p class="hero-subtitle">{subtitle}</p>}
+  <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 pb-8">
+    <h1 class="hero-title font-bold tracking-tight mb-2 drop-shadow-lg">{title}</h1>
+    {subtitle && (
+      <p class="text-base sm:text-lg lg:text-xl font-light opacity-90 drop-shadow max-w-xl">{subtitle}</p>
+    )}
   </div>
 
   <!-- Bottom wave -->
-  <div class="hero-wave">
-    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+  <div class="absolute bottom-0 left-0 w-full leading-none">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-10 sm:h-14">
       <path d="M0 80L80 72C160 64 320 48 480 44C640 40 800 48 960 54C1120 60 1280 64 1360 66L1440 68V80H0Z" fill="white"/>
     </svg>
   </div>
 </div>
 
 <style>
-  .page-hero {
-    position: relative;
-    height: 260px;
-    overflow: hidden;
-  }
-
-  @media (min-width: 640px) {
-    .page-hero { height: 320px; }
-  }
-
-  @media (min-width: 1024px) {
-    .page-hero { height: 380px; }
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center 60%;
-    background-repeat: no-repeat;
-    transform: scale(1.05);
-  }
-
-  /* Dark vignette from top */
-  .hero-overlay-top {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.55) 0%,
-      rgba(0, 0, 0, 0.15) 50%,
-      rgba(0, 0, 0, 0.0) 100%
-    );
-  }
-
-  /* Green-tinted gradient from bottom (merges into page bg) */
-  .hero-overlay-bottom {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      to top,
-      rgba(6, 78, 59, 0.75) 0%,
-      rgba(6, 78, 59, 0.25) 35%,
-      transparent 65%
-    );
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding: 0 1.5rem;
-    padding-bottom: 2rem;
-    text-align: center;
-    color: white;
-  }
-
   .hero-title {
-    font-size: clamp(2rem, 6vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-    margin: 0 0 0.5rem;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
     line-height: 1.1;
-  }
-
-  .hero-subtitle {
-    font-size: clamp(0.95rem, 2vw, 1.25rem);
-    font-weight: 300;
-    opacity: 0.92;
-    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
-    margin: 0;
-    max-width: 560px;
-  }
-
-  .hero-wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    line-height: 0;
-  }
-
-  .hero-wave svg {
-    display: block;
-    width: 100%;
-    height: 48px;
-  }
-
-  @media (min-width: 768px) {
-    .hero-wave svg { height: 64px; }
   }
 </style>
