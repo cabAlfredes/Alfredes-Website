@@ -4,144 +4,945 @@ import { useTranslations } from '../../i18n/utils';
 
 const t = useTranslations(Astro.currentLocale);
 const prefix = (Astro.currentLocale && Astro.currentLocale !== 'es') ? `/${Astro.currentLocale}` : '';
+
+const amenities = [
+  { icon: '📶', label: t('home.amenity.wifi') },
+  { icon: '☀️', label: t('home.amenity.solar') },
+  { icon: '🍳', label: t('home.amenity.kitchen') },
+  { icon: '🛏️', label: t('home.amenity.bed') },
+  { icon: '🛶', label: t('home.amenity.kayak') },
+  { icon: '🔥', label: t('home.amenity.bbq') },
+  { icon: '🌊', label: t('home.amenity.deck') },
+  { icon: '🛁', label: t('home.amenity.linens') },
+] as const;
+
+const galleryPhotos = [
+  '/assets/images/slider/foto_1.jpg',
+  '/assets/images/slider/foto_3.jpg',
+  '/assets/images/slider/foto_5.jpg',
+  '/assets/images/slider/foto_7.jpg',
+];
 ---
 
 <BaseLayout title={t('meta.site')}>
-  <div>
-    <div
-      class="relative h-screen w-full overflow-hidden"
-    >
-      <video
-        id="hero-video"
-        muted
-        loop
-        poster="/assets/hero_xl.jpg"
-        preload="none"
-        class="absolute inset-0 w-full h-full object-cover"
-        data-src="/assets/hero-video.webm"
-      >
-      </video>
 
-      <div
-        id="hero-overlay"
-        class="absolute inset-0 bg-linear-to-r from-black/70 via-black/50 to-black/30 transition-opacity duration-500"
-      >
-        <div
-          id="hero-content"
-          class="relative z-10 container mx-auto px-6 md:px-12 min-h-screen flex items-center transition-opacity duration-500"
-        >
-          <div class="max-w-2xl text-white">
-            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold italic mb-6 text-shadow-lg tracking-tight leading-tight">
-              {t('home.title')}
-            </h1>
-            <p class="text-lg md:text-xl font-light mb-10 text-white/85 text-shadow-sm">
-              {t('home.subtitle')}
-            </p>
-            <div class="flex flex-wrap items-center gap-4">
-              <a
-                href={`${prefix}/contacto`}
-                class="px-8 py-3.5 bg-emerald-800 hover:bg-emerald-600 text-white font-semibold rounded-lg transition-colors text-lg"
-              >
-                {t('home.cta')}
-              </a>
-            </div>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero-section">
+    <div class="hero-bg" style="background-image: url('/assets/hero_xl.jpg');"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <!-- Badge -->
+      <div class="hero-badge">
+        <svg class="badge-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+        {t('home.badge')}
+      </div>
+
+      <!-- Heading -->
+      <h1 class="hero-title">{t('home.title')}</h1>
+      <p class="hero-subtitle">{t('home.subtitle')}</p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas">
+        <a href={`${prefix}/contacto`} class="btn-primary">
+          {t('home.cta')}
+        </a>
+        <a href={`${prefix}/fotos`} class="btn-ghost">
+          {t('home.cta2')}
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCES ===================== -->
+  <section class="experiences-section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2 class="section-title light">{t('home.experiences.title')}</h2>
+        <p class="section-subtitle light">{t('home.experiences.subtitle')}</p>
+      </div>
+
+      <div class="experiences-grid">
+
+        <!-- Fishing -->
+        <div class="exp-card">
+          <div class="exp-icon-wrap">
+            <svg class="exp-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Fishing rod -->
+              <line x1="10" y1="8" x2="52" y2="22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <!-- Line from rod tip to water -->
+              <path d="M52 22 Q56 36 44 42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- Hook -->
+              <path d="M44 42 Q46 48 42 50 Q38 52 38 48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <!-- Water ripple -->
+              <ellipse cx="32" cy="54" rx="14" ry="4" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <!-- Fish -->
+              <path d="M18 46 Q24 42 30 46 Q24 50 18 46Z" fill="currentColor" opacity="0.7"/>
+              <circle cx="27" cy="45.5" r="1" fill="white" opacity="0.9"/>
+            </svg>
           </div>
+          <h3 class="exp-title">{t('home.fishing.title')}</h3>
+          <p class="exp-desc">{t('home.fishing.desc')}</p>
+          <div class="exp-line"></div>
+        </div>
+
+        <!-- Rowing -->
+        <div class="exp-card exp-card--featured">
+          <div class="exp-icon-wrap">
+            <svg class="exp-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Kayak/canoe body -->
+              <path d="M8 38 Q32 28 56 38 Q32 44 8 38Z" fill="currentColor" opacity="0.9"/>
+              <!-- Paddler silhouette -->
+              <circle cx="32" cy="30" r="5" fill="currentColor"/>
+              <path d="M32 35 L32 42" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Paddle -->
+              <line x1="14" y1="30" x2="50" y2="32" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <ellipse cx="13" cy="29.5" rx="5" ry="3" fill="currentColor" opacity="0.8" transform="rotate(-10 13 30)"/>
+              <ellipse cx="51" cy="32.5" rx="5" ry="3" fill="currentColor" opacity="0.8" transform="rotate(-10 51 33)"/>
+              <!-- Water -->
+              <path d="M6 44 Q16 41 26 44 Q36 47 46 44 Q56 41 60 44" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"/>
+            </svg>
+          </div>
+          <h3 class="exp-title">{t('home.rowing.title')}</h3>
+          <p class="exp-desc">{t('home.rowing.desc')}</p>
+          <div class="exp-line"></div>
+        </div>
+
+        <!-- Relaxation -->
+        <div class="exp-card">
+          <div class="exp-icon-wrap">
+            <svg class="exp-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Hammock ropes -->
+              <line x1="8" y1="18" x2="18" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <line x1="56" y1="18" x2="46" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+              <!-- Hammock body -->
+              <path d="M18 38 Q32 46 46 38" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+              <path d="M18 38 Q32 42 46 38" fill="currentColor" opacity="0.35"/>
+              <!-- Person in hammock -->
+              <circle cx="32" cy="36" r="4" fill="currentColor" opacity="0.85"/>
+              <path d="M28 40 Q32 44 36 40" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7"/>
+              <!-- Stars / peaceful dots -->
+              <circle cx="22" cy="14" r="1.5" fill="currentColor" opacity="0.5"/>
+              <circle cx="32" cy="10" r="2" fill="currentColor" opacity="0.6"/>
+              <circle cx="42" cy="14" r="1.5" fill="currentColor" opacity="0.5"/>
+              <!-- Trees suggestion -->
+              <path d="M8 52 L8 18 M56 52 L56 18" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+              <path d="M2 20 L8 10 L14 20Z" fill="currentColor" opacity="0.4"/>
+              <path d="M50 20 L56 10 L62 20Z" fill="currentColor" opacity="0.4"/>
+            </svg>
+          </div>
+          <h3 class="exp-title">{t('home.relax.title')}</h3>
+          <p class="exp-desc">{t('home.relax.desc')}</p>
+          <div class="exp-line"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CABIN STORY ===================== -->
+  <section class="story-section">
+    <div class="section-container story-grid">
+
+      <div class="story-image-wrap">
+        <img
+          src="/assets/images/cabana.jpg"
+          alt="Cabaña Alfredes"
+          class="story-image"
+          loading="lazy"
+        />
+        <div class="story-image-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20c4 0 8.5-3.5 9.5-11.5L19 4l-2 4z"/>
+          </svg>
+          Arroyo Fredes
         </div>
       </div>
 
-      <button
-        id="video-toggle"
-        class="video-toggle-btn absolute top-20 right-6 z-40 w-12 h-12 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 text-white flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-black/60 hover:scale-110 hover:border-white/40"
-        aria-label="Play video"
-      >
-        <svg id="icon-play" class="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"></path>
-        </svg>
-        <svg id="icon-pause" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-        </svg>
-      </button>
+      <div class="story-text">
+        <span class="story-eyebrow">{t('home.story.eyebrow')}</span>
+        <h2 class="story-heading">{t('home.story.heading')}</h2>
+        <p class="story-body">{t('home.story.body')}</p>
+        <blockquote class="story-quote">
+          "{t('about.quote')}"
+        </blockquote>
+        <a href={`${prefix}/about`} class="story-link">
+          {t('home.story.link')}
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
     </div>
+  </section>
 
-    <script>
-      const video = document.getElementById("hero-video") as HTMLVideoElement;
-      const toggleBtn = document.getElementById("video-toggle")!;
-      const iconPlay = document.getElementById("icon-play")!;
-      const iconPause = document.getElementById("icon-pause")!;
-      const heroContent = document.getElementById("hero-content")!;
-      const heroOverlay = document.getElementById("hero-overlay")!;
-      const videoSrc = video.dataset.src!;
-      let videoLoaded = false;
-      const media = window.matchMedia("(max-width: 767px)");
+  <!-- ===================== AMENITIES ===================== -->
+  <section class="amenities-section">
+    <div class="section-container">
+      <h2 class="section-title dark">{t('home.amenities.title')}</h2>
+      <div class="amenities-grid">
+        {amenities.map(({ icon, label }) => (
+          <div class="amenity-item">
+            <span class="amenity-icon">{icon}</span>
+            <span class="amenity-label">{label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
-      function loadVideo(): Promise<void> {
-        if (videoLoaded) return Promise.resolve();
-        videoLoaded = true;
-        return fetch(videoSrc)
-          .then((res) => res.blob())
-          .then((blob) => { video.src = URL.createObjectURL(blob); });
-      }
+  <!-- ===================== GALLERY PREVIEW ===================== -->
+  <section class="gallery-section">
+    <div class="section-container">
+      <div class="gallery-header">
+        <h2 class="section-title dark">{t('home.gallery.title')}</h2>
+        <a href={`${prefix}/fotos`} class="gallery-link">
+          {t('home.gallery.link')}
+          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      <div class="gallery-mosaic">
+        {galleryPhotos.map((src, i) => (
+          <a href={`${prefix}/fotos`} class={`gallery-item gallery-item--${i}`}>
+            <img src={src} alt={`Cabaña Alfredes foto ${i + 1}`} loading="lazy" />
+            <div class="gallery-item-overlay"></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
-      function showPlayIcon() {
-        iconPlay.classList.remove("hidden");
-        iconPause.classList.add("hidden");
-        toggleBtn.setAttribute("aria-label", "Play video");
-      }
+  <!-- ===================== FINAL CTA ===================== -->
+  <section class="cta-section">
+    <div class="cta-bg" style="background-image: url('/assets/images/slider/foto_9.jpg');"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <h2 class="cta-title">{t('home.reserve.title')}</h2>
+      <p class="cta-subtitle">{t('home.reserve.subtitle')}</p>
+      <div class="cta-buttons">
+        <a href={`${prefix}/contacto`} class="btn-primary btn-primary--lg">
+          {t('home.cta')}
+        </a>
+        <a
+          href="https://wa.me/+5491162785125?text=Hola!%20Me%20gustaría%20consultar%20sobre%20disponibilidad%20de%20la%20cabaña."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          {t('home.reserve.whatsapp')}
+        </a>
+      </div>
+    </div>
+  </section>
 
-      function showPauseIcon() {
-        iconPlay.classList.add("hidden");
-        iconPause.classList.remove("hidden");
-        toggleBtn.setAttribute("aria-label", "Pause video");
-      }
-
-      function hideHeroContent() {
-        heroContent.style.opacity = "0";
-        heroContent.style.pointerEvents = "none";
-        heroOverlay.style.opacity = "0";
-      }
-
-      function showHeroContent() {
-        heroContent.style.opacity = "1";
-        heroContent.style.pointerEvents = "";
-        heroOverlay.style.opacity = "1";
-      }
-
-      media.onchange = (e) => {
-        if (e.matches) {
-          video.pause();
-        } else {
-          showHeroContent();
-          loadVideo().then(() => { video.play().catch(() => {}); });
-        }
-      };
-
-      if (!media.matches) {
-        loadVideo().then(() => { video.play().catch(() => {}); });
-      }
-
-      toggleBtn.addEventListener("click", () => {
-        if (!video.paused) { video.pause(); return; }
-        if (media.matches) hideHeroContent();
-        loadVideo().then(() => {
-          video.muted = true;
-          video.play().catch(() => {});
-        });
-      });
-
-      video.addEventListener("playing", () => {
-        showPauseIcon();
-        if (media.matches) hideHeroContent();
-      });
-
-      video.addEventListener("pause", () => {
-        showPlayIcon();
-        if (media.matches) showHeroContent();
-      });
-    </script>
-
-    <style>
-      .text-shadow-lg { text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
-      .text-shadow-sm { text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
-    </style>
-  </div>
 </BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero-section {
+    position: relative;
+    height: 100svh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    transform: scale(1.04);
+    transition: transform 8s ease-out;
+    will-change: transform;
+  }
+
+  .hero-bg.loaded {
+    transform: scale(1);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0,0,0,0.72) 0%,
+      rgba(10,40,20,0.55) 50%,
+      rgba(0,0,0,0.25) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    padding-top: 5rem;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(45, 138, 78, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(45, 138, 78, 0.45);
+    color: rgba(134, 239, 172, 0.95);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-icon {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+    text-shadow: 2px 4px 16px rgba(0,0,0,0.5);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.85);
+    max-width: 36rem;
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+    text-shadow: 1px 2px 6px rgba(0,0,0,0.4);
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  /* ===== BUTTONS ===== */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    background: linear-gradient(135deg, #227845, #2d8a4e);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(34, 120, 69, 0.4);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #1a6b35, #227845);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(34, 120, 69, 0.5);
+  }
+
+  .btn-primary--lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.75rem;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all 0.3s ease;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.45);
+    transform: translateY(-2px);
+  }
+
+  .btn-arrow {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+  }
+
+  a:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  .btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2rem;
+    background: #25D366;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+  }
+
+  .btn-whatsapp:hover {
+    background: #1ebe5c;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.45);
+  }
+
+  /* ===== SCROLL INDICATOR ===== */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 28px;
+    height: 44px;
+    border: 2px solid rgba(255,255,255,0.45);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    padding-top: 6px;
+  }
+
+  .scroll-dot {
+    width: 5px;
+    height: 5px;
+    background: #fff;
+    border-radius: 50%;
+    animation: scrollBounce 2.2s ease-in-out infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(14px); opacity: 0.3; }
+  }
+
+  /* ===== SECTION COMMON ===== */
+  .section-container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title.light { color: #e8f5ee; }
+  .section-title.dark { color: #1a3a28; }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .section-subtitle.light { color: rgba(232, 245, 238, 0.75); }
+
+  /* ===== EXPERIENCES ===== */
+  .experiences-section {
+    background: linear-gradient(160deg, #1a3a28 0%, #0f2318 60%, #162d1f 100%);
+    padding: 6rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .experiences-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/bg_texture.png');
+    background-size: 400px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+
+  .experiences-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .experiences-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .exp-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(45, 138, 78, 0.2);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(45,138,78,0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .exp-card:hover {
+    background: rgba(45, 138, 78, 0.1);
+    border-color: rgba(45, 138, 78, 0.45);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  }
+
+  .exp-card:hover::before {
+    opacity: 1;
+  }
+
+  .exp-card--featured {
+    background: rgba(45, 138, 78, 0.12);
+    border-color: rgba(45, 138, 78, 0.4);
+  }
+
+  .exp-card--featured::before {
+    opacity: 1;
+  }
+
+  .exp-icon-wrap {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 1.5rem;
+    background: rgba(45, 138, 78, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(45, 138, 78, 0.3);
+    transition: all 0.4s ease;
+  }
+
+  .exp-card:hover .exp-icon-wrap {
+    background: rgba(45, 138, 78, 0.25);
+    transform: rotate(-5deg) scale(1.08);
+    border-color: rgba(45, 138, 78, 0.5);
+  }
+
+  .exp-icon {
+    width: 48px;
+    height: 48px;
+    color: #86efac;
+  }
+
+  .exp-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-style: italic;
+    color: #e8f5ee;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .exp-desc {
+    font-size: 0.95rem;
+    color: rgba(232, 245, 238, 0.65);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .exp-line {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #2d8a4e, transparent);
+    margin: 0 auto;
+    transition: width 0.4s ease;
+  }
+
+  .exp-card:hover .exp-line {
+    width: 70px;
+  }
+
+  /* ===== CABIN STORY ===== */
+  .story-section {
+    background: #f8faf8;
+    padding: 6rem 0;
+  }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .story-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .story-image-wrap {
+    position: relative;
+  }
+
+  .story-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+  }
+
+  .story-image-badge {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1a3a28;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  .story-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #2d8a4e;
+    margin-bottom: 0.75rem;
+  }
+
+  .story-heading {
+    font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+    font-weight: 800;
+    font-style: italic;
+    color: #1a3a28;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+
+  .story-body {
+    font-size: 1rem;
+    color: #3d5a47;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-quote {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #5a7a67;
+    border-left: 3px solid #2d8a4e;
+    padding-left: 1.25rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .story-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #227845;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 1px;
+    transition: all 0.2s ease;
+  }
+
+  .story-link:hover {
+    color: #1a6b35;
+    border-bottom-color: #1a6b35;
+  }
+
+  /* ===== AMENITIES ===== */
+  .amenities-section {
+    padding: 5rem 0;
+    background: #fff;
+  }
+
+  .amenities-section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  @media (min-width: 480px) {
+    .amenities-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  @media (min-width: 768px) {
+    .amenities-grid { grid-template-columns: repeat(8, 1fr); }
+  }
+
+  .amenity-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.5rem 1rem;
+    border-radius: 1rem;
+    background: #f3faf5;
+    border: 1px solid rgba(34, 120, 69, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .amenity-item:hover {
+    background: rgba(45, 138, 78, 0.08);
+    border-color: rgba(45, 138, 78, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(34, 120, 69, 0.1);
+  }
+
+  .amenity-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+
+  .amenity-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #3d5a47;
+    line-height: 1.3;
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery-section {
+    padding: 5rem 0;
+    background: #f8faf8;
+  }
+
+  .gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-header .section-title {
+    margin-bottom: 0;
+  }
+
+  .gallery-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #227845;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .gallery-link:hover {
+    color: #1a6b35;
+  }
+
+  .gallery-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 240px 240px;
+    gap: 0.75rem;
+    border-radius: 1.25rem;
+    overflow: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .gallery-mosaic {
+      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+    }
+
+    .gallery-item--0 {
+      grid-row: 1 / 3;
+    }
+  }
+
+  .gallery-item {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+  }
+
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gallery-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.3) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.07);
+  }
+
+  .gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .cta-section {
+    position: relative;
+    padding: 7rem 0;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 40, 20, 0.88) 0%,
+      rgba(10, 40, 20, 0.75) 100%
+    );
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 10;
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .cta-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    font-style: italic;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+
+  .cta-subtitle {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ===== REDUCED MOTION ===== */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg, .scroll-dot, .exp-card, .gallery-item img,
+    .amenity-item, .btn-primary, .btn-ghost, .btn-whatsapp {
+      transition-duration: 0.01ms !important;
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Subtle parallax / entrance for hero background
+  const heroBg = document.querySelector('.hero-bg') as HTMLElement;
+  if (heroBg) {
+    heroBg.classList.add('loaded');
+  }
+</script>
