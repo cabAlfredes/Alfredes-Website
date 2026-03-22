@@ -1,20 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { useTranslations } from '../../i18n/utils';
+import IconWifi from '../icons/IconWifi.astro';
+import IconSolar from '../icons/IconSolar.astro';
+import IconKitchen from '../icons/IconKitchen.astro';
+import IconBed from '../icons/IconBed.astro';
+import IconKayak from '../icons/IconKayak.astro';
+import IconBBQ from '../icons/IconBBQ.astro';
+import IconDeck from '../icons/IconDeck.astro';
+import IconLinens from '../icons/IconLinens.astro';
 
 const t = useTranslations(Astro.currentLocale);
 const prefix = (Astro.currentLocale && Astro.currentLocale !== 'es') ? `/${Astro.currentLocale}` : '';
-
-const amenities = [
-  { icon: '📶', label: t('home.amenity.wifi') },
-  { icon: '☀️', label: t('home.amenity.solar') },
-  { icon: '🍳', label: t('home.amenity.kitchen') },
-  { icon: '🛏️', label: t('home.amenity.bed') },
-  { icon: '🛶', label: t('home.amenity.kayak') },
-  { icon: '🔥', label: t('home.amenity.bbq') },
-  { icon: '🌊', label: t('home.amenity.deck') },
-  { icon: '🛁', label: t('home.amenity.linens') },
-] as const;
 
 const galleryPhotos = [
   '/assets/images/slider/foto_1.jpg',
@@ -192,12 +189,38 @@ const galleryPhotos = [
     <div class="section-container">
       <h2 class="section-title dark">{t('home.amenities.title')}</h2>
       <div class="amenities-grid">
-        {amenities.map(({ icon, label }) => (
-          <div class="amenity-item">
-            <span class="amenity-icon">{icon}</span>
-            <span class="amenity-label">{label}</span>
-          </div>
-        ))}
+        <div class="amenity-item">
+          <IconWifi class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.wifi')}</span>
+        </div>
+        <div class="amenity-item">
+          <IconSolar class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.solar')}</span>
+        </div>
+        <div class="amenity-item">
+          <IconKitchen class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.kitchen')}</span>
+        </div>
+        <div class="amenity-item">
+          <IconBed class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.bed')}</span>
+        </div>
+        <div class="amenity-item">
+          <IconKayak class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.kayak')}</span>
+        </div>
+        <div class="amenity-item">
+          <IconBBQ class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.bbq')}</span>
+        </div>
+        <div class="amenity-item">
+          <IconDeck class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.deck')}</span>
+        </div>
+        <div class="amenity-item">
+          <IconLinens class="amenity-icon" />
+          <span class="amenity-label">{t('home.amenity.linens')}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -772,9 +795,11 @@ const galleryPhotos = [
   }
 
   .amenity-icon {
-    font-size: 1.75rem;
-    line-height: 1;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    width: 3rem;
+    height: 3rem;
+    color: #2d7a4e;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+    flex-shrink: 0;
   }
 
   .amenity-label {
