@@ -2,26 +2,31 @@
 interface Props { class?: string; }
 const { class: cls = '' } = Astro.props;
 ---
-<!-- Person watching video on a laptop = internet/WiFi -->
+<!-- Little bird on a branch "broadcasting" WiFi -->
 <svg class={cls} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Laptop base -->
-  <rect x="10" y="34" width="44" height="2.5" rx="1.5" fill="currentColor" opacity="0.3"/>
-  <!-- Laptop body -->
-  <rect x="14" y="16" width="36" height="24" rx="2.5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="2"/>
-  <!-- Screen bezel inner -->
-  <rect x="17" y="19" width="30" height="18" rx="1.5" fill="currentColor" opacity="0.12"/>
-  <!-- Play button on screen -->
-  <path d="M28 24 L28 34 L37 29 Z" fill="currentColor" opacity="0.75"/>
-  <!-- Progress bar -->
-  <rect x="19" y="35.5" width="18" height="1.5" rx="0.75" fill="currentColor" opacity="0.6"/>
-  <rect x="19" y="35.5" width="7" height="1.5" rx="0.75" fill="currentColor" opacity="1"/>
-  <!-- Person sitting silhouette -->
-  <!-- Head -->
-  <circle cx="32" cy="9" r="4" fill="currentColor" opacity="0.85"/>
-  <!-- Body / shoulders -->
-  <path d="M25 14 Q32 11 39 14 L38 16 Q32 13.5 26 16 Z" fill="currentColor" opacity="0.85"/>
-  <!-- WiFi arc small above head -->
-  <path d="M26 5 Q32 1 38 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
-  <path d="M28.5 3 Q32 1 35.5 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
-  <circle cx="32" cy="2" r="1.2" fill="currentColor" opacity="0.9"/>
+  <!-- WiFi arcs (from bird's head area) -->
+  <path d="M14 28 Q32 10 50 28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.25"/>
+  <path d="M19 34 Q32 18 45 34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.55"/>
+  <path d="M24 40 Q32 28 40 40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- WiFi dot = bird's head area -->
+  <!-- Bird body -->
+  <ellipse cx="29" cy="52" rx="9" ry="6" fill="currentColor" opacity="0.8"/>
+  <!-- Bird head -->
+  <circle cx="36" cy="46" r="5.5" fill="currentColor" opacity="0.85"/>
+  <!-- Beak (open, broadcasting!) -->
+  <path d="M41 44.5 L47 46 L41 47.5 Z" fill="currentColor" opacity="0.9"/>
+  <!-- Eye -->
+  <circle cx="37.5" cy="45" r="1.4" fill="white" opacity="0.9"/>
+  <circle cx="37.8" cy="45" r="0.6" fill="currentColor" opacity="0.9"/>
+  <!-- Wing detail -->
+  <path d="M21 51 Q18 56 22 58 Q24 53 21 51Z" fill="currentColor" opacity="0.6"/>
+  <!-- Tail feathers -->
+  <path d="M21 53 Q14 56 16 60" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <!-- Branch -->
+  <path d="M4 58 Q20 55 40 58 Q50 60 60 56" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <!-- Small leaf on branch -->
+  <path d="M50 56 Q55 50 58 52 Q55 56 50 56Z" fill="currentColor" opacity="0.4"/>
+  <!-- Feet on branch -->
+  <line x1="28" y1="57" x2="26" y2="60" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="32" y1="57" x2="34" y2="60" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
 </svg>

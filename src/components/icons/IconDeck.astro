@@ -2,31 +2,32 @@
 interface Props { class?: string; }
 const { class: cls = '' } = Astro.props;
 ---
-<!-- Wooden river deck with water and railing -->
+<!-- River deck with bird perched on railing -->
 <svg class={cls} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Trees/foliage behind -->
-  <path d="M4 28 L10 14 L16 28 Z" fill="currentColor" opacity="0.2"/>
-  <path d="M48 28 L54 14 L60 28 Z" fill="currentColor" opacity="0.2"/>
-  <!-- Railing posts -->
-  <line x1="10" y1="28" x2="10" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
-  <line x1="20" y1="28" x2="20" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
-  <line x1="30" y1="28" x2="30" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
-  <line x1="40" y1="28" x2="40" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
-  <line x1="50" y1="28" x2="50" y2="44" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <!-- Trees behind -->
+  <path d="M4 30 L10 16 L16 30 Z" fill="currentColor" opacity="0.18"/>
+  <path d="M48 30 L54 16 L60 30 Z" fill="currentColor" opacity="0.18"/>
+  <!-- Railing posts (3, simplified) -->
+  <line x1="12" y1="30" x2="12" y2="46" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <line x1="32" y1="30" x2="32" y2="46" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <line x1="52" y1="30" x2="52" y2="46" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
   <!-- Top handrail -->
-  <line x1="8" y1="29" x2="52" y2="29" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  <line x1="10" y1="30" x2="54" y2="30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
   <!-- Middle rail -->
-  <line x1="9" y1="37" x2="51" y2="37" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="11" y1="38" x2="53" y2="38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
   <!-- Deck boards -->
-  <rect x="6" y="44" width="52" height="4" rx="1" fill="currentColor" opacity="0.55"/>
-  <rect x="6" y="49" width="52" height="4" rx="1" fill="currentColor" opacity="0.45"/>
-  <rect x="6" y="54" width="52" height="4" rx="1" fill="currentColor" opacity="0.35"/>
-  <!-- Board grain lines -->
-  <line x1="22" y1="44" x2="22" y2="58" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
-  <line x1="38" y1="44" x2="38" y2="58" stroke="currentColor" stroke-width="0.75" opacity="0.25"/>
-  <!-- Water below -->
-  <path d="M2 60 Q16 57 32 60 Q48 63 62 60" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"/>
-  <!-- Reflection shimmer -->
-  <line x1="14" y1="62" x2="22" y2="62" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
-  <line x1="40" y1="63" x2="50" y2="63" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+  <rect x="6" y="46" width="52" height="4" rx="1" fill="currentColor" opacity="0.5"/>
+  <rect x="6" y="51" width="52" height="4" rx="1" fill="currentColor" opacity="0.38"/>
+  <rect x="6" y="56" width="52" height="4" rx="1" fill="currentColor" opacity="0.26"/>
+  <!-- Water wave -->
+  <path d="M2 62 Q16 58 32 62 Q48 66 62 62" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <!-- Bird perched on railing (at left post, facing right) -->
+  <ellipse cx="19" cy="27" rx="5" ry="3.5" fill="currentColor" opacity="0.8"/>
+  <circle cx="23" cy="24" r="3" fill="currentColor" opacity="0.8"/>
+  <!-- Beak -->
+  <path d="M25.5 23.5 L29 24 L25.5 24.5 Z" fill="currentColor"/>
+  <!-- Eye -->
+  <circle cx="24.2" cy="23.5" r="1" fill="white" opacity="0.85"/>
+  <!-- Tail -->
+  <path d="M14 28 Q10 31 12 33 Q15 29 14 28Z" fill="currentColor" opacity="0.7"/>
 </svg>

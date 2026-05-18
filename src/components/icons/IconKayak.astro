@@ -2,27 +2,31 @@
 interface Props { class?: string; }
 const { class: cls = '' } = Astro.props;
 ---
-<!-- Person in kayak on river -->
+<!-- Kayak with paddler and a cheeky jumping fish -->
 <svg class={cls} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Trees on shore (background) -->
-  <path d="M4 36 L8 24 L12 36 Z" fill="currentColor" opacity="0.2"/>
-  <path d="M52 36 L56 24 L60 36 Z" fill="currentColor" opacity="0.2"/>
+  <!-- Tree on shore -->
+  <path d="M4 38 L8 26 L12 38 Z" fill="currentColor" opacity="0.18"/>
   <!-- Water surface -->
-  <path d="M4 46 Q14 43 24 46 Q34 49 44 46 Q54 43 60 46" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.35"/>
-  <path d="M2 50 Q16 47 32 50 Q48 53 62 50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.25"/>
+  <path d="M2 50 Q16 46 32 50 Q48 54 62 50" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.3"/>
   <!-- Kayak hull -->
-  <path d="M6 40 Q32 32 58 40 Q32 46 6 40Z" fill="currentColor" opacity="0.85"/>
+  <path d="M6 42 Q32 34 58 42 Q32 48 6 42Z" fill="currentColor" opacity="0.85"/>
   <!-- Cockpit -->
-  <ellipse cx="32" cy="38.5" rx="8" ry="3" fill="currentColor" opacity="0.5"/>
+  <ellipse cx="32" cy="40" rx="8" ry="3" fill="currentColor" opacity="0.45"/>
+  <!-- Paddler head -->
+  <circle cx="32" cy="32" r="5" fill="currentColor"/>
   <!-- Paddler body -->
-  <circle cx="32" cy="31" r="4.5" fill="currentColor"/>
-  <path d="M28 35 Q32 33 36 35 L35 38 Q32 36.5 29 38 Z" fill="currentColor" opacity="0.8"/>
+  <path d="M28 37 Q32 34.5 36 37 L35 40 Q32 38 29 40 Z" fill="currentColor" opacity="0.75"/>
   <!-- Paddle shaft -->
-  <line x1="10" y1="33" x2="54" y2="35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="10" y1="34" x2="54" y2="36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
   <!-- Left blade -->
-  <ellipse cx="9" cy="32.5" rx="6" ry="3" fill="currentColor" opacity="0.75" transform="rotate(-15 9 33)"/>
+  <ellipse cx="8" cy="33" rx="6" ry="2.8" fill="currentColor" opacity="0.7" transform="rotate(-12 8 33)"/>
   <!-- Right blade -->
-  <ellipse cx="55" cy="35.5" rx="6" ry="3" fill="currentColor" opacity="0.75" transform="rotate(-15 55 36)"/>
-  <!-- Paddle splash -->
-  <path d="M6 35 Q4 32 8 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <ellipse cx="56" cy="36" rx="6" ry="2.8" fill="currentColor" opacity="0.7" transform="rotate(-12 56 36)"/>
+  <!-- Jumping fish (top right, mid-leap) -->
+  <path d="M48 38 Q52 30 56 34" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M56 34 L60 30 L58 36 Z" fill="currentColor" opacity="0.7"/>
+  <!-- Fish eye -->
+  <circle cx="49" cy="37" r="1.2" fill="currentColor" opacity="0.9"/>
+  <!-- Fish splash -->
+  <path d="M46 42 Q44 39 48 38" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.4"/>
 </svg>
