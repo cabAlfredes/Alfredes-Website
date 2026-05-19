@@ -17,6 +17,14 @@ export const ui = {
 		"meta.contacto": "Cabaña Alfredes | Contacto",
 		"meta.comoLlegar": "Cabaña Alfredes | Cómo llegar",
 
+		// Meta / descriptions
+		"meta.desc.home": "Tu refugio en el Delta del Paraná. Cabaña artesanal sobre el Arroyo Fredes, rodeada de naturaleza, río y tranquilidad. Reservá tu estadía.",
+		"meta.desc.about": "Conocé la historia de Cabaña Alfredes, construida artesanalmente con materiales locales y reciclados en la reserva de biosfera del Delta del Paraná.",
+		"meta.desc.servicios": "WiFi, energía solar, cocina equipada, cama matrimonial, piragua, parrilla, muelle y ropa de cama. Todo lo que necesitás para tu estadía.",
+		"meta.desc.fotos": "Galería de fotos de Cabaña Alfredes. Descubrí los espacios interiores y exteriores de esta cabaña en el Delta del Paraná.",
+		"meta.desc.contacto": "Contactanos para reservar tu estadía en Cabaña Alfredes. Respondemos por WhatsApp o email.",
+		"meta.desc.comoLlegar": "Cómo llegar a Cabaña Alfredes en el Delta del Paraná. Instrucciones detalladas en lancha colectiva o bote propio desde Tigre.",
+
 		// Nav
 		"nav.home": "Inicio",
 		"nav.about": "La Cabaña",
@@ -166,6 +174,14 @@ export const ui = {
 		"meta.contacto": "Cabaña Alfredes | Contact",
 		"meta.comoLlegar": "Cabaña Alfredes | How to Arrive",
 
+		// Meta / descriptions
+		"meta.desc.home": "Your retreat in the Paraná Delta. A hand-built cabin on Arroyo Fredes, surrounded by nature, river and tranquility. Book your stay.",
+		"meta.desc.about": "Learn the story of Cabaña Alfredes, hand-built with local and recycled materials in the Paraná Delta biosphere reserve.",
+		"meta.desc.servicios": "WiFi, solar power, full kitchen, double bed, kayak, BBQ grill, river deck and linens. Everything you need for your stay.",
+		"meta.desc.fotos": "Photo gallery of Cabaña Alfredes. Discover the interior and exterior spaces of this cabin in the Paraná Delta.",
+		"meta.desc.contacto": "Contact us to book your stay at Cabaña Alfredes. We respond via WhatsApp or email.",
+		"meta.desc.comoLlegar": "How to get to Cabaña Alfredes in the Paraná Delta. Detailed instructions by water taxi or private boat from Tigre.",
+
 		"nav.home": "Home",
 		"nav.about": "The Cabin",
 		"nav.services": "Services",
@@ -305,6 +321,14 @@ export const ui = {
 		"meta.fotos": "Cabaña Alfredes | Fotos",
 		"meta.contacto": "Cabaña Alfredes | Contato",
 		"meta.comoLlegar": "Cabaña Alfredes | Como Chegar",
+
+		// Meta / descriptions
+		"meta.desc.home": "Seu refúgio no Delta do Paraná. Uma cabana artesanal às margens do Arroyo Fredes, cercada de natureza, rio e tranquilidade. Reserve sua estadia.",
+		"meta.desc.about": "Conheça a história da Cabaña Alfredes, construída artesanalmente com materiais locais e reciclados na reserva da biosfera do Delta do Paraná.",
+		"meta.desc.servicios": "WiFi, energia solar, cozinha equipada, cama de casal, caiaque, churrasqueira, deck e roupas de cama. Tudo para sua estadia.",
+		"meta.desc.fotos": "Galeria de fotos da Cabaña Alfredes. Descubra os espaços interiores e exteriores desta cabana no Delta do Paraná.",
+		"meta.desc.contacto": "Contate-nos para reservar sua estadia na Cabaña Alfredes. Respondemos via WhatsApp ou email.",
+		"meta.desc.comoLlegar": "Como chegar à Cabaña Alfredes no Delta do Paraná. Instruções detalhadas por lancha coletiva ou barco próprio a partir de Tigre.",
 
 		"nav.home": "Início",
 		"nav.about": "A Cabana",

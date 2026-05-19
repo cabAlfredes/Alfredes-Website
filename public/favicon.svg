@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background: deep forest green -->
+  <rect width="32" height="32" rx="7" fill="#14532d"/>
+
+  <!-- Stars -->
+  <circle cx="4.5" cy="4.5" r="0.65" fill="#fef9c3" opacity="0.75"/>
+  <circle cx="11"  cy="3"   r="0.5"  fill="#fef9c3" opacity="0.55"/>
+  <circle cx="26"  cy="5"   r="0.65" fill="#fef9c3" opacity="0.65"/>
+  <circle cx="28.5" cy="2.5" r="0.45" fill="#fef9c3" opacity="0.45"/>
+
+  <!-- Left pine tree -->
+  <polygon points="2,25 5.5,15.5 9,25"   fill="#166534"/>
+  <rect    x="4.5" y="24.5" width="2" height="2" fill="#166534"/>
+
+  <!-- Right pine tree -->
+  <polygon points="23,25 26.5,15.5 30,25" fill="#166534"/>
+  <rect    x="25.5" y="24.5" width="2" height="2" fill="#166534"/>
+
+  <!-- Chimney (behind roof) -->
+  <rect x="19.5" y="10.5" width="2.5" height="7.5" rx="0.5" fill="#78350f"/>
+
+  <!-- Roof -->
+  <polygon points="7.5,19.5 16,9 24.5,19.5" fill="#f59e0b"/>
+
+  <!-- Cabin walls -->
+  <rect x="10" y="19" width="12" height="9.5" rx="1" fill="#92400e"/>
+
+  <!-- Window — warm candlelight glow -->
+  <rect x="11" y="20.5" width="3.5" height="3"   rx="0.5" fill="#fef08a"/>
+  <rect x="11" y="20.5" width="3.5" height="3"   rx="0.5" fill="#fde047" opacity="0.35"/>
+
+  <!-- Door -->
+  <rect x="14.5" y="22.5" width="4" height="6"   rx="1"   fill="#78350f"/>
+  <!-- Door knob -->
+  <circle cx="17.8" cy="25.7" r="0.5" fill="#92400e"/>
+
+  <!-- River / water -->
+  <path d="M0,28 Q8,26.5 16,28 Q24,29.5 32,28 L32,32 L0,32Z"
+        fill="#0369a1" opacity="0.55"/>
+  <path d="M0,29 Q8,27.5 16,29 Q24,30.5 32,29"
+        stroke="#38bdf8" stroke-width="0.9" fill="none" opacity="0.55"/>
+</svg>
