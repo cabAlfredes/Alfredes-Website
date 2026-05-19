@@ -5,164 +5,164 @@ import Mailgun from "mailgun-js";
 export const prerender = false;
 
 export interface FormProps {
-  name: string;
-  email: string;
-  message: string;
-  dateFrom: string;
-  dateTo: string;
-  phone: string;
-  turnstileToken: string;
+	name: string;
+	email: string;
+	message: string;
+	dateFrom: string;
+	dateTo: string;
+	phone: string;
+	turnstileToken: string;
 }
 
 interface TurnstileResponse {
-  success: boolean;
-  "error-codes"?: string[];
-  challenge_ts?: string;
-  hostname?: string;
+	success: boolean;
+	"error-codes"?: string[];
+	challenge_ts?: string;
+	hostname?: string;
 }
 
 const DOMAIN = "alfredes.com.ar";
 const TURNSTILE_VERIFY_URL =
-  "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+	"https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 async function verifyTurnstileToken(
-  token: string,
-  ip?: string,
+	token: string,
+	ip?: string,
 ): Promise<boolean> {
-  const secretKey =
-    import.meta.env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY;
+	const secretKey =
+		import.meta.env.TURNSTILE_SECRET_KEY || process.env.TURNSTILE_SECRET_KEY;
 
-  if (!secretKey) {
-    console.error("TURNSTILE_SECRET_KEY is not configured");
-    return false;
-  }
+	if (!secretKey) {
+		console.error("TURNSTILE_SECRET_KEY is not configured");
+		return false;
+	}
 
-  try {
-    const formData = new URLSearchParams();
-    formData.append("secret", secretKey);
-    formData.append("response", token);
-    if (ip) {
-      formData.append("remoteip", ip);
-    }
+	try {
+		const formData = new URLSearchParams();
+		formData.append("secret", secretKey);
+		formData.append("response", token);
+		if (ip) {
+			formData.append("remoteip", ip);
+		}
 
-    const response = await fetch(TURNSTILE_VERIFY_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: formData,
-    });
+		const response = await fetch(TURNSTILE_VERIFY_URL, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/x-www-form-urlencoded",
+			},
+			body: formData,
+		});
 
-    const result: TurnstileResponse = await response.json();
+		const result: TurnstileResponse = await response.json();
 
-    if (!result.success) {
-      console.error("Turnstile verification failed:", result["error-codes"]);
-    }
+		if (!result.success) {
+			console.error("Turnstile verification failed:", result["error-codes"]);
+		}
 
-    return result.success;
-  } catch (error) {
-    console.error("Turnstile verification error:", error);
-    return false;
-  }
+		return result.success;
+	} catch (error) {
+		console.error("Turnstile verification error:", error);
+		return false;
+	}
 }
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
-  try {
-    // Get client IP for Turnstile verification
-    const ip =
-      clientAddress ||
-      request.headers.get("cf-connecting-ip") ||
-      request.headers.get("x-forwarded-for") ||
-      undefined;
+	try {
+		// Get client IP for Turnstile verification
+		const ip =
+			clientAddress ||
+			request.headers.get("cf-connecting-ip") ||
+			request.headers.get("x-forwarded-for") ||
+			undefined;
 
-    const body: FormProps = await request.json();
-    console.log("BODY", body);
+		const body: FormProps = await request.json();
+		console.log("BODY", body);
 
-    // Verify Turnstile token first
-    if (!body.turnstileToken) {
-      return new Response(
-        JSON.stringify({
-          error: "captcha_failed",
-          message: "CAPTCHA token missing",
-        }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        },
-      );
-    }
+		// Verify Turnstile token first
+		if (!body.turnstileToken) {
+			return new Response(
+				JSON.stringify({
+					error: "captcha_failed",
+					message: "CAPTCHA token missing",
+				}),
+				{
+					status: 400,
+					headers: { "Content-Type": "application/json" },
+				},
+			);
+		}
 
-    const isValidToken = await verifyTurnstileToken(body.turnstileToken, ip);
-    if (!isValidToken) {
-      return new Response(
-        JSON.stringify({
-          error: "captcha_failed",
-          message: "CAPTCHA verification failed",
-        }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        },
-      );
-    }
+		const isValidToken = await verifyTurnstileToken(body.turnstileToken, ip);
+		if (!isValidToken) {
+			return new Response(
+				JSON.stringify({
+					error: "captcha_failed",
+					message: "CAPTCHA verification failed",
+				}),
+				{
+					status: 400,
+					headers: { "Content-Type": "application/json" },
+				},
+			);
+		}
 
-    const apiKey = import.meta.env.MAILGUN;
-    if (!apiKey) {
-      console.error("MAILGUN API key is not configured");
-      return new Response(
-        JSON.stringify({ error: "Email service not configured" }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        },
-      );
-    }
+		const apiKey = import.meta.env.MAILGUN;
+		if (!apiKey) {
+			console.error("MAILGUN API key is not configured");
+			return new Response(
+				JSON.stringify({ error: "Email service not configured" }),
+				{
+					status: 500,
+					headers: { "Content-Type": "application/json" },
+				},
+			);
+		}
 
-    const mg = Mailgun({ apiKey, domain: DOMAIN });
+		const mg = Mailgun({ apiKey, domain: DOMAIN });
 
-    const data = {
-      from: `${body.name} <${body.email}>`,
-      to: "cab.alfredes@gmail.com",
-      subject: `Consulta WEB de ${body.name}`,
-      text: `Nombre: ${body.name}
+		const data = {
+			from: `${body.name} <${body.email}>`,
+			to: "cab.alfredes@gmail.com",
+			subject: `Consulta WEB de ${body.name}`,
+			text: `Nombre: ${body.name}
         Teléfono: ${body.phone}
         desde: ${body.dateFrom}
         hasta: ${body.dateTo}
         mensaje:${body.message}`,
-      html: buildEmail(body),
-    };
+			html: buildEmail(body),
+		};
 
-    return new Promise((resolve) => {
-      mg.messages().send(data, function (error: any, body: any) {
-        if (error) {
-          resolve(
-            new Response(JSON.stringify({ error }), {
-              status: error.statusCode || 500,
-              headers: { "Content-Type": "application/json" },
-            }),
-          );
-          return;
-        }
+		return new Promise((resolve) => {
+			mg.messages().send(data, function (error: any, body: any) {
+				if (error) {
+					resolve(
+						new Response(JSON.stringify({ error }), {
+							status: error.statusCode || 500,
+							headers: { "Content-Type": "application/json" },
+						}),
+					);
+					return;
+				}
 
-        resolve(
-          new Response(JSON.stringify({ body }), {
-            status: 200,
-            headers: { "Content-Type": "application/json" },
-          }),
-        );
-      });
-    });
-  } catch (error) {
-    console.error("API Error:", error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
-  }
+				resolve(
+					new Response(JSON.stringify({ body }), {
+						status: 200,
+						headers: { "Content-Type": "application/json" },
+					}),
+				);
+			});
+		});
+	} catch (error) {
+		console.error("API Error:", error);
+		return new Response(JSON.stringify({ error: "Internal server error" }), {
+			status: 500,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
 };
 
 const buildEmail = (data: FormProps) => {
-  return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
   <html
     xmlns="http://www.w3.org/1999/xhtml"
     style="

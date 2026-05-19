@@ -1,20 +1,20 @@
 {
-  "cSpell.words": [
-    "alfredes",
-    "Alfredes",
-    "biosfera",
-    "Cabaña",
-    "crossorigin",
-    "formik",
-    "FREDES",
-    "lightbox",
-    "mailgun",
-    "Mailgun",
-    "MAILGUN",
-    "Servicios"
-  ],
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "cSpell.language": "en,es,es-ES",
-  "editor.allowVariableFonts": true,
-  "editor.fontFamily": "Monaspace Argon Frozen"
+	"cSpell.words": [
+		"alfredes",
+		"Alfredes",
+		"biosfera",
+		"Cabaña",
+		"crossorigin",
+		"formik",
+		"FREDES",
+		"lightbox",
+		"mailgun",
+		"Mailgun",
+		"MAILGUN",
+		"Servicios"
+	],
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"cSpell.language": "en,es,es-ES",
+	"editor.allowVariableFonts": true,
+	"editor.fontFamily": "Monaspace Argon Frozen"
 }

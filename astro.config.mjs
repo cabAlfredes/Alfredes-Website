@@ -6,22 +6,22 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [sitemap(), react()],
-  output: "static",
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true,
-    },
-  }),
-  site: "https://www.alfredes.com.ar",
-  i18n: {
-    defaultLocale: "es",
-    locales: ["es", "en", "pt"],
-    routing: {
-      prefixDefaultLocale: false,
-    },
-  },
-  vite: {
-    plugins: [tailwindcss()],
-  },
+	integrations: [sitemap(), react()],
+	output: "static",
+	adapter: vercel({
+		webAnalytics: {
+			enabled: true,
+		},
+	}),
+	site: "https://www.alfredes.com.ar",
+	i18n: {
+		defaultLocale: "es",
+		locales: ["es", "en", "pt"],
+		routing: {
+			prefixDefaultLocale: false,
+		},
+	},
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });
