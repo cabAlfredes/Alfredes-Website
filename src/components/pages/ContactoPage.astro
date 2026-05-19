@@ -7,7 +7,7 @@ import { useTranslations } from '../../i18n/utils';
 const t = useTranslations(Astro.currentLocale);
 ---
 
-<BaseLayout title={t('meta.contacto')}>
+<BaseLayout title={t('meta.contacto')} description={t('meta.desc.contacto')}>
   <div class="min-h-screen bg-gradient-to-b from-emerald-50/50 via-white to-amber-50/30">
     <PageHero title={t('contact.pageTitle')} subtitle={t('contact.pageSubtitle')} />
 
