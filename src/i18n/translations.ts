@@ -23,7 +23,7 @@ export const ui = {
 		"meta.desc.about":
 			"Conocé la historia de Cabaña Alfredes, construida artesanalmente con materiales locales y reciclados en la reserva de biosfera del Delta del Paraná.",
 		"meta.desc.servicios":
-			"WiFi, energía solar, cocina equipada, cama matrimonial, piragua, parrilla, muelle y ropa de cama. Todo lo que necesitás para tu estadía.",
+			"WiFi, energía solar, cocina equipada, cama matrimonial, piragua, parrilla, deck al rio y ropa de cama. Todo lo que necesitás para tu estadía.",
 		"meta.desc.fotos":
 			"Galería de fotos de Cabaña Alfredes. Descubrí los espacios interiores y exteriores de esta cabaña en el Delta del Paraná.",
 		"meta.desc.contacto":
@@ -71,7 +71,7 @@ export const ui = {
 		"home.amenity.bed": "Cama Matrimonial",
 		"home.amenity.kayak": "Piragua/Kayak",
 		"home.amenity.bbq": "Parrilla",
-		"home.amenity.deck": "Muelle",
+		"home.amenity.deck": "Deck al Rio",
 		"home.amenity.linens": "Ropa de Cama y Toallas",
 		"home.gallery.title": "Así es Alfredes",
 		"home.gallery.link": "Ver todas las fotos",
@@ -186,7 +186,7 @@ export const ui = {
 		"meta.desc.about":
 			"Learn the story of Cabaña Alfredes, hand-built with local and recycled materials in the Paraná Delta biosphere reserve.",
 		"meta.desc.servicios":
-			"WiFi, solar power, full kitchen, double bed, kayak, BBQ grill, river deck and linens. Everything you need for your stay.",
+			"WiFi, solar power, full kitchen, double bed, kayak, BBQ grill, deck and linens. Everything you need for your stay.",
 		"meta.desc.fotos":
 			"Photo gallery of Cabaña Alfredes. Discover the interior and exterior spaces of this cabin in the Paraná Delta.",
 		"meta.desc.contacto":
@@ -232,7 +232,7 @@ export const ui = {
 		"home.amenity.bed": "Double Bed",
 		"home.amenity.kayak": "Kayak",
 		"home.amenity.bbq": "BBQ Grill",
-		"home.amenity.deck": "River Deck",
+		"home.amenity.deck": "Deck with River View",
 		"home.amenity.linens": "Linens & Towels",
 		"home.gallery.title": "A glimpse of Alfredes",
 		"home.gallery.link": "See all photos",
@@ -386,7 +386,7 @@ export const ui = {
 		"home.amenity.bed": "Cama de Casal",
 		"home.amenity.kayak": "Caiaque",
 		"home.amenity.bbq": "Churrasqueira",
-		"home.amenity.deck": "Deck Fluvial",
+		"home.amenity.deck": "Deck com Vista para o Rio",
 		"home.amenity.linens": "Roupas de Cama",
 		"home.gallery.title": "Assim é Alfredes",
 		"home.gallery.link": "Ver todas as fotos",
