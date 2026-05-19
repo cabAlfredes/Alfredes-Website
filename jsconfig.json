@@ -7,7 +7,7 @@
 			"@/utils/*": ["utils/*"],
 			"@/styles/*": ["styles/*"],
 			"@/store/*": ["store/*"],
-			"@/theme/*": ["theme/*"],
+			"@/theme/*": ["theme/*"]
 		}
 	}
 }

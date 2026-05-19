@@ -1,6 +1,8 @@
 ---
-interface Props { class?: string; }
-const { class: cls = '' } = Astro.props;
+interface Props {
+	class?: string;
+}
+const { class: cls = "" } = Astro.props;
 ---
 <!-- River deck with bird perched on railing -->
 <svg class={cls} viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">

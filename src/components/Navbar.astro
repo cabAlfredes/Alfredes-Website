@@ -1,27 +1,27 @@
 ---
-import { useTranslations, getLocaleSwitcherPaths } from '../i18n/utils';
-import { languages } from '../i18n/translations';
+import { useTranslations, getLocaleSwitcherPaths } from "../i18n/utils";
+import { languages } from "../i18n/translations";
 
-const locale = Astro.currentLocale ?? 'es';
+const locale = Astro.currentLocale ?? "es";
 const t = useTranslations(locale);
 const currentPath = Astro.url.pathname;
 
-const prefix = locale === 'es' ? '' : `/${locale}`;
+const prefix = locale === "es" ? "" : `/${locale}`;
 
 const navLinks = [
-  { href: `${prefix}/`,            label: t('nav.home') },
-  { href: `${prefix}/about`,       label: t('nav.about') },
-  { href: `${prefix}/servicios`,   label: t('nav.services') },
-  { href: `${prefix}/fotos`,       label: t('nav.photos') },
-  { href: `${prefix}/contacto`,    label: t('nav.contact') },
-  { href: `${prefix}/como_llegar`, label: t('nav.howToArrive') },
+	{ href: `${prefix}/`, label: t("nav.home") },
+	{ href: `${prefix}/about`, label: t("nav.about") },
+	{ href: `${prefix}/servicios`, label: t("nav.services") },
+	{ href: `${prefix}/fotos`, label: t("nav.photos") },
+	{ href: `${prefix}/contacto`, label: t("nav.contact") },
+	{ href: `${prefix}/como_llegar`, label: t("nav.howToArrive") },
 ];
 
 const localePaths = getLocaleSwitcherPaths(currentPath, locale);
 
 function isActive(href: string): boolean {
-  if (href === `${prefix}/`) return currentPath === href;
-  return currentPath.startsWith(href);
+	if (href === `${prefix}/`) return currentPath === href;
+	return currentPath.startsWith(href);
 }
 ---
 
