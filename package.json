@@ -20,6 +20,7 @@
 		"@radix-ui/react-select": "^2.2.6",
 		"@radix-ui/react-separator": "^1.1.8",
 		"@radix-ui/react-slot": "^1.2.4",
+		"@vercel/speed-insights": "^2.0.0",
 		"astro": "^6.3.5",
 		"astro-seo": "^1.1.0",
 		"class-variance-authority": "^0.7.1",
