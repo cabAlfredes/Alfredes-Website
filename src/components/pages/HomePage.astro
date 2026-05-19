@@ -1,23 +1,27 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { useTranslations } from '../../i18n/utils';
-import IconWifi from '../icons/IconWifi.astro';
-import IconSolar from '../icons/IconSolar.astro';
-import IconKitchen from '../icons/IconKitchen.astro';
-import IconBed from '../icons/IconBed.astro';
-import IconKayak from '../icons/IconKayak.astro';
-import IconBBQ from '../icons/IconBBQ.astro';
-import IconDeck from '../icons/IconDeck.astro';
-import IconLinens from '../icons/IconLinens.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { useTranslations } from "../../i18n/utils";
+import IconWifi from "../icons/IconWifi.astro";
+import IconSolar from "../icons/IconSolar.astro";
+import IconKitchen from "../icons/IconKitchen.astro";
+import IconBed from "../icons/IconBed.astro";
+import IconKayak from "../icons/IconKayak.astro";
+import IconBBQ from "../icons/IconBBQ.astro";
+import IconDeck from "../icons/IconDeck.astro";
+import IconLinens from "../icons/IconLinens.astro";
+import { Image } from "astro:assets";
 
 const t = useTranslations(Astro.currentLocale);
-const prefix = (Astro.currentLocale && Astro.currentLocale !== 'es') ? `/${Astro.currentLocale}` : '';
+const prefix =
+	Astro.currentLocale && Astro.currentLocale !== "es"
+		? `/${Astro.currentLocale}`
+		: "";
 
 const galleryPhotos = [
-  '/assets/images/slider/foto_1.jpg',
-  '/assets/images/slider/foto_3.jpg',
-  '/assets/images/slider/foto_5.jpg',
-  '/assets/images/slider/foto_7.jpg',
+	"/assets/images/slider/foto_1.jpg",
+	"/assets/images/slider/foto_3.jpg",
+	"/assets/images/slider/foto_5.jpg",
+	"/assets/images/slider/foto_7.jpg",
 ];
 ---
 
@@ -152,11 +156,13 @@ const galleryPhotos = [
     <div class="section-container story-grid">
 
       <div class="story-image-wrap">
-        <img
+        <Image
           src="/assets/banner/cabana.jpg"
           alt="Cabaña Alfredes"
           class="story-image"
           loading="lazy"
+          width={600}
+          height={400}
         />
         <div class="story-image-badge">
           <svg viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
@@ -240,7 +246,7 @@ const galleryPhotos = [
       <div class="gallery-mosaic">
         {galleryPhotos.map((src, i) => (
           <a href={`${prefix}/fotos`} class={`gallery-item gallery-item--${i}`}>
-            <img src={src} alt={`Cabaña Alfredes foto ${i + 1}`} loading="lazy" />
+            <Image src={src} alt={`Cabaña Alfredes foto ${i + 1}`} loading="lazy" width={600} height={400} />
             <div class="gallery-item-overlay"></div>
           </a>
         ))}

@@ -1,52 +1,52 @@
 ---
-import { Image } from 'astro:assets';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageHero from '../PageHero.astro';
-import { useTranslations } from '../../i18n/utils';
+import { Image } from "astro:assets";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHero from "../PageHero.astro";
+import { useTranslations } from "../../i18n/utils";
 
-import foto_1 from '@/assets/gallery/exterior/foto_1.jpg';
-import foto_2 from '@/assets/gallery/exterior/foto_2.jpg';
-import foto_3 from '@/assets/gallery/exterior/foto_3.jpg';
-import foto_4 from '@/assets/gallery/exterior/foto_4.jpg';
-import foto_5 from '@/assets/gallery/exterior/foto_5.jpg';
-import foto_6 from '@/assets/gallery/exterior/foto_6.jpg';
-import foto_7 from '@/assets/gallery/exterior/foto_7.jpg';
-import foto_8 from '@/assets/gallery/exterior/foto_8.jpg';
-import foto_9 from '@/assets/gallery/exterior/foto_9.jpg';
-import foto_10 from '@/assets/gallery/exterior/foto_10.jpg';
-import photo_int_2 from '@/assets/gallery/interior/photo_int_2.jpg';
-import photo_int_3 from '@/assets/gallery/interior/photo_int_3.jpg';
-import photo_int_4 from '@/assets/gallery/interior/photo_int_4.jpg';
-import photo_int_5 from '@/assets/gallery/interior/photo_int_5.jpg';
-import photo_int_6 from '@/assets/gallery/interior/photo_int_6.jpg';
-import photo_int_7 from '@/assets/gallery/interior/photo_int_7.jpg';
-import photo_int_8 from '@/assets/gallery/interior/photo_int_8.jpg';
-import photo_int_9 from '@/assets/gallery/interior/photo_int_9.jpg';
+import foto_1 from "@/assets/gallery/exterior/foto_1.jpg";
+import foto_2 from "@/assets/gallery/exterior/foto_2.jpg";
+import foto_3 from "@/assets/gallery/exterior/foto_3.jpg";
+import foto_4 from "@/assets/gallery/exterior/foto_4.jpg";
+import foto_5 from "@/assets/gallery/exterior/foto_5.jpg";
+import foto_6 from "@/assets/gallery/exterior/foto_6.jpg";
+import foto_7 from "@/assets/gallery/exterior/foto_7.jpg";
+import foto_8 from "@/assets/gallery/exterior/foto_8.jpg";
+import foto_9 from "@/assets/gallery/exterior/foto_9.jpg";
+import foto_10 from "@/assets/gallery/exterior/foto_10.jpg";
+import photo_int_2 from "@/assets/gallery/interior/photo_int_2.jpg";
+import photo_int_3 from "@/assets/gallery/interior/photo_int_3.jpg";
+import photo_int_4 from "@/assets/gallery/interior/photo_int_4.jpg";
+import photo_int_5 from "@/assets/gallery/interior/photo_int_5.jpg";
+import photo_int_6 from "@/assets/gallery/interior/photo_int_6.jpg";
+import photo_int_7 from "@/assets/gallery/interior/photo_int_7.jpg";
+import photo_int_8 from "@/assets/gallery/interior/photo_int_8.jpg";
+import photo_int_9 from "@/assets/gallery/interior/photo_int_9.jpg";
 
 const t = useTranslations(Astro.currentLocale);
 
 const exteriorImages = [
-  { src: foto_1, alt: 'Vista aérea de la cabaña desde dron' },
-  { src: foto_2, alt: 'Fachada frontal de la cabaña' },
-  { src: foto_4, alt: 'Vista panorámica desde dron' },
-  { src: foto_3, alt: 'Exterior completo de la cabaña' },
-  { src: foto_5, alt: 'Vista lateral del exterior' },
-  { src: foto_6, alt: 'Muelle y río desde la cabaña' },
-  { src: foto_7, alt: 'Raposeras y vegetación del río' },
-  { src: foto_8, alt: 'Detalle del exterior' },
-  { src: foto_9, alt: 'Río y naturaleza circundante' },
-  { src: foto_10, alt: 'Vista del río Parana' },
+	{ src: foto_1, alt: "Vista aérea de la cabaña desde dron" },
+	{ src: foto_2, alt: "Fachada frontal de la cabaña" },
+	{ src: foto_4, alt: "Vista panorámica desde dron" },
+	{ src: foto_3, alt: "Exterior completo de la cabaña" },
+	{ src: foto_5, alt: "Vista lateral del exterior" },
+	{ src: foto_6, alt: "Muelle y río desde la cabaña" },
+	{ src: foto_7, alt: "Raposeras y vegetación del río" },
+	{ src: foto_8, alt: "Detalle del exterior" },
+	{ src: foto_9, alt: "Río y naturaleza circundante" },
+	{ src: foto_10, alt: "Vista del río Parana" },
 ];
 
 const interiorImages = [
-  { src: photo_int_9, alt: 'Cama matrimonial con vista al río' },
-  { src: photo_int_2, alt: 'Vista del río desde la habitación' },
-  { src: photo_int_3, alt: 'Banco de madera en el interior' },
-  { src: photo_int_5, alt: 'Escalera y salamandra de leña' },
-  { src: photo_int_6, alt: 'Baño completo' },
-  { src: photo_int_7, alt: 'Cocina equipada' },
-  { src: photo_int_8, alt: 'Vista interior hacia el exterior' },
-  { src: photo_int_4, alt: 'Amplia vista del exterior' },
+	{ src: photo_int_9, alt: "Cama matrimonial con vista al río" },
+	{ src: photo_int_2, alt: "Vista del río desde la habitación" },
+	{ src: photo_int_3, alt: "Banco de madera en el interior" },
+	{ src: photo_int_5, alt: "Escalera y salamandra de leña" },
+	{ src: photo_int_6, alt: "Baño completo" },
+	{ src: photo_int_7, alt: "Cocina equipada" },
+	{ src: photo_int_8, alt: "Vista interior hacia el exterior" },
+	{ src: photo_int_4, alt: "Amplia vista del exterior" },
 ];
 ---
 
@@ -79,7 +79,7 @@ const interiorImages = [
           {interiorImages.map((image) => (
             <div class="break-inside-avoid mb-4">
               <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1">
-                <Image src={image.src} alt={image.alt} class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                <Image src={image.src} alt={image.alt} class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500" loading="eager" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div class="absolute bottom-0 left-0 right-0 p-4">
                     <p class="text-white text-sm font-medium">{image.alt}</p>
@@ -106,7 +106,7 @@ const interiorImages = [
           {exteriorImages.map((image) => (
             <div class="break-inside-avoid mb-4">
               <div class="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1">
-                <Image src={image.src} alt={image.alt} class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+                <Image src={image.src} alt={image.alt} loading="eager" class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-500" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div class="absolute bottom-0 left-0 right-0 p-4">
                     <p class="text-white text-sm font-medium">{image.alt}</p>
