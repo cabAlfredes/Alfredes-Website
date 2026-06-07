@@ -40,7 +40,7 @@ export const ui = {
 		"nav.howToArrive": "Cómo Llegar",
 
 		// Home
-		"home.title": "Cabaña Alfredes.",
+		"home.title": "Cabaña Alfredes",
 		"home.subtitle":
 			"Tu refugio en el Delta del Paraná. Naturaleza, río y tranquilidad.",
 		"home.cta": "Reservá tu estadía",
@@ -61,8 +61,9 @@ export const ui = {
 			"Desconectate del ruido de la ciudad. Sin aglomeraciones, sin prisa. Solo el murmullo del río y el canto de los pájaros.",
 		"home.story.eyebrow": "Nuestra Cabaña",
 		"home.story.heading": "Construida a mano, a orillas del Arroyo Fredes",
+		// "home.story.body": "Ubicada en un arroyo muy tranquilo de la 2° secc. del delta en lo que se denomina reserva de biosfera. Construida en dos pisos sobre el ARROYO FREDES.  En la reserva de biosfera",		
 		"home.story.body":
-			"En la 2° sección del Delta, dentro de una reserva de biosfera, esta cabaña fue construida artesanalmente con materiales locales y reciclados. Dos pisos sobre el agua, rodeados de flora nativa que crece y florece cada temporada.",
+			"En la 2° sección del Delta, en lo que se denomina reserva de biosfera, esta cabaña fue construida artesanalmente con materiales locales y reciclados. Construida en dos pisos, rodeados de flora nativa que crece y florece cada temporada.",
 		"home.story.link": "Conocé la historia",
 		"home.amenities.title": "Todo lo que necesitás",
 		"home.amenity.wifi": "WiFi",
@@ -201,7 +202,7 @@ export const ui = {
 		"nav.contact": "Contact",
 		"nav.howToArrive": "How to Arrive",
 
-		"home.title": "Cabaña Alfredes.",
+		"home.title": "Cabaña Alfredes",
 		"home.subtitle":
 			"Your retreat in the Paraná Delta. Nature, river and tranquility.",
 		"home.cta": "Book your stay",
